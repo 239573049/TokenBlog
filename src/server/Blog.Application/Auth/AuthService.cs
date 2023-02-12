@@ -1,9 +1,16 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+using Blog.Blog;
 using Blog.Options;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Domain.Repositories;
 
 namespace Blog.Auth;
 
@@ -11,13 +18,19 @@ public class AuthService : ApplicationService, IAuthService
 {
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly GitHubAuthOptions _gitHubOptions;
+    private readonly JWTOptions _jwtOptions;
+    private readonly IRepository<UserInfo> _userInfoRepository;
 
-    public AuthService(IHttpClientFactory httpClientFactory, IOptions<GitHubAuthOptions> gitHubOptions)
+    public AuthService(IHttpClientFactory httpClientFactory, IOptions<GitHubAuthOptions> gitHubOptions,
+        IOptions<JWTOptions> jwtOptions, IRepository<UserInfo> userInfoRepository)
     {
         _httpClientFactory = httpClientFactory;
+        _userInfoRepository = userInfoRepository;
+        _jwtOptions = jwtOptions.Value;
         _gitHubOptions = gitHubOptions.Value;
     }
 
+    /// <inheritdoc />
     public async Task<string> GitHubAuthAsync(string code, string state)
     {
         var http = _httpClientFactory.CreateClient("github");
@@ -39,9 +52,38 @@ public class AuthService : ApplicationService, IAuthService
         }
 
         http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(data!.AccessToken);
-        
-        var info = await http.GetFromJsonAsync<GitHubUserInfo>("https://api.github.com/user?access_token=" + data?.AccessToken);
-        
-        return "";
+
+        var info = await http.GetFromJsonAsync<GitHubUserInfo>("https://api.github.com/user?access_token=" +
+                                                               data?.AccessToken);
+
+        var userInfo = await _userInfoRepository.FirstOrDefaultAsync(x => x.GitHubId == info!.id.ToString());
+        if (userInfo == null)
+        {
+            userInfo = new UserInfo(Guid.NewGuid(), info.id.ToString(), info.avatar_url, info.name,
+                info.url);
+            await _userInfoRepository.InsertAsync(userInfo);
+        }
+
+        // 设置角色
+        var roles = new List<Claim>
+        {
+            new(ClaimsIdentity.DefaultRoleClaimType, "User"),
+            // 设置用户信息
+            new(ClaimsIdentity.DefaultIssuer, JsonSerializer.Serialize(info)),
+            new("Id", userInfo.Id.ToString())
+        };
+
+        var keyBytes = Encoding.UTF8.GetBytes(_jwtOptions.SecretKey!);
+        var cred = new SigningCredentials(new SymmetricSecurityKey(keyBytes),
+            SecurityAlgorithms.HmacSha256);
+
+        var jwtSecurityToken = new JwtSecurityToken(
+            _jwtOptions.Issuer, // 签发者
+            _jwtOptions.Audience, // 接收者
+            roles, // payload
+            expires: DateTime.Now.AddMinutes(_jwtOptions.ExpireMinutes), // 过期时间
+            signingCredentials: cred); // 令牌
+
+        return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
     }
 }

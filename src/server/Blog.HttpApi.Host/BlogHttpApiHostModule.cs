@@ -1,26 +1,15 @@
 using Blog.EntityFrameworkCore;
-using Blog.MultiTenancy;
-using Medallion.Threading;
-using Medallion.Threading.Redis;
+using Blog.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Microsoft.OpenApi.Models;
-using StackExchange.Redis;
-using System.Collections.Generic;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerUI;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
-using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
-using Volo.Abp.Caching;
-using Volo.Abp.Caching.StackExchangeRedis;
-using Volo.Abp.DistributedLocking;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 
@@ -28,9 +17,6 @@ namespace Blog;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-    typeof(AbpCachingStackExchangeRedisModule),
-    typeof(AbpDistributedLockingModule),
-    typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(BlogApplicationModule),
     typeof(BlogEntityFrameworkCoreModule),
     typeof(AbpAspNetCoreSerilogModule),
@@ -41,27 +27,11 @@ public class BlogHttpApiHostModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         var configuration = context.Services.GetConfiguration();
-        var hostingEnvironment = context.Services.GetHostingEnvironment();
 
         ConfigureConventionalControllers();
         ConfigureAuthentication(context, configuration);
-        ConfigureCache(configuration);
-        ConfigureDataProtection(context, configuration, hostingEnvironment);
-        ConfigureDistributedLocking(context, configuration);
         ConfigureCors(context.Services);
-        ConfigureSwaggerServices(context, configuration);
-
-        Configure<AbpAspNetCoreMvcOptions>(options =>
-        {
-            options
-                .ConventionalControllers
-                .Create(typeof(BlogApplicationModule).Assembly);
-        });
-    }
-
-    private void ConfigureCache(IConfiguration configuration)
-    {
-        Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "Blog:"; });
+        ConfigureSwaggerServices(context);
     }
 
     private void ConfigureConventionalControllers()
@@ -74,60 +44,32 @@ public class BlogHttpApiHostModule : AbpModule
 
     private void ConfigureAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
     {
+        var jwt = configuration.GetSection(nameof(JWTOptions)).Get<JWTOptions>();
         context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.Authority = configuration["AuthServer:Authority"];
-                options.Audience = "Simple";
-                options.TokenValidationParameters.ValidateIssuer = false;
-                options.RequireHttpsMetadata = false;
-
-                IdentityModelEventSource.ShowPII = true;
-
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true, //是否在令牌期间验证签发者 
+                    ValidateAudience = true, //是否验证接收者 
+                    ValidateLifetime = true, //是否验证失效时间 
+                    ValidateIssuerSigningKey = true, //是否验证签名 
+                    ValidAudience = jwt.Audience, //接收者 
+                    ValidIssuer = jwt.Issuer, //签发者，签发的Token的人 
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SecretKey!)) // 密钥 
+                };
             });
     }
 
-    private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)
+    private static void ConfigureSwaggerServices(ServiceConfigurationContext context)
     {
-        context.Services.AddAbpSwaggerGenWithOAuth(
-            configuration["AuthServer:Authority"],
-            new Dictionary<string, string>
-            {
-                    {"Blog", "Blog API"}
-            },
-            options =>
-            {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Blog API", Version = "v1" });
-                options.DocInclusionPredicate((docName, description) => true);
-                options.CustomSchemaIds(type => type.FullName);
-            });
-    }
-
-    private void ConfigureDataProtection(
-        ServiceConfigurationContext context,
-        IConfiguration configuration,
-        IWebHostEnvironment hostingEnvironment)
-    {
-        var dataProtectionBuilder = context.Services.AddDataProtection().SetApplicationName("Blog");
-        if (!hostingEnvironment.IsDevelopment())
+        context.Services.AddAbpSwaggerGen(options =>
         {
-            var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-            dataProtectionBuilder.PersistKeysToStackExchangeRedis(redis, "Blog-Protection-Keys");
-        }
-    }
-
-    private void ConfigureDistributedLocking(
-        ServiceConfigurationContext context,
-        IConfiguration configuration)
-    {
-        context.Services.AddSingleton<IDistributedLockProvider>(sp =>
-        {
-            var connection = ConnectionMultiplexer
-                .Connect(configuration["Redis:Configuration"]);
-            return new RedisDistributedSynchronizationProvider(connection.GetDatabase());
+            options.SwaggerDoc("v1", new OpenApiInfo { Title = "Test API", Version = "v1" });
+            options.DocInclusionPredicate((docName, description) => true);
+            options.CustomSchemaIds(type => type.FullName);
         });
     }
-
 
     private void ConfigureCors(IServiceCollection services)
     {
@@ -146,35 +88,19 @@ public class BlogHttpApiHostModule : AbpModule
         var app = context.GetApplicationBuilder();
         var env = context.GetEnvironment();
 
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-
-        app.UseAbpRequestLocalization();
-        app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseCors();
-        app.UseAuthentication();
-
-        if (MultiTenancyConsts.IsEnabled)
-        {
-            app.UseMultiTenancy();
-        }
-
-        app.UseAuthorization();
 
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
         {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Blog API");
-
-            var configuration = context.GetConfiguration();
-            options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
-            options.OAuthScopes("Simple");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Test API");
         });
 
+
+        app.UseAuthentication();
+        app.UseAuthorization();
         app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseUnitOfWork();

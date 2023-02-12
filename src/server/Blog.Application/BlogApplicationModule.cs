@@ -1,9 +1,5 @@
-﻿using System.Text;
-using Blog.Options;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
+﻿using Blog.Options;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.SettingManagement;
@@ -31,20 +27,5 @@ public class BlogApplicationModule : AbpModule
             options.AddMaps<BlogApplicationModule>();
         });
 
-        var tokenOptions = configuration.GetValue<JWTOptions>(nameof(JWTOptions));
-        context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) 
-            .AddJwtBearer(options => 
-            { 
-                options.TokenValidationParameters = new TokenValidationParameters 
-                { 
-                    ValidateIssuer = true, //是否在令牌期间验证签发者 
-                    ValidateAudience = true, //是否验证接收者 
-                    ValidateLifetime = true, //是否验证失效时间 
-                    ValidateIssuerSigningKey = true, //是否验证签名 
-                    ValidAudience = tokenOptions!.Audience, //接收者 
-                    ValidIssuer = tokenOptions.Issuer, //签发者，签发的Token的人 
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecretKey!)) // 密钥 
-                }; 
-            });
     }
 }

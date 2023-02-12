@@ -1,0 +1,25 @@
+@inject IHttpClientFactory HttpClientFactory;
+@page "/login"
+@using System.Net.Http.Json
+
+<h3>Login</h3>
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public required string Code { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await OnLogin();
+
+        await base.OnInitializedAsync();
+    }
+
+    private async Task OnLogin()
+    {
+        var http = HttpClientFactory.CreateClient();
+        var token =await http.PostAsJsonAsync<string>("/api/app/auth/git-hub-auth?code="+Code+"&state="+Guid.NewGuid(),null);
+        
+    }
+}

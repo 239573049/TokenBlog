@@ -1,13 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Serilog;
+﻿using Serilog;
 using Serilog.Events;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Volo.Abp;
 
 namespace Blog;
 
@@ -35,6 +27,7 @@ public class Program
             builder.Host.AddAppSettingsSecretsJson()
                 .UseAutofac()
                 .UseSerilog();
+            
             await builder.AddApplicationAsync<BlogHttpApiHostModule>();
             var app = builder.Build();
             

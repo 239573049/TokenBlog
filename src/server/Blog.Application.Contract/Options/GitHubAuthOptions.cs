@@ -4,14 +4,14 @@ namespace Blog.Options;
 
 public class GitHubAuthOptions
 {
-    public required string ClientId { get; set; }
+    public string ClientId { get; set; }
 
-    public required string ClientSecret { get; set; }
+    public string ClientSecret { get; set; }
 
     /// <summary>
     /// 回调地址
     /// </summary>
-    public required string Callback { get; set; }
+    public string Callback { get; set; }
 }
 
 public class AccessTokenModel
