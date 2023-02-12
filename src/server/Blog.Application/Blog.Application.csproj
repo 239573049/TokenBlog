@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Blog</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="FakesAssemblies\**" />
+      <EmbeddedResource Remove="FakesAssemblies\**" />
+      <None Remove="FakesAssemblies\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Blog.Application.Contract\Blog.Application.Contract.csproj" />
+        <ProjectReference Include="..\Blog.Domain\Blog.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+        <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="16.11.230815" />
+        <PackageReference Include="Volo.Abp.AutoMapper" Version="7.0.1" />
+        <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="7.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalDesignTimeBuildInput Remove="FakesAssemblies\**" />
+    </ItemGroup>
+
+</Project>

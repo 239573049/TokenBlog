@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>87eace05-366f-4908-ae16-16ac2beaf265</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="7.0.0" />
+    <PackageReference Include="DistributedLock.Redis" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.DistributedLocking" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Application\Blog.Application.csproj" />
+    <ProjectReference Include="..\Blog.EntityFrameworkCore\Blog.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+</Project>

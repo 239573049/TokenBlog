@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Blog</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Blog.Domain.Shared\Blog.Domain.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="7.0.1" />
+        <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="7.0.1" />
+    </ItemGroup>
+
+</Project>

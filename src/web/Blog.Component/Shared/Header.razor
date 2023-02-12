@@ -1,0 +1,18 @@
+@using Microsoft.JSInterop
+@inject IJSRuntime JsRuntime
+
+<MAppBar App>
+    <MImage Style="margin-right: 5px" MaxWidth="@("55px")"  Height="@("100%")" Alt="Avatar" Src="https://blog-simple.oss-cn-shenzhen.aliyuncs.com/blazor.jpg"></MImage>
+    <MButton Height="@("100%")" Text>博客</MButton>
+    <MTextField
+        Class="mx-4"
+        Flat
+        HideDetails="@true"
+        Label="搜索关键字"
+        FullWidth="true"
+        PrependInnerIcon="mdi-magnify"
+        @bind-Value="Search"
+        SoloInverted>
+    </MTextField>
+    <MButton OnClick="Login" Height="@("100%")" Text>登录</MButton>
+</MAppBar>

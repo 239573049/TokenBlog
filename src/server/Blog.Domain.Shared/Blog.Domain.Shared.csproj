@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Blog</RootNamespace>
+        <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="7.0.1" />
+        <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared" Version="7.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Localization\Blog\*.json" />
+        <Content Remove="Localization\Blog\*.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.0" />
+    </ItemGroup>
+
+</Project>
