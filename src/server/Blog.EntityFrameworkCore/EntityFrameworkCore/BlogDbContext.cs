@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Blog.Blog;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
@@ -10,6 +11,16 @@ namespace Blog.EntityFrameworkCore;
 public class BlogDbContext :
     AbpDbContext<BlogDbContext>
 {
+    public DbSet<UserInfo> UserInfos { get; set; }
+
+    public DbSet<Article> Articles { get; set; }
+
+    public DbSet<ArticleComment> ArticleComments { get; set; }
+
+    public DbSet<Tag> Tags { get; set; }
+
+    public DbSet<TagRelevanceArticle> TagRelevanceArticles { get; set; }
+
     public BlogDbContext(DbContextOptions<BlogDbContext> options)
         : base(options)
     {

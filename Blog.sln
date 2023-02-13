@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Domain.Shared", "src\s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.DbMigrator", "src\server\Blog.DbMigrator\Blog.DbMigrator.csproj", "{A600F29E-B216-4258-AC2B-AEEE4D1257C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.HttpApi.Client", "src\web\Blog.HttpApi.Client\Blog.HttpApi.Client.csproj", "{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{A600F29E-B216-4258-AC2B-AEEE4D1257C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A600F29E-B216-4258-AC2B-AEEE4D1257C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A600F29E-B216-4258-AC2B-AEEE4D1257C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{5CC960DA-F85F-4FBF-814A-B50944ED7483} = {EA69AC5E-31FD-4254-AE4E-7E2E09F9EE9D}
 		{A15BB803-CAF3-47D4-8241-EAF620937040} = {EA69AC5E-31FD-4254-AE4E-7E2E09F9EE9D}
 		{A600F29E-B216-4258-AC2B-AEEE4D1257C5} = {EA69AC5E-31FD-4254-AE4E-7E2E09F9EE9D}
+		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39} = {8269A6D7-63F9-492F-83A7-A2055BE695F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FF0B22F-2F83-4377-AE55-3AEC296BDC45}

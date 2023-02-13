@@ -15,11 +15,6 @@ public class Tag : Entity<Guid>, IHasCreationTime
     /// </summary>
     public string Title { get; set; }
 
-    /// <summary>
-    /// 专栏id
-    /// </summary>
-    public Guid ArticleColumnsId { get; set; }
-
     protected Tag()
     {
     }

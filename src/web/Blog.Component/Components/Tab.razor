@@ -1,0 +1,17 @@
+﻿@inject ITagService TagService
+@namespace Blog.Component
+
+<MTabs AlignWithTitle SliderColor="yellow" BackgroundColor="#ffffff" >
+    @if (_tagDtos != null)
+    {
+        foreach (var tag in _tagDtos.OrderBy(x => x.Rank))
+        {
+            <MTab Style="color: black">@tag.Title</MTab>
+        }
+    }
+</MTabs>
+
+
+<MCard Class="text-center">
+    <ArticleList></ArticleList>
+</MCard>

@@ -40,5 +40,11 @@ public class Article : FullAuditedAggregateRoot<Guid>
     /// </summary>
     public int Praise { get; set; }
 
-    public Guid ColumnId { get; set; }
+    public Article()
+    {
+    }
+
+    public Article(Guid id) : base(id)
+    {
+    }
 }

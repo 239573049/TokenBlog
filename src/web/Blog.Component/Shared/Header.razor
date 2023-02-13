@@ -1,18 +1,48 @@
-@using Microsoft.JSInterop
+@using Token.Events
 @inject IJSRuntime JsRuntime
-
+@inject IKeyLoadEventBus KeyLoadEventBus
+@inject NavigationManager NavigationManager
+@inject IUserInfoService UserInfoService 
 <MAppBar App>
-    <MImage Style="margin-right: 5px" MaxWidth="@("55px")"  Height="@("100%")" Alt="Avatar" Src="https://blog-simple.oss-cn-shenzhen.aliyuncs.com/blazor.jpg"></MImage>
-    <MButton Height="@("100%")" Text>博客</MButton>
-    <MTextField
-        Class="mx-4"
-        Flat
-        HideDetails="@true"
-        Label="搜索关键字"
-        FullWidth="true"
-        PrependInnerIcon="mdi-magnify"
-        @bind-Value="Search"
-        SoloInverted>
-    </MTextField>
-    <MButton OnClick="Login" Height="@("100%")" Text>登录</MButton>
+    <CascadingValue Value="Search" Name="@nameof(Search)">
+        <MImage Style="margin-right: 5px" MaxWidth="@("55px")" Height="@("100%")" Alt="Avatar" Src="https://blog-simple.oss-cn-shenzhen.aliyuncs.com/blazor.jpg"></MImage>
+        <MButton Height="@("100%")" Text>博客</MButton>
+        <MTextField
+            Class="mx-4"
+            Flat
+            HideDetails="@true"
+            Label="搜索关键字"
+            FullWidth="true"
+            PrependInnerIcon="mdi-magnify"
+            @bind-Value="Search"
+            SoloInverted>
+        </MTextField>
+        @if (UserInfoDto == null)
+        {
+            <MButton OnClick="Login" Height="@("100%")" Text>登录</MButton>
+        }
+        else
+        {
+            <MButton Text Height="@("100%")" OnClick="Compose">创作（Compose）</MButton>
+            <MMenu OffsetY>
+                <ActivatorContent>
+                    <MAvatar @attributes="@context.Attrs">
+                        <MImage Src="@UserInfoDto.Avatar" Alt="Jack"></MImage>
+                    </MAvatar>
+                </ActivatorContent>
+
+                <ChildContent>
+                    <MList>
+                        <MListItem>
+                            <MListItemContent>
+                                <MListItemTitle>
+                                    <MButton Text>退出登录</MButton>
+                                </MListItemTitle>
+                            </MListItemContent>
+                        </MListItem>
+                    </MList>
+                </ChildContent>
+            </MMenu>
+        }
+    </CascadingValue>
 </MAppBar>

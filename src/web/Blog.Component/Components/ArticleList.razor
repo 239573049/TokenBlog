@@ -1,0 +1,42 @@
+﻿@namespace Blog.Component
+
+@inject IArticleService ArticleService
+
+<MList>
+    @if (ArticlesDto != null)
+    {
+        @foreach (var item in ArticlesDto.Items)
+        {
+            <MCard Style="margin: 5px;height: 165px" Class="article">
+                <MListItem Style="height: 150px">
+                    @if (!string.IsNullOrEmpty(item.PictorialView))
+                    {
+                        <MListItemAvatar Height="100" Width="140">
+                            <MImage Src="@item.PictorialView"></MImage>
+                        </MListItemAvatar>
+                    }
+                    <MListItemContent Style="text-align: left">
+                        <MListItemTitle Class="article-title"> @((MarkupString)item.Title)</MListItemTitle>
+                        <MListItemSubtitle>@((MarkupString)item.Description)</MListItemSubtitle>
+                    </MListItemContent>
+                </MListItem>
+            </MCard>
+        }
+    }
+</MList>
+
+<style>
+    .article{
+            user-select: none;
+            cursor: pointer;
+    }
+        .article-title{
+            transition: 0.8s;
+            font-size: 23px;
+        }
+        .article-title:hover{
+            transition: 0.8s;
+            color: #b32121;
+        }
+
+</style>

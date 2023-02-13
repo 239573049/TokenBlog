@@ -1,0 +1,23 @@
+﻿@namespace Blog.Component
+
+@inject IArticleService ArticleService
+
+<MCard>
+    <BCardTitle Style="text-align: center">热榜排名</BCardTitle>
+    <MList>
+        @if (ArticlesDto != null)
+        {
+            @foreach (var item in ArticlesDto.Items)
+            {
+                <MCard Style="margin: 5px;height: 60px">
+                    <MListItem Style="height: 50px">
+                        <MListItemContent Style="text-align: left">
+                            <MListItemTitle Style="font-size: 18px"> @((MarkupString)item.Title)</MListItemTitle>
+                            <MListItemSubtitle>@((MarkupString)item.Description)</MListItemSubtitle>
+                        </MListItemContent>
+                    </MListItem>
+                </MCard>
+            }
+        }
+    </MList>
+</MCard>

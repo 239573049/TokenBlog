@@ -15,12 +15,6 @@ namespace Blog;
     )]
 public class BlogDomainSharedModule : AbpModule
 {
-    public override void PreConfigureServices(ServiceConfigurationContext context)
-    {
-        BlogGlobalFeatureConfigurator.Configure();
-        BlogModuleExtensionConfigurator.Configure();
-    }
-
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<AbpVirtualFileSystemOptions>(options =>

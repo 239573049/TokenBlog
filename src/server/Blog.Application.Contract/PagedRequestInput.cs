@@ -1,6 +1,8 @@
-﻿namespace Blog;
+﻿using Volo.Abp.Application.Dtos;
 
-public class PagedRequestInput : Volo.Abp.Application.Dtos.PagedResultRequestDto
+namespace Blog;
+
+public class PagedRequestInput : PagedResultRequestDto
 {
     private int? _page = 1;
     private int? _pageSize = 20;

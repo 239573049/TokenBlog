@@ -1,6 +1,23 @@
 @page "/"
+@namespace Blog.Component
 
+<MRow>
+    <MCol Cols="12"
+          Sm="6"
+          Md="8">
+        <Tab/>
+    </MCol>
+    <MCol Id="@("top-search")" Cols="6"
+          Md="4">
+        <TopSearch></TopSearch>
+    </MCol>
+</MRow>
 
-@code {
+<style>
     
+@@media screen and (max-width: 1050px) {
+    #top-search{
+        display: none;
+    }
 }
+</style>

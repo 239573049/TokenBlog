@@ -1,0 +1,35 @@
+﻿@page "/compose"
+@namespace Blog.Component
+@inject IArticleService ArticleService
+@inject NavigationManager NavigationManager
+@layout EmptyLayout
+
+
+<MAppBar App>
+    <MButton Class="ma-2"
+             Color="orange darken-2"
+             OnClick="Back"
+             Dark>
+        <MIcon Dark
+               Left>
+            mdi-arrow-left
+        </MIcon>返回
+    </MButton>
+    <MTextField
+        @bind-Value="_input.Title"
+        Solo
+        Style="height: 50px;">
+    </MTextField>
+    <MButton Dark Color="orange darken-2" Class="ma-2">
+        发布文章
+    </MButton>
+</MAppBar>
+
+<MMain>
+    <!-- 给应用提供合适的间距 -->
+    <MContainer App Fluid Style="height: 60vh">
+        <MMarkdown Options="_options" @bind-Value="@_input.Content">
+        </MMarkdown>
+        <MMarkdownIt Source="@_input.Content" Class="markdown-parser__basic"/>
+    </MContainer>
+</MMain>

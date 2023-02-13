@@ -44,6 +44,9 @@ public class BlogHttpApiHostModule : AbpModule
 
     private void ConfigureAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
     {
+
+        context.Services.Configure<JWTOptions>(configuration.GetSection(nameof(JWTOptions)));
+
         var jwt = configuration.GetSection(nameof(JWTOptions)).Get<JWTOptions>();
         context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -68,6 +71,29 @@ public class BlogHttpApiHostModule : AbpModule
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "Test API", Version = "v1" });
             options.DocInclusionPredicate((docName, description) => true);
             options.CustomSchemaIds(type => type.FullName);
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement 
+            { 
+                { 
+                    new OpenApiSecurityScheme 
+                    { 
+                        Reference = new OpenApiReference 
+                        { 
+                            Id = "Bearer", 
+                            Type = ReferenceType.SecurityScheme 
+                        } 
+                    }, 
+                    Array.Empty<string>() 
+                } 
+            }); 
+            
+            // 添加Authorization的输入框
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme 
+            { 
+                Description = "Please enter into field the word 'Bearer' followed by a space and the JWT value,Format: Bearer {token}", 
+                Name = "Authorization", 
+                In = ParameterLocation.Header, 
+                Type = SecuritySchemeType.ApiKey 
+            }); 
         });
     }
 

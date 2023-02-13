@@ -8,12 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.ObjectExtending" Version="7.0.1" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="7.0.1" />
+    <ProjectReference Include="..\Blog.Domain.Shared\Blog.Domain.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blog.Domain.Shared\Blog.Domain.Shared.csproj" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="7.0.1" />
   </ItemGroup>
 
 </Project>

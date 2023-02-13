@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Security.Claims;
 
 namespace Blog.Auth;
 
@@ -51,10 +52,10 @@ public class AuthService : ApplicationService, IAuthService
             throw new BusinessException(message: "获取GitHub token失败");
         }
 
-        http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(data!.AccessToken);
-
-        var info = await http.GetFromJsonAsync<GitHubUserInfo>("https://api.github.com/user?access_token=" +
-                                                               data?.AccessToken);
+        http = _httpClientFactory.CreateClient("GitHubAuth");
+        http.DefaultRequestHeaders.Add("Authorization", "Bearer "+data.AccessToken);
+        http.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41");
+        var info = await http.GetFromJsonAsync<GitHubUserInfo>($"https://api.github.com/user");
 
         var userInfo = await _userInfoRepository.FirstOrDefaultAsync(x => x.GitHubId == info!.id.ToString());
         if (userInfo == null)
@@ -69,8 +70,8 @@ public class AuthService : ApplicationService, IAuthService
         {
             new(ClaimsIdentity.DefaultRoleClaimType, "User"),
             // 设置用户信息
-            new(ClaimsIdentity.DefaultIssuer, JsonSerializer.Serialize(info)),
-            new("Id", userInfo.Id.ToString())
+            new(ClaimsIdentity.DefaultIssuer, JsonSerializer.Serialize(userInfo)),
+            new(AbpClaimTypes.UserId, userInfo.Id.ToString())
         };
 
         var keyBytes = Encoding.UTF8.GetBytes(_jwtOptions.SecretKey!);

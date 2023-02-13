@@ -15,11 +15,6 @@ namespace Blog.EntityFrameworkCore;
     )]
 public class BlogEntityFrameworkCoreModule : AbpModule
 {
-    public override void PreConfigureServices(ServiceConfigurationContext context)
-    {
-        BlogEfCoreEntityExtensionMappings.Configure();
-    }
-
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services.AddAbpDbContext<BlogDbContext>(options =>

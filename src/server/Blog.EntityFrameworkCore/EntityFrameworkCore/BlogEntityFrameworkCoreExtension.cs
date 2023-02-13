@@ -1,5 +1,6 @@
 ﻿using Blog.Blog;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace Blog.EntityFrameworkCore;
@@ -22,6 +23,8 @@ public static class BlogEntityFrameworkCoreExtension
         {
             options.ToTable("Tags");
 
+            options.ConfigureByConvention();
+
             options.HasIndex(x => x.Title).IsUnique();
         });
 
@@ -29,25 +32,30 @@ public static class BlogEntityFrameworkCoreExtension
         {
             options.ToTable("TagRelevanceArticles");
 
+            options.ConfigureByConvention();
+
             options.HasIndex(x => x.TagId);
             options.HasIndex(x => x.ArticleId);
-        });
-
-        builder.Entity<ArticleColumns>(options =>
-        {
-            options.ToTable("ArticleColumns");
-
-            options.HasIndex(x => x.Title).IsUnique();
         });
 
         builder.Entity<ArticleComment>(options =>
         {
             options.ToTable("ArticleComments");
 
+            options.ConfigureByConvention();
+
             options.HasIndex(x => x.UserId);
             options.HasIndex(x => x.ParentId);
             options.HasIndex(x => x.ArticleId);
         });
-        
+
+        builder.Entity<UserInfo>(options =>
+        {
+            options.ToTable("UserInfos");
+
+            options.ConfigureByConvention();
+
+            options.HasIndex(x => x.GitHubId);
+        });
     }
 }

@@ -13,12 +13,13 @@
 
   <ItemGroup>
     <PackageReference Include="Masa.Blazor" Version="1.0.0-preview.2" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+    <PackageReference Include="Token.EventBus" Version="1.3.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components" />
+    <ProjectReference Include="..\..\server\Blog.Application.Contract\Blog.Application.Contract.csproj" />
+    <ProjectReference Include="..\Blog.HttpApi.Client\Blog.HttpApi.Client.csproj" />
   </ItemGroup>
 
 </Project>

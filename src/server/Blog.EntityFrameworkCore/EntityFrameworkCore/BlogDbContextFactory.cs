@@ -11,8 +11,6 @@ public class BlogDbContextFactory : IDesignTimeDbContextFactory<BlogDbContext>
 {
     public BlogDbContext CreateDbContext(string[] args)
     {
-        BlogEfCoreEntityExtensionMappings.Configure();
-
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<BlogDbContext>()
