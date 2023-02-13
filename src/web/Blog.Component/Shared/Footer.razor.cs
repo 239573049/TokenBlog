@@ -1,9 +1,4 @@
-﻿using System.Net.Http.Json;
-using Blog.Users;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.JSInterop;
-
-namespace Blog.Component.Shared;
+﻿namespace Blog.Component.Shared;
 
 public partial class Footer
 {

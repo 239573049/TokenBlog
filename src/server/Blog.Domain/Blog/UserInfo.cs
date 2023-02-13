@@ -1,4 +1,3 @@
-using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Blog.Blog;

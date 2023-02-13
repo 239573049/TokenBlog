@@ -33,9 +33,9 @@ public class EFCoreArticlesRepository : EfCoreRepository<BlogDbContext, Article,
         if (tagId != null)
         {
             query = from article in dbContext.Articles
-                join tagRelevanceArticle in dbContext.TagRelevanceArticles on article.Id equals tagRelevanceArticle
-                    .ArticleId
-                select article;
+                    join tagRelevanceArticle in dbContext.TagRelevanceArticles on article.Id equals tagRelevanceArticle
+                        .ArticleId
+                    select article;
         }
         else
         {

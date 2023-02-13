@@ -1,13 +1,13 @@
+using Blog.Blog;
+using Blog.Options;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
-using Blog.Blog;
-using Blog.Options;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -53,7 +53,7 @@ public class AuthService : ApplicationService, IAuthService
         }
 
         http = _httpClientFactory.CreateClient("GitHubAuth");
-        http.DefaultRequestHeaders.Add("Authorization", "Bearer "+data.AccessToken);
+        http.DefaultRequestHeaders.Add("Authorization", "Bearer " + data.AccessToken);
         http.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41");
         var info = await http.GetFromJsonAsync<GitHubUserInfo>($"https://api.github.com/user");
 

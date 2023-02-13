@@ -22,7 +22,7 @@ public partial class ArticleList
     protected override async Task OnInitializedAsync()
     {
         await GetListAsync();
-        
+
         await base.OnInitializedAsync();
     }
 

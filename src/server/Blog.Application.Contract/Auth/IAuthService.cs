@@ -8,5 +8,5 @@ public interface IAuthService
     /// GitHub授权服务
     /// </summary>
     /// <returns></returns>
-    Task<string> GitHubAuthAsync(string code,string state);
+    Task<string> GitHubAuthAsync(string code, string state);
 }

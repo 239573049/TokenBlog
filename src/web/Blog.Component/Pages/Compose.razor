@@ -28,8 +28,18 @@
 <MMain>
     <!-- 给应用提供合适的间距 -->
     <MContainer App Fluid Style="height: 60vh">
-        <MMarkdown Options="_options" @bind-Value="@_input.Content">
-        </MMarkdown>
-        <MMarkdownIt Source="@_input.Content" Class="markdown-parser__basic"/>
+        <MTabs @bind-Value="Tab">
+            <MTab>编辑</MTab>
+            <MTab>预览</MTab>
+        </MTabs>
+        <MTabsItems Value="Tab">
+            <MTabItem>
+                <MMarkdown Options="_options" @bind-Value="_input.Content">
+                </MMarkdown>
+            </MTabItem>
+            <MTabItem>
+                <MMarkdownIt Source="@_input.Content" Class="markdown-parser__basic" />
+            </MTabItem>
+        </MTabsItems>
     </MContainer>
 </MMain>

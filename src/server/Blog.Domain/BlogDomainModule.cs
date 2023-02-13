@@ -1,8 +1,6 @@
-﻿using Blog.MultiTenancy;
-using Volo.Abp.AuditLogging;
+﻿using Volo.Abp.AuditLogging;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Abp.MultiTenancy;
 using Volo.Abp.SettingManagement;
 
 namespace Blog;

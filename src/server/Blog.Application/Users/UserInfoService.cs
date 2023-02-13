@@ -18,7 +18,7 @@ public class UserInfoService : ApplicationService, IUserInfoService
     public async Task<UserInfoDto> GetProfileAsync()
     {
         var userInfo = await _userInfoRepository.FirstOrDefaultAsync(x => x.Id == CurrentUser.Id);
-        
+
         return ObjectMapper.Map<UserInfo, UserInfoDto>(userInfo);
     }
 }

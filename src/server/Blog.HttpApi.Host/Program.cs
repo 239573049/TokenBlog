@@ -23,10 +23,10 @@ try
     builder.Host.AddAppSettingsSecretsJson()
         .UseAutofac()
         .UseSerilog();
-            
+
     await builder.AddApplicationAsync<BlogHttpApiHostModule>();
     var app = builder.Build();
-            
+
     await app.InitializeApplicationAsync();
     await app.RunAsync();
     return 0;

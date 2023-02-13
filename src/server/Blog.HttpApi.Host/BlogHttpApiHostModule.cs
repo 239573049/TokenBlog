@@ -2,10 +2,8 @@ using Blog.EntityFrameworkCore;
 using Blog.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Swashbuckle.AspNetCore.SwaggerUI;
+using System.Text;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Serilog;
@@ -71,29 +69,29 @@ public class BlogHttpApiHostModule : AbpModule
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "Test API", Version = "v1" });
             options.DocInclusionPredicate((docName, description) => true);
             options.CustomSchemaIds(type => type.FullName);
-            options.AddSecurityRequirement(new OpenApiSecurityRequirement 
-            { 
-                { 
-                    new OpenApiSecurityScheme 
-                    { 
-                        Reference = new OpenApiReference 
-                        { 
-                            Id = "Bearer", 
-                            Type = ReferenceType.SecurityScheme 
-                        } 
-                    }, 
-                    Array.Empty<string>() 
-                } 
-            }); 
-            
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Id = "Bearer",
+                            Type = ReferenceType.SecurityScheme
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
+
             // 添加Authorization的输入框
-            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme 
-            { 
-                Description = "Please enter into field the word 'Bearer' followed by a space and the JWT value,Format: Bearer {token}", 
-                Name = "Authorization", 
-                In = ParameterLocation.Header, 
-                Type = SecuritySchemeType.ApiKey 
-            }); 
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Description = "Please enter into field the word 'Bearer' followed by a space and the JWT value,Format: Bearer {token}",
+                Name = "Authorization",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.ApiKey
+            });
         });
     }
 

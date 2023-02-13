@@ -1,6 +1,6 @@
-﻿using System.Net.Http.Json;
-using Blog.Blog;
+﻿using Blog.Blog;
 using Blog.Blog.Dto;
+using System.Net.Http.Json;
 
 namespace Blog.HttpClient;
 

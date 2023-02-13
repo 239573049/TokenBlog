@@ -5,7 +5,7 @@ namespace Blog.Blog.Dto;
 
 public class ArticlesDto : EntityDto<Guid>
 {
-    
+
     /// <summary>
     /// 标题
     /// </summary>
@@ -15,7 +15,7 @@ public class ArticlesDto : EntityDto<Guid>
     /// 描述
     /// </summary>
     public string Description { get; set; }
-    
+
     /// <summary>
     /// 博客内容
     /// </summary>
@@ -25,7 +25,7 @@ public class ArticlesDto : EntityDto<Guid>
     /// 用户Id
     /// </summary>
     public Guid UserId { get; set; }
-    
+
     /// <summary>
     /// 访问浏览
     /// </summary>

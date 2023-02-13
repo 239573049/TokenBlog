@@ -1,15 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
-using Volo.Abp.Domain.Repositories;
 using Volo.Abp.MultiTenancy;
 
 namespace Blog.Data;
@@ -49,7 +43,7 @@ public class BlogDbMigrationService : ITransientDependency
 
     private async Task AddInitiaArticle()
     {
-        
+
     }
 
     private bool AddInitialMigrationIfNotExist()

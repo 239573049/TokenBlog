@@ -1,13 +1,12 @@
 ﻿using Blog.Blog.Dto;
-using Blog.HttpClient;
 using Microsoft.AspNetCore.Components;
 using Volo.Abp.Application.Dtos;
 
 namespace Blog.Component;
 
-public partial class  TopSearch
+public partial class TopSearch
 {
-    
+
     [Parameter]
     [CascadingParameter(Name = nameof(TagId))]
     public Guid? TagId { get; set; }
@@ -24,7 +23,7 @@ public partial class  TopSearch
     protected override async Task OnInitializedAsync()
     {
         await GetListAsync();
-        
+
         await base.OnInitializedAsync();
     }
 

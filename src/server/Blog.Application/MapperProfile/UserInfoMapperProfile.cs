@@ -8,6 +8,6 @@ public class UserInfoMapperProfile : Profile
 {
     public UserInfoMapperProfile()
     {
-        CreateMap<UserInfo,UserInfoDto>();
+        CreateMap<UserInfo, UserInfoDto>();
     }
 }

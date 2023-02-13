@@ -9,6 +9,6 @@ public static class BlogDomainErrorCodes
     public const string ColumnTitleAlreadyExists = Default + "ColumnTitleAlreadyExists";
 
     public const string TagNameAlreadyExists = Default + "TagNameAlreadyExists";
-    
+
     /* You can add your business exception error codes here, as constants */
 }

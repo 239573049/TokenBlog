@@ -17,11 +17,11 @@ public class BlogApplicationModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         var configuration = context.Services.GetConfiguration();
-        
+
         context.Services.Configure<GitHubAuthOptions>(configuration.GetSection(nameof(GitHubAuthOptions)));
-        
+
         context.Services.AddHttpClient();
-        
+
         Configure<AbpAutoMapperOptions>(options =>
         {
             options.AddMaps<BlogApplicationModule>();

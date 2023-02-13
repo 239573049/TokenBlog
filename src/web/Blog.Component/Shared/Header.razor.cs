@@ -1,4 +1,3 @@
-using System.Net.Http.Json;
 using Blog.Users;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,8 +7,8 @@ namespace Blog.Component.Shared;
 
 public partial class Header
 {
-    [Parameter] 
-    [SupplyParameterFromQuery] 
+    [Parameter]
+    [SupplyParameterFromQuery]
     public string? Search { get; set; }
 
     public UserInfoDto UserInfoDto { get; set; }
@@ -37,8 +36,8 @@ public partial class Header
     private void Compose()
     {
         NavigationManager.NavigateTo("/compose");
-    } 
-    
+    }
+
     private async Task LoadUserInfo()
     {
         if (!string.IsNullOrEmpty(BlogHttpApiClientExtension.Token) && UserInfoDto == null)

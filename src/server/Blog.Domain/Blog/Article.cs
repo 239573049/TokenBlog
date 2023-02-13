@@ -1,4 +1,3 @@
-using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Blog.Blog;
@@ -14,7 +13,7 @@ public class Article : FullAuditedAggregateRoot<Guid>
     /// 描述
     /// </summary>
     public string Description { get; set; }
-    
+
     /// <summary>
     /// 博客内容
     /// </summary>
@@ -24,7 +23,7 @@ public class Article : FullAuditedAggregateRoot<Guid>
     /// 用户Id
     /// </summary>
     public Guid UserId { get; set; }
-    
+
     /// <summary>
     /// 访问浏览
     /// </summary>
