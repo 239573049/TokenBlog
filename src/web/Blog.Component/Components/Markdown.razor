@@ -1,0 +1,21 @@
+﻿ @namespace Blog.Component
+
+ <MMarkdownIt Html="true" Breaks="true" Typographer="true" Source="@Source" Style="border: 1px lightgrey solid " Class="mt-4 pa-1"/>
+ 
+ @code
+ {
+     [Parameter]
+     public string Source { get; set; }
+
+     [Parameter]
+     public EventCallback<string> SourceChanged { get; set; }
+ }
+ <style>
+    pre{
+        background-color: aliceblue;
+        border-radius: 10px;
+    }
+    pre code{
+        background-color: rgb(0 0 0 / 0%) !important;
+    }
+</style>

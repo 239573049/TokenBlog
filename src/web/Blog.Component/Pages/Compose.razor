@@ -69,23 +69,12 @@
         </MTabs>
         <MTabsItems Value="Tab">
             <MTabItem>
-                <MMarkdown Options="_options" @bind-Value="_input.Content">
+                <MMarkdown Options="_options"  @bind-Value="_input.Content">
                 </MMarkdown>
             </MTabItem>
             <MTabItem>
-                <MMarkdownIt Source="@_input.Content" Class="markdown-parser__basic"/>
+                <Markdown @bind-Source="_input.Content"></Markdown>
             </MTabItem>
         </MTabsItems>
     </MContainer>
 </MMain>
-
-<style>
-    .markdown-parser__basic img {
-        max-width: 100%;
-    }
-    
-    .markdown-parser__basic blockquote {
-        border-left: 4px lightgray solid;
-        padding-left: 16px;
-    }
-</style>
