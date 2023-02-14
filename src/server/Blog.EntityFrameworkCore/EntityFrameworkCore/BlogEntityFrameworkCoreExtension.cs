@@ -27,16 +27,6 @@ public static class BlogEntityFrameworkCoreExtension
             options.HasIndex(x => x.Title).IsUnique();
         });
 
-        builder.Entity<TagRelevanceArticle>(options =>
-        {
-            options.ToTable("TagRelevanceArticles");
-
-            options.ConfigureByConvention();
-
-            options.HasIndex(x => x.TagId);
-            options.HasIndex(x => x.ArticleId);
-        });
-
         builder.Entity<ArticleComment>(options =>
         {
             options.ToTable("ArticleComments");

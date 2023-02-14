@@ -27,5 +27,5 @@ public class CreateArticlesInput
     /// <summary>
     /// 标签Id
     /// </summary>
-    public Guid[]? TagIds { get; set; }
+    public Guid TagId { get; set; }
 }

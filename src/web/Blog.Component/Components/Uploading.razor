@@ -1,0 +1,41 @@
+﻿@namespace Blog.Component
+
+@using Microsoft.AspNetCore.Components.Forms
+@inject HelperJsInterop HelperJsInterop
+<MButton Class="ma-2"
+         Block
+         OnClick="ClickFile"
+         Color="red lighten-2">
+    上传预览图
+</MButton>
+
+<InputFile accept="image/*" id="@Id" OnChange="@LoadFiles" style="display: none;"/>
+
+@code{
+
+    [Parameter]
+    public string? Id { get; set; }
+
+    [Parameter]
+    public IBrowserFile BrowserFile { get; set; }
+
+    [Parameter]
+    public EventCallback<IBrowserFile> BrowserFileChanged { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Id ??= Guid.NewGuid().ToString("N");
+        base.OnInitialized();
+    }
+
+    private async Task LoadFiles(InputFileChangeEventArgs e)
+    {
+        await BrowserFileChanged.InvokeAsync(e.File);
+    }
+
+    private async Task ClickFile()
+    {
+        await HelperJsInterop.ClickDom(Id);
+    }
+
+}

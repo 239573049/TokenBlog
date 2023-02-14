@@ -18,7 +18,8 @@ public static class BlogHttpApiClientExtension
         services.AddScoped<IUserInfoService, UserInfoService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<IArticleService, ArticleService>();
-
+        services.AddScoped<FileSystemService>();
+        
         services.AddHttpClient(string.Empty, options =>
         {
             options.BaseAddress = new Uri("http://localhost:5202");

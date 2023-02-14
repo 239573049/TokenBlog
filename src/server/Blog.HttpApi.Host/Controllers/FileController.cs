@@ -5,7 +5,7 @@ namespace Blog.Controllers;
 
 [ApiController]
 [Route("/api/[controller]/[action]")]
-public class FileSystemController : ControllerBase
+public class FileController : ControllerBase
 {
     [HttpPost]
     public async Task<string> Uploading(IFormFile file)
@@ -27,7 +27,7 @@ public class FileSystemController : ControllerBase
         await file.OpenReadStream().CopyToAsync(stream);
         await stream.FlushAsync();
         stream.Close();
-
+        
         return "file/" + name;
     }
 }

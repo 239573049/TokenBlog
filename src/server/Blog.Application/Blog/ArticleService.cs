@@ -8,12 +8,10 @@ namespace Blog.Blog;
 public class ArticleService : ApplicationService, IArticleService
 {
     private readonly IArticlesRepository _articlesRepository;
-    private readonly IRepository<TagRelevanceArticle> _tagRelevanceArticleRepository;
 
-    public ArticleService(IArticlesRepository articlesRepository, IRepository<TagRelevanceArticle> tagRelevanceArticleRepository)
+    public ArticleService(IArticlesRepository articlesRepository)
     {
         _articlesRepository = articlesRepository;
-        _tagRelevanceArticleRepository = tagRelevanceArticleRepository;
     }
 
     public async Task<PagedResultDto<ArticlesDto>?> GetListAsync(GetArticlesInput input)
@@ -34,18 +32,12 @@ public class ArticleService : ApplicationService, IArticleService
         {
             Title = input.Title,
             Description = input.Description,
-            UserId = CurrentUser.Id.Value,
+            UserId = CurrentUser.Id!.Value,
             PictorialView = input.PictorialView,
             Content = input.Content,
+            TagId = input.TagId
         };
 
-        var tagRelevance = input.TagIds?.Select(x => new TagRelevanceArticle()
-        {
-            TagId = x,
-            ArticleId = article.Id
-        });
-
         await _articlesRepository.InsertAsync(article);
-        await _tagRelevanceArticleRepository.InsertManyAsync(tagRelevance);
     }
 }

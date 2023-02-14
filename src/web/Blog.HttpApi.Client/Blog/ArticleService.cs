@@ -22,8 +22,9 @@ public class ArticleService : IArticleService
         return await http.GetFromJsonAsync<PagedResultDto<ArticlesDto>>(Prefix + input.ToUriParam());
     }
 
-    public Task CreateAsync(CreateArticlesInput input)
+    public async Task CreateAsync(CreateArticlesInput input)
     {
-        throw new NotImplementedException();
+        var http = _httpClientFactory.CreateClient(string.Empty);
+        await http.PostAsJsonAsync(Prefix, input);
     }
 }

@@ -1,9 +1,13 @@
 ﻿@page "/compose"
+@using global::Blog.HttpClient
 @namespace Blog.Component
 @inject IArticleService ArticleService
+@inject ITagService TagService
 @inject NavigationManager NavigationManager
+@inject HelperJsInterop HelperJsInterop
+@inject FileSystemService FileSystemService 
+@inject IPopupService PopupService
 @layout EmptyLayout
-
 
 <MAppBar App>
     <MButton Class="ma-2"
@@ -20,9 +24,40 @@
         Solo
         Style="height: 50px;">
     </MTextField>
-    <MButton Dark Color="orange darken-2" Class="ma-2">
-        发布文章
-    </MButton>
+    <PDrawer Title="Title" Width="500">
+        <ActivatorContent>
+            <MButton @attributes="@context.Attrs" Dark Color="orange darken-2" Class="ma-2">
+                发布文章
+            </MButton>
+        </ActivatorContent>
+        <ChildContent>
+            <MTextField @bind-Value="_input.Description" Label="描述"></MTextField>
+            <MDivider></MDivider>
+            <Uploading @bind-BrowserFile="BrowserFile"/>
+            @if (!string.IsNullOrEmpty(filePage))
+            {
+                <MImage Src="@filePage"></MImage>
+            }
+            <MDivider></MDivider>
+            <MContainer Fluid>
+                <p>文章标签</p>
+                <MRadioGroup
+                    @bind-Value="_input.TagId"
+                    Row
+                    Mandatory>
+                    @foreach (var i in TagDtos.OrderBy(x => x.Rank))
+                    {
+                        <MRadio
+                            Label="@i.Title"
+                            Value="@i.Id">
+                        </MRadio>
+                    }
+                </MRadioGroup>
+            </MContainer>
+            <MDivider></MDivider>
+            <MButton Block OnClick="CreateAsync">提交</MButton>
+        </ChildContent>
+    </PDrawer>
 </MAppBar>
 
 <MMain>
@@ -38,8 +73,19 @@
                 </MMarkdown>
             </MTabItem>
             <MTabItem>
-                <MMarkdownIt Source="@_input.Content" Class="markdown-parser__basic" />
+                <MMarkdownIt Source="@_input.Content" Class="markdown-parser__basic"/>
             </MTabItem>
         </MTabsItems>
     </MContainer>
 </MMain>
+
+<style>
+    .markdown-parser__basic img {
+        max-width: 100%;
+    }
+    
+    .markdown-parser__basic blockquote {
+        border-left: 4px lightgray solid;
+        padding-left: 16px;
+    }
+</style>

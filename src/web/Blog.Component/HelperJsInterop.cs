@@ -8,20 +8,32 @@ namespace Blog.Component;
 // This class can be registered as scoped DI service and then injected into Blazor
 // components for use.
 
-public class ExampleJsInterop : IAsyncDisposable
+public class HelperJsInterop : IAsyncDisposable
 {
     private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
-    public ExampleJsInterop(IJSRuntime jsRuntime)
+    public HelperJsInterop(IJSRuntime jsRuntime)
     {
         moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-            "import", "./_content/Blog.Component/exampleJsInterop.js").AsTask());
+            "import", "./_content/Blog.Component/helperJsInterop.js").AsTask());
     }
 
-    public async ValueTask<string> Prompt(string message)
+    public async ValueTask<string> ByteToUrl(byte[] blob)
     {
         var module = await moduleTask.Value;
-        return await module.InvokeAsync<string>("showPrompt", message);
+        return await module.InvokeAsync<string>("byteToUrl", blob);
+    }
+
+    public async ValueTask<string> RevokeUrl(string url)
+    {
+        var module = await moduleTask.Value;
+        return await module.InvokeAsync<string>("revokeUrl", url);
+    }
+
+    public async ValueTask ClickDom(string id)
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("clickDom", id);
     }
 
     public async ValueTask DisposeAsync()

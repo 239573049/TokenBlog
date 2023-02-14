@@ -39,6 +39,11 @@ public class Article : FullAuditedAggregateRoot<Guid>
     /// </summary>
     public int Praise { get; set; }
 
+    /// <summary>
+    /// 标记
+    /// </summary>
+    public Guid TagId { get; set; }
+
     public Article()
     {
     }
