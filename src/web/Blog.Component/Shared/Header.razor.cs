@@ -7,11 +7,14 @@ namespace Blog.Component.Shared;
 
 public partial class Header
 {
-    [Parameter]
-    [SupplyParameterFromQuery]
-    public string? Search { get; set; }
+    [Parameter] [SupplyParameterFromQuery] public string? Search { get; set; }
 
     public UserInfoDto UserInfoDto { get; set; }
+
+    private void OnSearch()
+    {
+        _ = KeyLoadEventBus.PushAsync(EventBusConstant.ArticleListSearch, Search);
+    }
 
     private async Task Login()
     {
@@ -27,7 +30,7 @@ public partial class Header
         if (firstRender)
         {
             await LoadUserInfo();
-            KeyLoadEventBus.Subscription(EventBusName.GetProfile, async (value) => { await LoadUserInfo(); });
+            KeyLoadEventBus.Subscription(EventBusName.GetProfile, async (_) => { await LoadUserInfo(); });
         }
 
         await base.OnAfterRenderAsync(firstRender);

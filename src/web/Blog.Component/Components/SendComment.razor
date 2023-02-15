@@ -1,0 +1,19 @@
+﻿@namespace Blog.Component
+
+<MTabs
+    @bind-Value="tab">
+       <MTab>编辑</MTab>
+       <MTab>预览</MTab>
+</MTabs>
+
+<MTabsItems Value="tab">
+    <MTabItem >
+        <MTextarea Value="@Comment" ValueChanged="CommentChanged">
+        </MTextarea>
+    </MTabItem>
+    <MTabItem >
+        <Markdown @bind-Source="@Comment"></Markdown>
+    </MTabItem>
+</MTabsItems>
+
+<MButton Block>提交</MButton>

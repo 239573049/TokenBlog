@@ -25,6 +25,28 @@ public class EFCoreArticlesRepository : EfCoreRepository<BlogDbContext, Article,
         return await query.CountAsync();
     }
 
+    public async Task<ArticleView> GetAsync(Guid id)
+    {
+        var dbContext = await GetDbContextAsync();
+
+        var query = await dbContext.Articles.Where(x => x.Id == id).Select(x => new ArticleView(x.Id)
+        {
+            Content = x.Content,
+            CreationTime = x.CreationTime,
+            CreatorId = x.CreatorId,
+            Description = x.Description,
+            Flow = x.Flow,
+            PictorialView = x.PictorialView,
+            Praise = x.Praise,
+            Title = x.Title,
+            UserId = x.UserId,
+            TagId = x.TagId,
+            
+        }).FirstOrDefaultAsync();
+
+        return query;
+    }
+
     private async Task<IQueryable<Article>> CreateQueryAsync(Guid? tagId, string search)
     {
         var dbContext = await GetDbContextAsync();
@@ -33,8 +55,8 @@ public class EFCoreArticlesRepository : EfCoreRepository<BlogDbContext, Article,
         if (tagId != null)
         {
             query = from article in dbContext.Articles
-                    where article.TagId == tagId
-                    select article;
+                where article.TagId == tagId
+                select article;
         }
         else
         {

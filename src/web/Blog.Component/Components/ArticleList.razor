@@ -1,6 +1,9 @@
-﻿@namespace Blog.Component
+﻿@using Token.Events
+@namespace Blog.Component
 
 @inject IArticleService ArticleService
+@inject IKeyLoadEventBus KeyLoadEventBus
+@inject NavigationManager NavigationManager
 
 <MList>
     @if (ArticlesDto != null)
@@ -8,7 +11,7 @@
         @foreach (var item in ArticlesDto.Items)
         {
             <MCard Style="margin: 5px;height: 165px" Class="article">
-                <MListItem Style="height: 150px">
+                <MListItem Style="height: 150px" OnClick="() => OpenArticle(item)">
                     @if (!string.IsNullOrEmpty(item.PictorialView))
                     {
                         <MListItemAvatar Height="100" Width="140">

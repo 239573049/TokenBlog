@@ -1,4 +1,5 @@
-﻿using Blog.Blog.Dto;
+﻿using System;
+using Blog.Blog.Dto;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 
@@ -13,4 +14,11 @@ public interface IArticleService
     /// </summary>
     /// <returns></returns>
     Task CreateAsync(CreateArticlesInput input);
+
+    /// <summary>
+    /// 获取博客详情
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task<GetArticlesDto> GetAsync(Guid id);
 }

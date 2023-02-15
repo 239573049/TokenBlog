@@ -1,17 +1,19 @@
 ﻿@inject ITagService TagService
+@inject IKeyLoadEventBus KeyLoadEventBus
 @namespace Blog.Component
 
-<MTabs AlignWithTitle SliderColor="yellow" BackgroundColor="#ffffff" >
-    @if (_tagDtos != null)
-    {
-        foreach (var tag in _tagDtos.OrderBy(x => x.Rank))
+<CascadingValue Value="TagId" Name="@nameof(TagId)">
+    <MTabs AlignWithTitle SliderColor="yellow" BackgroundColor="#ffffff">
+        @if (_tagDtos != null)
         {
-            <MTab Style="color: black">@tag.Title</MTab>
+            foreach (var tag in _tagDtos.OrderBy(x => x.Rank))
+            {
+                <MTab OnClick="() => SwitchTag(tag.Id)" Style="color: black">@tag.Title</MTab>
+            }
         }
-    }
-</MTabs>
+    </MTabs>
 
-
-<MCard Class="text-center">
-    <ArticleList></ArticleList>
-</MCard>
+    <MCard Class="text-center">
+        <ArticleList/>
+    </MCard>
+</CascadingValue>

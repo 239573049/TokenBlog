@@ -1,4 +1,5 @@
-﻿using Blog.Blog.Dto;
+﻿using BlazorComponent;
+using Blog.Blog.Dto;
 
 namespace Blog.Component;
 
@@ -6,9 +7,31 @@ public partial class Tab
 {
     private List<TagDto>? _tagDtos;
 
-    public async Task LoadTag()
+    public Guid? TagId { get; set; }
+
+    private void SwitchTag(Guid? tagId)
     {
-        _tagDtos = await TagService.GetListAsync();
+        if (tagId == Guid.Empty)
+        {
+            TagId = null;
+        }
+        else
+        {
+            TagId = tagId;
+        }
+    }
+
+    private async Task LoadTag()
+    {
+        _tagDtos = new List<TagDto>()
+        {
+            new()
+            {
+                Rank = 0,
+                Title = "推荐"
+            }
+        };
+        _tagDtos.AddRange(await TagService.GetListAsync());
     }
 
     protected override async Task OnInitializedAsync()

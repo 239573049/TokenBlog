@@ -27,4 +27,10 @@ public class ArticleService : IArticleService
         var http = _httpClientFactory.CreateClient(string.Empty);
         await http.PostAsJsonAsync(Prefix, input);
     }
+
+    public async Task<GetArticlesDto> GetAsync(Guid id)
+    {
+        var http = _httpClientFactory.CreateClient(string.Empty);
+        return await http.GetFromJsonAsync<GetArticlesDto>(Prefix + "/" + id);
+    }
 }

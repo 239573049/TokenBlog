@@ -40,4 +40,11 @@ public class ArticleService : ApplicationService, IArticleService
 
         await _articlesRepository.InsertAsync(article);
     }
+
+    public async Task<GetArticlesDto> GetAsync(Guid id)
+    {
+        var data = await _articlesRepository.GetAsync(id);
+
+        return ObjectMapper.Map<ArticleView,GetArticlesDto>(data);
+    }
 }

@@ -13,7 +13,8 @@
             HideDetails="@true"
             Label="搜索关键字"
             FullWidth="true"
-            PrependInnerIcon="mdi-magnify"
+            OnAppendClick="OnSearch"
+            AppendIcon="mdi-magnify"
             @bind-Value="Search"
             SoloInverted>
         </MTextField>

@@ -1,4 +1,4 @@
-﻿namespace Blog.Component.Shared;
+﻿namespace Blog.Component;
 
 public partial class Footer
 {
