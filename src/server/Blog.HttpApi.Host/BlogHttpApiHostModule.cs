@@ -27,9 +27,9 @@ public class BlogHttpApiHostModule : AbpModule
         var configuration = context.Services.GetConfiguration();
 
         var mssql = Environment.GetEnvironmentVariable("MSSQL");
-        var clientId = Environment.GetEnvironmentVariable("GitHubAuthOptions:ClientId");
-        var clientSecret = Environment.GetEnvironmentVariable("GitHubAuthOptions:ClientSecret");
-        var callback = Environment.GetEnvironmentVariable("GitHubAuthOptions:Callback");
+        var clientId = Environment.GetEnvironmentVariable("ClientId");
+        var clientSecret = Environment.GetEnvironmentVariable("ClientSecret");
+        var callback = Environment.GetEnvironmentVariable("Callback");
 
         if (!clientId.IsNullOrEmpty())
         {
