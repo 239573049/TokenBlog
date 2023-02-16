@@ -2,7 +2,7 @@
 {
     public class StorageService
     {
-        public const string BaseAddress = "http://localhost:5202";
+        public const string BaseAddress = "http://api.blog.tokengo.top/";
 
         public static string WebAssemblyBaseAddress { get; set; }
     }
