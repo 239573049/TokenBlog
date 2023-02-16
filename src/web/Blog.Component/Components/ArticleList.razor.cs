@@ -45,9 +45,17 @@ public partial class ArticleList
     {
         _input.Search = Search;
         _input.TagId = TagId;
-        ArticlesDto = await ArticleService.GetListAsync(_input);
+        try
+        {
 
-        _ = InvokeAsync(StateHasChanged);
+            ArticlesDto = await ArticleService.GetListAsync(_input);
+
+            _ = InvokeAsync(StateHasChanged);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
     }
 
     private void OpenArticle(ArticlesDto dto)

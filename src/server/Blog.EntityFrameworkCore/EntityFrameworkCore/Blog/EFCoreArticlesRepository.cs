@@ -11,14 +11,14 @@ public class EFCoreArticlesRepository : EfCoreRepository<BlogDbContext, Article,
     {
     }
 
-    public async Task<List<Article>> GetListAsync(Guid? tagId, string search, int page = 0, int pageSize = 20)
+    public async Task<List<Article>> GetListAsync(Guid? tagId, string? search, int page = 0, int pageSize = 20)
     {
         var query = await CreateQueryAsync(tagId, search);
 
         return await query.PageBy(page, pageSize).ToListAsync();
     }
 
-    public async Task<int> GetCountAsync(Guid? tagId, string search)
+    public async Task<int> GetCountAsync(Guid? tagId, string? search)
     {
         var query = await CreateQueryAsync(tagId, search);
 
@@ -62,7 +62,7 @@ public class EFCoreArticlesRepository : EfCoreRepository<BlogDbContext, Article,
         await dbContext.Database.ExecuteSqlRawAsync($"UPDATE Articles SET Flow = Flow+1 WHERE Id = '{id}'");
     }
 
-    private async Task<IQueryable<Article>> CreateQueryAsync(Guid? tagId, string search)
+    private async Task<IQueryable<Article>> CreateQueryAsync(Guid? tagId, string? search)
     {
         var dbContext = await GetDbContextAsync();
 
@@ -78,7 +78,7 @@ public class EFCoreArticlesRepository : EfCoreRepository<BlogDbContext, Article,
             query = dbContext.Articles;
         }
 
-        query = query.OrderByDescending(x => x.CreationTime).WhereIf(!search.IsNullOrEmpty(), x => x.Title.Contains(search) || x.Description.Contains(search));
+        query = query.OrderByDescending(x => x.CreationTime).WhereIf(search?.IsNullOrEmpty() == false, x => x.Title.Contains(search) || x.Description.Contains(search));
 
         return query;
     }

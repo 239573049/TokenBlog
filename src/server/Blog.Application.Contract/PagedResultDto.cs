@@ -23,5 +23,6 @@ public class PagedResultDto<T>
     public PagedResultDto(long totalCount, IReadOnlyList<T> items)
     {
         TotalCount = totalCount;
+        _items = items;
     }
 }
