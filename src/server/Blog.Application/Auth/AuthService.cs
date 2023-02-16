@@ -44,10 +44,18 @@ public class AuthService : ApplicationService, IAuthService
                                                                             + "&state=" + state;
 
         http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        
+        AccessTokenModel data = null;
+        try
+        {
+            data = await http.GetFromJsonAsync<AccessTokenModel>(uri);
+            if (data == null || data.AccessToken.IsNullOrEmpty())
+            {
+                throw new BusinessException(message: "获取GitHub token失败");
+            }
 
-        var data = await http.GetFromJsonAsync<AccessTokenModel>(uri);
-
-        if (data == null || data.AccessToken.IsNullOrEmpty())
+        }
+        catch (Exception e)
         {
             throw new BusinessException(message: "获取GitHub token失败");
         }

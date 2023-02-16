@@ -40,13 +40,13 @@ public partial class ArticleList
         await base.OnInitializedAsync();
     }
 
+    private GetArticlesInput _input = new ();
+
     private async Task GetListAsync()
     {
-        ArticlesDto = await ArticleService.GetListAsync(new GetArticlesInput()
-        {
-            Search = Search,
-            TagId = TagId
-        });
+        _input.Search = Search;
+        _input.TagId = TagId;
+        ArticlesDto = await ArticleService.GetListAsync(_input);
 
         _ = InvokeAsync(StateHasChanged);
     }

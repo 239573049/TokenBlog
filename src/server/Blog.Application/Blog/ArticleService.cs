@@ -1,16 +1,20 @@
 ﻿using Blog.Blog.Dto;
+using Blog.ETO;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.EventBus.Local;
 
 namespace Blog.Blog;
 
 public class ArticleService : ApplicationService, IArticleService
 {
     private readonly IArticlesRepository _articlesRepository;
+    private readonly ILocalEventBus _localEventBus;
 
-    public ArticleService(IArticlesRepository articlesRepository)
+    public ArticleService(IArticlesRepository articlesRepository, ILocalEventBus localEventBus)
     {
         _articlesRepository = articlesRepository;
+        _localEventBus = localEventBus;
     }
 
     public async Task<PagedResultDto<ArticlesDto>?> GetListAsync(GetArticlesInput input)
@@ -44,6 +48,16 @@ public class ArticleService : ApplicationService, IArticleService
     {
         var data = await _articlesRepository.GetAsync(id);
 
-        return ObjectMapper.Map<ArticleView,GetArticlesDto>(data);
+        await _localEventBus.PublishAsync(new GetArticleEto(id));
+
+        return ObjectMapper.Map<ArticleView, GetArticlesDto>(data);
+    }
+
+    /// <inheritdoc />
+    public async Task<List<ArticlesDto>> GetTopSearch()
+    {
+        var data = await _articlesRepository.GetTopSearchAsync();
+
+        return ObjectMapper.Map<List<Article>, List<ArticlesDto>>(data);
     }
 }

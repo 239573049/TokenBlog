@@ -1,3 +1,4 @@
+using Blog.Shared;
 using Microsoft.JSInterop;
 
 namespace Blog.Component;
@@ -8,7 +9,7 @@ namespace Blog.Component;
 // This class can be registered as scoped DI service and then injected into Blazor
 // components for use.
 
-public class HelperJsInterop : IAsyncDisposable
+public class HelperJsInterop : ITokenService, IAsyncDisposable
 {
     private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
@@ -34,6 +35,18 @@ public class HelperJsInterop : IAsyncDisposable
     {
         var module = await moduleTask.Value;
         await module.InvokeVoidAsync("clickDom", id);
+    }
+
+    public async ValueTask<string> GetTokenAsync()
+    {
+        var module = await moduleTask.Value;
+        return await module.InvokeAsync<string>("getToken");
+    }
+
+    public async ValueTask SetToken(string value)
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("setToken", value);
     }
 
     public async ValueTask DisposeAsync()

@@ -3,17 +3,15 @@
 @namespace Blog.Component
 
 <CascadingValue Value="TagId" Name="@nameof(TagId)">
-    <MTabs AlignWithTitle SliderColor="yellow" BackgroundColor="#ffffff">
+    <MTabs BackgroundColor="indigo" CenterActive Dark>
         @if (_tagDtos != null)
         {
             foreach (var tag in _tagDtos.OrderBy(x => x.Rank))
             {
-                <MTab OnClick="() => SwitchTag(tag.Id)" Style="color: black">@tag.Title</MTab>
+                <MTab  OnClick="() => SwitchTag(tag.Id)" Style="color: black">@tag.Title</MTab>
             }
         }
     </MTabs>
 
-    <MCard Class="text-center">
-        <ArticleList/>
-    </MCard>
+    <ArticleList/>
 </CascadingValue>

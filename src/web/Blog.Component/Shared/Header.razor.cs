@@ -44,7 +44,8 @@ public partial class Header
 
     private async Task LoadUserInfo()
     {
-        if (!string.IsNullOrEmpty(StorageService.Token) && UserInfoDto == null)
+        var token = await HelperJsInterop.GetTokenAsync();
+        if (!string.IsNullOrEmpty(token) && UserInfoDto == null)
         {
             try
             {
@@ -53,7 +54,7 @@ public partial class Header
             }
             catch
             {
-                StorageService.SetToken(string.Empty);
+                await HelperJsInterop.SetToken(string.Empty);
             }
         }
     }

@@ -6,27 +6,29 @@
 @inject IKeyLoadEventBus KeyLoadEventBus
 @inject NavigationManager NavigationManager
 
-<MList>
+<MList Style="margin: 5px">
     @if (ArticlesDto != null)
     {
         @foreach (var item in ArticlesDto.Items)
         {
-            <MCard Style="margin: 5px;height: 165px" Class="article">
-                <MListItem Style="height: 150px" OnClick="() => OpenArticle(item)">
-                    @if (!string.IsNullOrEmpty(item.PictorialView))
-                    {
-                        var pictorialView = @item.PictorialView.StartsWith("http") ? @item.PictorialView : StorageService.BaseAddress + "/" + item.PictorialView;
-                        <MListItemAvatar Height="100" Width="140">
-                            <MImage Src="@pictorialView"></MImage>
-                        </MListItemAvatar>
-                    }
-                    <MListItemContent Style="text-align: left">
-                        <MListItemTitle Class="article-title"> @((MarkupString)item.Title)</MListItemTitle>
-                        <MListItemSubtitle>@((MarkupString)item.Description)</MListItemSubtitle>
-                    </MListItemContent>
-                </MListItem>
-            </MCard>
+            <MListItem Class="article" Style="margin: 5px;height: 165px" OnClick="() => OpenArticle(item)">
+                @if (!string.IsNullOrEmpty(item.PictorialView))
+                {
+                    var pictorialView = @item.PictorialView.StartsWith("http") ? @item.PictorialView : StorageService.BaseAddress + "/" + item.PictorialView;
+                    <MListItemAvatar Height="100" Width="140">
+                        <MImage Src="@pictorialView"></MImage>
+                    </MListItemAvatar>
+                }
+                <MListItemContent Style="text-align: left">
+                    <MListItemTitle Class="article-title"> @((MarkupString)item.Title)</MListItemTitle>
+                    <MListItemSubtitle>@((MarkupString)item.Description)</MListItemSubtitle>
+                </MListItemContent>
+            </MListItem>
         }
+        <MPagination @bind-Value="_input.Page"
+                     OnNext="async () => await GetListAsync()"
+                     Length="(int)ArticlesDto.TotalCount / _input.PageSize + (ArticlesDto.TotalCount % _input.PageSize == 0 ? 0 : 1)"
+                     TotalVisible="7"></MPagination>
     }
 </MList>
 

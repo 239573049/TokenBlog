@@ -1,7 +1,10 @@
 
+using Blog.Shared;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped<StorageService>();
 builder.Services.AddBlogComponent();
 builder.Services.AddBlogHttpApiClient();
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Blog.Blog.Dto;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
@@ -21,4 +22,10 @@ public interface IArticleService
     /// <param name="id"></param>
     /// <returns></returns>
     Task<GetArticlesDto> GetAsync(Guid id);
+
+    /// <summary>
+    /// 热榜数据
+    /// </summary>
+    /// <returns></returns>
+    Task<List<ArticlesDto>> GetTopSearch();
 }

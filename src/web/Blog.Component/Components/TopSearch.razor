@@ -1,23 +1,30 @@
 ﻿@namespace Blog.Component
 
 @inject IArticleService ArticleService
+@inject NavigationManager NavigationManager
 
-<MCard>
-    <BCardTitle Style="text-align: center">热榜排名</BCardTitle>
+ <BCardTitle Style="text-align: center">热榜排名</BCardTitle>
     <MList>
         @if (ArticlesDto != null)
         {
-            @foreach (var item in ArticlesDto.Items)
+            @foreach (var item in ArticlesDto)
             {
-                <MCard Style="margin: 5px;height: 60px">
-                    <MListItem Style="height: 50px">
-                        <MListItemContent Style="text-align: left">
-                            <MListItemTitle Style="font-size: 18px"> @((MarkupString)item.Title)</MListItemTitle>
-                            <MListItemSubtitle>@((MarkupString)item.Description)</MListItemSubtitle>
-                        </MListItemContent>
-                    </MListItem>
-                </MCard>
+                <MListItem Style="height: 50px;margin: 5px" OnClick="() => GoTo(item.Id)">
+                    <MListItemContent Style="text-align: left">
+                        <MListItemTitle Style="font-size: 18px">
+                            @((MarkupString)item.Title)<span class="flow">@item.Flow</span>
+                        </MListItemTitle>
+                        <MListItemSubtitle>@((MarkupString)item.Description)</MListItemSubtitle>
+                    </MListItemContent>
+                </MListItem>
             }
         }
     </MList>
-</MCard>
+
+<style>
+    .flow{
+        float: right;
+        font-size: 10px;
+        color: #f60404;
+    }
+</style>

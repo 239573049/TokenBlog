@@ -1,13 +1,12 @@
-@inject IHttpClientFactory HttpClientFactory;
-@inject IJSRuntime JsRuntime
+@inject HttpClient HttpClient;
 @inject NavigationManager NavigationManager
+@inject HelperJsInterop HelperJsInterop
 @page "/login"
 @namespace Blog.Component
-@using global::Blog.Shared
 @using System.Net.Http.Json
 @inject IKeyLoadEventBus KeyLoadEventBus
-<div>
-    登录中
+<div style="text-align: center;font-size: 30px">
+    <div class="loading"></div>
 </div>
 
 @code {
@@ -27,17 +26,40 @@
 
     private async Task OnLogin()
     {
-        if (!string.IsNullOrEmpty(StorageService.Token))
+        var value = await HelperJsInterop.GetTokenAsync();
+        if (!string.IsNullOrEmpty(value))
         {
             return;
         }
-        var http = HttpClientFactory.CreateClient(string.Empty);
-        var message = await http.PostAsJsonAsync<string>("/api/app/auth/git-hub-auth?code=" + Code + "&state=" + Guid.NewGuid(), null);
+
+        var message = await HttpClient.PostAsJsonAsync<string>("/api/app/auth/git-hub-auth?code=" + Code + "&state=" + Guid.NewGuid(), null);
         var token = await message.Content.ReadAsStringAsync();
-        await JsRuntime.InvokeVoidAsync("window.sessionStorage.setItem", "token", token);
-        StorageService.SetToken(token);
+        await HelperJsInterop.SetToken(token);
+        HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
         NavigationManager.NavigateTo("/");
         await KeyLoadEventBus.PushAsync(EventBusName.GetProfile, true);
     }
 
 }
+
+<style>
+    .loading {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      background-color: #000;
+      animation: ball-scale infinite linear 0.75s;
+      margin-left: 45%;
+    }
+    
+    @@keyframes ball-scale {
+      0% {
+        transform: scale(0.1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+</style>

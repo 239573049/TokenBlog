@@ -2,24 +2,22 @@
 using Blog.Blog.Dto;
 using System.Net.Http.Json;
 
-namespace Blog.HttpClient;
+namespace Blog;
 
 public class TagService : ITagService
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly System.Net.Http.HttpClient _httpClient;
 
     private const string Prefix = "/api/app/tag";
 
-    public TagService(IHttpClientFactory httpClientFactory)
+    public TagService(System.Net.Http.HttpClient httpClient)
     {
-        _httpClientFactory = httpClientFactory;
+        _httpClient = httpClient;
     }
 
     public async Task<List<TagDto>> GetListAsync()
     {
-        var http = _httpClientFactory.CreateClient(string.Empty);
-
-        return await http.GetFromJsonAsync<List<TagDto>>(Prefix);
+        return await _httpClient.GetFromJsonAsync<List<TagDto>>(Prefix);
     }
 
     public Task CreateAsync(TagDto input)

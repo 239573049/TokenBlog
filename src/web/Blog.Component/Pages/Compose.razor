@@ -60,15 +60,14 @@
 </MAppBar>
 
 <MMain>
-    <MContainer App Fluid Style="height: 60vh">
+    <MContainer App Fluid Style="height: 100%">
         <MTabs @bind-Value="Tab">
             <MTab>编辑</MTab>
-            <MTab>预览</MTab>
+            <MTab OnClick="async () => _input.Content = await _monacoEditor.GetValue()">预览</MTab>
         </MTabs>
-        <MTabsItems Value="Tab">
-            <MTabItem>
-                <MMarkdown Options="_options"  @bind-Value="_input.Content">
-                </MMarkdown>
+        <MTabsItems Style="height: 95%" Value="Tab">
+            <MTabItem Style="height: 100%">
+                <SMonacoEditor Style="height: 100%" EditorOptions="Options" @ref="_monacoEditor"/>
             </MTabItem>
             <MTabItem>
                 <Markdown @bind-Source="_input.Content"></Markdown>

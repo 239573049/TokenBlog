@@ -18,7 +18,7 @@ public partial class TopSearch
     [CascadingParameter(Name = nameof(Search))]
     public string? Search { get; set; }
 
-    public PagedResultDto<ArticlesDto>? ArticlesDto { get; set; }
+    public List<ArticlesDto>? ArticlesDto { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -27,12 +27,13 @@ public partial class TopSearch
         await base.OnInitializedAsync();
     }
 
+    private void GoTo(Guid id)
+    {
+        NavigationManager.NavigateTo($"/show-article/{id}");
+    }
+    
     private async Task GetListAsync()
     {
-        ArticlesDto = await ArticleService.GetListAsync(new GetArticlesInput()
-        {
-            Search = Search,
-            TagId = TagId
-        });
+        ArticlesDto = await ArticleService.GetTopSearch();
     }
 }

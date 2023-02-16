@@ -2,34 +2,31 @@
 using Blog.Blog;
 using Blog.Blog.Dto;
 
-namespace Blog.HttpClient;
+namespace Blog;
 
 public class ArticleCommentService : IArticleCommentService
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly HttpClient _httpClient;
 
     private const string Prefix = "/api/app/article-comment";
 
-    public ArticleCommentService(IHttpClientFactory httpClientFactory)
+    public ArticleCommentService(HttpClient httpClient)
     {
-        _httpClientFactory = httpClientFactory;
+        _httpClient = httpClient;
     }
 
     public async Task CreateAsync(CreateArticleCommentInput input)
     {
-        var http = _httpClientFactory.CreateClient(string.Empty);
-        await http.PostAsJsonAsync(Prefix, input);
+        await _httpClient.PostAsJsonAsync(Prefix, input);
     }
 
     public async Task<List<GetArticleCommentDto>> GetListAsync(GetArticleCommentInput input)
     {
-        var http = _httpClientFactory.CreateClient(string.Empty);
-        return await http.GetFromJsonAsync<List<GetArticleCommentDto>>(Prefix + input.ToUriParam());
+        return await _httpClient.GetFromJsonAsync<List<GetArticleCommentDto>>(Prefix + input.ToUriParam());
     }
 
     public async Task DeleteAsync(Guid id)
     {
-        var http = _httpClientFactory.CreateClient(string.Empty);
-        await http.DeleteAsync(Prefix + "/" + id);
+        await _httpClient.DeleteAsync(Prefix + "/" + id);
     }
 }

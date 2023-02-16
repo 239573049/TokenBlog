@@ -1,8 +1,11 @@
 ﻿@page "/show-article/{Id:guid}"
+@using global::Blog.Shared
 @namespace Blog.Component
 
 @inject IArticleService ArticleService
 @inject NavigationManager NavigationManager
+@inject StorageService StorageService
+@inject HelperJsInterop HelperJsInterop
 @layout EmptyLayout
 <CascadingValue Value="Id" Name="ArticleId">
     <MAppBar App>

@@ -1,12 +1,17 @@
 @using Token.Events
+@using global::Blog.Shared
 @inject IJSRuntime JsRuntime
 @inject IKeyLoadEventBus KeyLoadEventBus
 @inject NavigationManager NavigationManager
 @inject IUserInfoService UserInfoService 
-<MAppBar App>
+@inject StorageService StorageService
+@inject HelperJsInterop HelperJsInterop
+
+<MAppBar App >
     <CascadingValue Value="Search" Name="@nameof(Search)">
         <MImage Style="margin-right: 5px" MaxWidth="@("55px")" Height="@("100%")" Alt="Avatar" Src="https://blog-simple.oss-cn-shenzhen.aliyuncs.com/blazor.jpg"></MImage>
-        <MButton Height="@("100%")" Text>博客</MButton>
+        <MButton Href="/" Height="@("100%")" Text>博客</MButton>
+        <MButton Href="/editor" Height="@("100%")" Text>在线编辑器</MButton>
         <MTextField
             Class="mx-4"
             Flat

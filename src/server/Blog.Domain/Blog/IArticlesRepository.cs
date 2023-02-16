@@ -14,4 +14,16 @@ public interface IArticlesRepository : IRepository<Article>
     /// <param name="id"></param>
     /// <returns></returns>
     Task<ArticleView> GetAsync(Guid id);
+
+    /// <summary>
+    /// 热榜数据
+    /// </summary>
+    /// <returns></returns>
+    Task<List<Article>> GetTopSearchAsync();
+
+    /// <summary>
+    /// 更新访问
+    /// </summary>
+    /// <returns></returns>
+    Task UpdateFlowAsync(Guid id);
 }

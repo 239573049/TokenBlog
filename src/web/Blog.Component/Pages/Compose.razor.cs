@@ -1,6 +1,7 @@
 ﻿using BlazorComponent;
 using Blog.Blog.Dto;
 using Microsoft.AspNetCore.Components.Forms;
+using Semi.Design.Blazor;
 
 namespace Blog.Component;
 
@@ -8,7 +9,9 @@ public partial class Compose
 {
     private readonly CreateArticlesInput _input = new();
 
-    private Dictionary<string, object> _options = new();
+    private object Options;
+    
+    private SMonacoEditor _monacoEditor;
 
     private string filePage;
 
@@ -37,8 +40,14 @@ public partial class Compose
 
     protected override void OnInitialized()
     {
-        _options.Add("toolbar", new List<string>() { "emoji", "br", "bold", "|", "line" });
-        _options.Add("mode", "ir");
+        Options = new
+        {
+            value = "", // 初始代码
+            language = "markdown", // 语法支持语言
+            automaticLayout = true, //自动适应父容器大小
+            theme = "vs-dark" // monaco主题 
+        };
+        
         base.OnInitialized();
     }
 
@@ -54,10 +63,11 @@ public partial class Compose
 
     private async Task CreateAsync()
     {
+        _input.Content = await _monacoEditor.GetValue();
         if(BrowserFile == null)
         {
             await ArticleService.CreateAsync(_input);
-            await PopupService.ToastErrorAsync("发布成功");
+            await PopupService.ToastSuccessAsync("发布成功");
             return;
         }
         var result =

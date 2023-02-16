@@ -1,6 +1,6 @@
 using Blog.Component;
+using Blog.Shared;
 using Token.Events;
-using Token.Extensions;
 using Token.Manager;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -14,7 +14,10 @@ public static class BlogComponentExtension
         services.AddScoped(typeof (EventManager<>));
         services.AddScoped(typeof (ILoadEventBus<>), typeof (LoadEventBus<>));
         services.AddScoped<IKeyLoadEventBus, KeyLoadEventBus>();
+        services.AddScoped<ITokenService, HelperJsInterop>();
         services.AddScoped<HelperJsInterop>();
+        services.AddSemiDesignBlazorMonacoEditor();
+        
         return services;
     }
 }

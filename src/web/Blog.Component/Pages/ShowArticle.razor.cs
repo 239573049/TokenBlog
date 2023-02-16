@@ -1,4 +1,5 @@
 ﻿using Blog.Blog.Dto;
+using Blog.Shared;
 using Microsoft.AspNetCore.Components;
 
 namespace Blog.Component;
@@ -15,6 +16,8 @@ public partial class ShowArticle
     {
         if (firstRender)
         {
+            var token = await HelperJsInterop.GetTokenAsync();
+            ShowComment = !string.IsNullOrEmpty(token);
             if (Id == Guid.Empty)
             {
                 NavigationManager.NavigateTo("/");

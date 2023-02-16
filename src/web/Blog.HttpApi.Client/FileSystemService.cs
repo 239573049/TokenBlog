@@ -1,22 +1,22 @@
-﻿namespace Blog.HttpClient;
+﻿
+namespace Blog;
 
 public class FileSystemService : IFileSystemService
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly System.Net.Http.HttpClient _httpClient;
 
     private const string Prefix = "/api/File/Uploading";
 
-    public FileSystemService(IHttpClientFactory httpClientFactory)
+    public FileSystemService(System.Net.Http.HttpClient httpClient)
     {
-        _httpClientFactory = httpClientFactory;
+        _httpClient = httpClient;
     }
 
     public async Task<string> Uploading(Stream stream, string fileName)
     {
-        var http = _httpClientFactory.CreateClient(string.Empty);
         var content = new MultipartFormDataContent();
         content.Add(new ByteArrayContent(await stream.GetAllBytesAsync()), "file", fileName);
-        var message = await http.PostAsync(Prefix, content);
+        var message = await _httpClient.PostAsync(Prefix, content);
         return await message.Content.ReadAsStringAsync();
     }
 }
