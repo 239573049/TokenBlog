@@ -8,6 +8,8 @@
 前端：Blazor
 UI框架： MASA
 
+![image-20230216150102876](img/dependence.png)
+
 
 ## 参与贡献
 

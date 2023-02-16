@@ -1,4 +1,7 @@
 ﻿@namespace Blog.Component
+@inject IArticleCommentService ArticleCommentService
+@inject IPopupService PopupService
+@inject IKeyLoadEventBus KeyLoadEventBus
 
 <MTabs
     @bind-Value="tab">
@@ -16,4 +19,4 @@
     </MTabItem>
 </MTabsItems>
 
-<MButton Block>提交</MButton>
+<MButton Block OnClick="Send">提交</MButton>

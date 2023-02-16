@@ -1,4 +1,5 @@
 ﻿using Blog.Blog.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Services;
 
 namespace Blog.Blog;
@@ -13,6 +14,7 @@ public class ArticleCommentService : ApplicationService, IArticleCommentService
     }
 
     /// <inheritdoc />
+    [Authorize]
     public async Task CreateAsync(CreateArticleCommentInput input)
     {
         await _articleCommentRepository.InsertAsync(new ArticleComment
@@ -21,7 +23,7 @@ public class ArticleCommentService : ApplicationService, IArticleCommentService
             UserId = CurrentUser.Id.Value,
             
             Content = input.Content,
-            CreationTime = input.CreationTime,
+            CreationTime = DateTime.Now,
             ParentId = input.ParentId
         });
         

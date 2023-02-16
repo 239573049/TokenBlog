@@ -1,3 +1,4 @@
+using Blog;
 using Blog.Blog;
 using Blog.HttpClient;
 using Blog.Shared;
@@ -12,11 +13,12 @@ public static class BlogHttpApiClientExtension
         services.AddScoped<IUserInfoService, UserInfoService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<IArticleService, ArticleService>();
-        services.AddScoped<FileSystemService>();
+        services.AddScoped<IFileSystemService,FileSystemService>();
+        services.AddScoped<IArticleCommentService, ArticleCommentService>();
         
         services.AddHttpClient(string.Empty, options =>
         {
-            options.BaseAddress = new Uri("http://localhost:5202");
+            options.BaseAddress = new Uri(StorageService.BaseAddress);
             options.DefaultRequestHeaders.Add("Authorization", "Bearer " + StorageService.Token);
         });
 

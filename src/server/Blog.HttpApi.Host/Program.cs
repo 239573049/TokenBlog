@@ -19,7 +19,12 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     Log.Information("Starting Blog.HttpApi.Host.");
-    var builder = WebApplication.CreateBuilder(args);
+    var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
+    {
+        Args = args,
+        WebRootPath = AppContext.BaseDirectory
+    });
+
     builder.Host.AddAppSettingsSecretsJson()
         .UseAutofac()
         .UseSerilog();

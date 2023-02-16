@@ -68,7 +68,7 @@ public partial class Compose
         {
             _input.PictorialView = result;
             await ArticleService.CreateAsync(_input);
-            await PopupService.ToastErrorAsync("发布成功");
+            await PopupService.ToastSuccessAsync("发布成功");
         }
         else
         {

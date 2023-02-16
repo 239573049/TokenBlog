@@ -1,89 +1,20 @@
-﻿ @namespace Blog.Component
+﻿@namespace Blog.Component
+@inject IArticleCommentService ArticleCommentService
+@inject IKeyLoadEventBus KeyLoadEventBus
 
- <MList ThreeLine>
-     @foreach (var item in _items)
-     { if (item.Divider)
-         {
-             <MDivider Inset="item.Inset"></MDivider>
-         }
-         else
-         {
-             <MListItem>
-                 <MListItemAvatar>
-                     <MImage Src="@item.Avatar"></MImage>
-                 </MListItemAvatar>
-
-                 <MListItemContent>
-                     <MListItemTitle>@((MarkupString)item.Title)</MListItemTitle>
-                     <MListItemSubtitle>@((MarkupString)item.SubTitle)</MListItemSubtitle>
-                 </MListItemContent>
-             </MListItem>
-         }
-     }
- </MList>
- 
- @code{
-    private Item[] _items = new Item[]
+<MList ThreeLine>
+    @foreach (var item in Comments)
     {
-       new Item
-       {
-           Avatar="https://cdn.masastack.com/stack/images/website/masa-blazor/lists/1.png",
-           Title="Brunch this weekend?",
-           SubTitle="<span class=\"text--primary\">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-       },
-       new Item
-       {
-           Divider=true,
-           Inset=true
-       },
-       new Item
-       {
-           Avatar="https://cdn.masastack.com/stack/images/website/masa-blazor/lists/2.png",
-           Title="Summer BBQ <span class=\"grey--text text--lighten-1\">4</span>",
-           SubTitle="<span class=\"text--primary\">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend."
-       },
-       new Item
-       {
-           Divider=true,
-           Inset=true
-       },
-       new Item
-       {
-           Avatar="https://cdn.masastack.com/stack/images/website/masa-blazor/lists/3.png",
-           Title="Oui oui",
-           SubTitle="<span class=\"text--primary\">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?"
-       },
-       new Item
-       {
-           Divider=true,
-           Inset=true
-       },
-       new Item
-       {
-           Avatar="https://cdn.masastack.com/stack/images/website/masa-blazor/lists/4.png",
-           Title="Birthday gift",
-           SubTitle="<span class=\"text--primary\">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?"
-       },
-       new Item
-       {
-           Divider=true,
-           Inset=true
-       },
-       new Item
-       {
-           Avatar="https://cdn.masastack.com/stack/images/website/masa-blazor/lists/5.png",
-           Title="Recipe to try",
-           SubTitle="<span class=\"text--primary\">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
-       }
-    };
-
-    class Item
-    {
-        public string Header { get; set; }
-        public string Avatar { get; set; }
-        public string Title { get; set; }
-        public string SubTitle { get; set; }
-        public bool Divider { get; set; }
-        public bool Inset { get; set; }
+        <MListItem>
+            <MListItemAvatar>
+                <MImage Src="@item.InfoDto.Avatar"></MImage>
+            </MListItemAvatar>
+            <MListItemContent>
+                <MListItemTitle>@((MarkupString)item.InfoDto.Name)</MListItemTitle>
+                <MListItemSubtitle Style="min-height: 50px">
+                    <Markdown Style="max-height: 400px;overflow: auto;" @bind-Source="item.Content"></Markdown>
+                </MListItemSubtitle>
+            </MListItemContent>
+        </MListItem>
     }
-}
+</MList>
