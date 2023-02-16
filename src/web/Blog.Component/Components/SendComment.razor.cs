@@ -9,13 +9,13 @@ public partial class SendComment
     [Parameter]
     [CascadingParameter(Name = nameof(ArticleId))]
     public Guid ArticleId { get; set; }
-    
+
     [Parameter]
     public string Comment { get; set; }
-    
+
     [Parameter]
     public EventCallback<string> CommentChanged { get; set; }
-    
+
     private StringNumber tab;
 
     private async Task Send()

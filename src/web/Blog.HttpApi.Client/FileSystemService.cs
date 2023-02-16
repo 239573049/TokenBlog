@@ -15,7 +15,9 @@ public class FileSystemService : IFileSystemService
     public async Task<string> Uploading(Stream stream, string fileName)
     {
         var content = new MultipartFormDataContent();
-        content.Add(new ByteArrayContent(await stream.GetAllBytesAsync()), "file", fileName);
+        using var memoryStream = new MemoryStream();
+        await stream.CopyToAsync(memoryStream);
+        content.Add(new ByteArrayContent(memoryStream.ToArray()), "file", fileName);
         var message = await _httpClient.PostAsync(Prefix, content);
         return await message.Content.ReadAsStringAsync();
     }

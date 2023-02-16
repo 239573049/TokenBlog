@@ -18,7 +18,7 @@ public class BlogDbContext :
     public DbSet<ArticleComment> ArticleComments { get; set; }
 
     public DbSet<Tag> Tags { get; set; }
-    
+
     public BlogDbContext(DbContextOptions<BlogDbContext> options)
         : base(options)
     {

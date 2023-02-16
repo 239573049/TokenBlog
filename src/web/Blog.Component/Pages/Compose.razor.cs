@@ -10,7 +10,7 @@ public partial class Compose
     private readonly CreateArticlesInput _input = new();
 
     private object Options;
-    
+
     private SMonacoEditor _monacoEditor;
 
     private string filePage;
@@ -33,8 +33,9 @@ public partial class Compose
 
     private async Task LoadFile()
     {
-        filePage = await HelperJsInterop.ByteToUrl(
-            await browserFile.OpenReadStream(browserFile.Size).GetAllBytesAsync());
+        await using var memoryStream = new MemoryStream();
+        await browserFile.OpenReadStream(browserFile.Size).CopyToAsync(memoryStream);
+        filePage = await HelperJsInterop.ByteToUrl(memoryStream.ToArray());
         _ = InvokeAsync(StateHasChanged);
     }
 
@@ -47,7 +48,7 @@ public partial class Compose
             automaticLayout = true, //自动适应父容器大小
             theme = "vs-dark" // monaco主题 
         };
-        
+
         base.OnInitialized();
     }
 
@@ -64,16 +65,17 @@ public partial class Compose
     private async Task CreateAsync()
     {
         _input.Content = await _monacoEditor.GetValue();
-        if(BrowserFile == null)
+        if (BrowserFile == null)
         {
             await ArticleService.CreateAsync(_input);
             await PopupService.ToastSuccessAsync("发布成功");
             return;
         }
+
         var result =
             await FileSystemService.Uploading(BrowserFile.OpenReadStream(BrowserFile.Size),
                 BrowserFile.Name);
-        
+
         if (!string.IsNullOrEmpty(result))
         {
             _input.PictorialView = result;

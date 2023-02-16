@@ -8,7 +8,6 @@ using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
-using Volo.Abp.Data;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 

@@ -2,7 +2,7 @@
 
 namespace Blog.Blog;
 
-public class ArticleView: FullAuditedAggregateRoot<Guid>
+public class ArticleView : FullAuditedAggregateRoot<Guid>
 {
     /// <summary>
     /// 标题

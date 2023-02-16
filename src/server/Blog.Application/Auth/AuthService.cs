@@ -44,7 +44,7 @@ public class AuthService : ApplicationService, IAuthService
                                                                             + "&state=" + state;
 
         http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        
+
         AccessTokenModel data = null;
         try
         {

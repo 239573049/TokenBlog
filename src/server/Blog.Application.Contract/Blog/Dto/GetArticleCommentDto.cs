@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Blog.Users;
-using Volo.Abp.Application.Dtos;
+﻿using Blog.Users;
+using System;
 
 namespace Blog.Blog.Dto;
 
 public class GetArticleCommentDto : EntityDto<Guid>
 {
     public Guid ArticleId { get; set; }
-    
+
     /// <summary>
     /// 评论内容
     /// </summary>

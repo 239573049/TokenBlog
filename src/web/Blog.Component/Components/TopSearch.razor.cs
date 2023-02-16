@@ -1,6 +1,5 @@
 ﻿using Blog.Blog.Dto;
 using Microsoft.AspNetCore.Components;
-using Volo.Abp.Application.Dtos;
 
 namespace Blog.Component;
 
@@ -31,7 +30,7 @@ public partial class TopSearch
     {
         NavigationManager.NavigateTo($"/show-article/{id}");
     }
-    
+
     private async Task GetListAsync()
     {
         ArticlesDto = await ArticleService.GetTopSearch();

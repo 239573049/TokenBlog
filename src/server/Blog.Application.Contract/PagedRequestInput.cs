@@ -1,8 +1,6 @@
-﻿using Volo.Abp.Application.Dtos;
+﻿namespace Blog;
 
-namespace Blog;
-
-public class PagedRequestInput : PagedResultRequestDto
+public class PagedRequestInput
 {
     private int _page = 1;
     private int _pageSize = 20;
@@ -34,7 +32,7 @@ public class PagedRequestInput : PagedResultRequestDto
     /// 忽略. 只传 Page 和 PageSize
     /// </summary
     public new int MaxResultCount =>
-        PageSize > MaxMaxResultCount
-            ? MaxMaxResultCount
+        PageSize > 1000
+            ? 1000
             : PageSize;
 }

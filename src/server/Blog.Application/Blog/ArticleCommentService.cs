@@ -21,25 +21,25 @@ public class ArticleCommentService : ApplicationService, IArticleCommentService
         {
             ArticleId = input.ArticleId,
             UserId = CurrentUser.Id.Value,
-            
+
             Content = input.Content,
             CreationTime = DateTime.Now,
             ParentId = input.ParentId
         });
-        
+
     }
 
     /// <inheritdoc />
     public async Task<List<GetArticleCommentDto>> GetListAsync(GetArticleCommentInput input)
     {
-        var data = await _articleCommentRepository.GetListAsync(input.ArticleId,input.ParentId);
+        var data = await _articleCommentRepository.GetListAsync(input.ArticleId, input.ParentId);
 
-        return ObjectMapper.Map<List<ArticleCommentView>,List<GetArticleCommentDto>>(data);
+        return ObjectMapper.Map<List<ArticleCommentView>, List<GetArticleCommentDto>>(data);
     }
 
     /// <inheritdoc />
     public async Task DeleteAsync(Guid id)
     {
-        await _articleCommentRepository.DeleteAsync(x=>x.Id == id && x.UserId == CurrentUser.Id.Value);
+        await _articleCommentRepository.DeleteAsync(x => x.Id == id && x.UserId == CurrentUser.Id.Value);
     }
 }

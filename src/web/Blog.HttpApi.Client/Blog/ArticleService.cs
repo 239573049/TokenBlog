@@ -1,7 +1,6 @@
 ﻿using Blog.Blog;
 using Blog.Blog.Dto;
 using System.Net.Http.Json;
-using Volo.Abp.Application.Dtos;
 
 namespace Blog;
 
@@ -33,6 +32,6 @@ public class ArticleService : IArticleService
 
     public async Task<List<ArticlesDto>> GetTopSearch()
     {
-        return await _httpClient.GetFromJsonAsync<List<ArticlesDto>>(Prefix+ "/top-search");
+        return await _httpClient.GetFromJsonAsync<List<ArticlesDto>>(Prefix + "/top-search");
     }
 }

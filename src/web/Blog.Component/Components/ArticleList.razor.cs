@@ -1,6 +1,5 @@
 ﻿using Blog.Blog.Dto;
 using Microsoft.AspNetCore.Components;
-using Volo.Abp.Application.Dtos;
 
 namespace Blog.Component;
 
@@ -40,7 +39,7 @@ public partial class ArticleList
         await base.OnInitializedAsync();
     }
 
-    private GetArticlesInput _input = new ();
+    private GetArticlesInput _input = new();
 
     private async Task GetListAsync()
     {

@@ -1,5 +1,4 @@
 ﻿using Blog.Blog.Dto;
-using Blog.Shared;
 using Microsoft.AspNetCore.Components;
 
 namespace Blog.Component;
@@ -32,7 +31,7 @@ public partial class ShowArticle
     {
         NavigationManager.NavigateTo("/");
     }
-    
+
     private async Task GetArticle()
     {
         ArticlesDto = await ArticleService.GetAsync(Id);

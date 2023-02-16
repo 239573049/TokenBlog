@@ -7,8 +7,6 @@ using Volo.Abp.SettingManagement;
 namespace Blog;
 
 [DependsOn(
-    typeof(BlogDomainModule),
-    typeof(BlogApplicationContractsModule),
     typeof(AbpAutoMapperModule),
     typeof(AbpSettingManagementApplicationModule)
     )]

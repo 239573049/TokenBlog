@@ -8,6 +8,11 @@ builder.Services.AddScoped<StorageService>();
 builder.Services.AddBlogComponent();
 builder.Services.AddBlogHttpApiClient();
 
+builder.Services.AddScoped<HttpClient>(services => new HttpClient
+{
+    BaseAddress = new Uri(StorageService.BaseAddress)
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())

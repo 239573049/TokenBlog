@@ -1,14 +1,12 @@
-using Blog.Shared;
 using Blog.Users;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 
 namespace Blog.Component.Shared;
 
 public partial class Header
 {
-    [Parameter] [SupplyParameterFromQuery] public string? Search { get; set; }
+    [Parameter][SupplyParameterFromQuery] public string? Search { get; set; }
 
     public UserInfoDto UserInfoDto { get; set; }
 

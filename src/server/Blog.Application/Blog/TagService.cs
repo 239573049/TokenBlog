@@ -25,7 +25,7 @@ public class TagService : ApplicationService, ITagService
     {
         if (await _tagRepository.AnyAsync(x => x.Title == input.Title))
         {
-            throw new BusinessException(BlogDomainErrorCodes.TagNameAlreadyExists);
+            throw new BusinessException(message: "标签名称存在");
         }
 
         await _tagRepository.InsertAsync(new Tag(input.Title)

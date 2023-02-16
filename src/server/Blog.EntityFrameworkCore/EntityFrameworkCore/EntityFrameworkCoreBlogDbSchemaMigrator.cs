@@ -1,12 +1,11 @@
-﻿using Blog.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.DependencyInjection;
 
 namespace Blog.EntityFrameworkCore;
 
 public class EntityFrameworkCoreBlogDbSchemaMigrator
-    : IBlogDbSchemaMigrator, ITransientDependency
+    :  ITransientDependency
 {
     private readonly IServiceProvider _serviceProvider;
 

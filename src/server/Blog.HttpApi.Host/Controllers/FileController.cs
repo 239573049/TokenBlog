@@ -24,7 +24,7 @@ public class FileController : ControllerBase
         }
 
         var name = Guid.NewGuid().ToString("N") + file.FileName;
-        
+
         return await _fileSystemService.Uploading(file.OpenReadStream(), name);
     }
 }

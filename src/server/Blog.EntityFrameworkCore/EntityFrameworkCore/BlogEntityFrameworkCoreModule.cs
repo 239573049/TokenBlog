@@ -8,7 +8,6 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 namespace Blog.EntityFrameworkCore;
 
 [DependsOn(
-    typeof(BlogDomainModule),
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
     typeof(AbpEntityFrameworkCoreSqlServerModule),
     typeof(AbpAuditLoggingEntityFrameworkCoreModule)

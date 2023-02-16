@@ -1,5 +1,5 @@
-﻿using System.Net.Http.Json;
-using Blog.Users;
+﻿using Blog.Users;
+using System.Net.Http.Json;
 
 namespace Blog;
 

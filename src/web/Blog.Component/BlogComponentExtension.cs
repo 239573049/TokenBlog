@@ -10,14 +10,14 @@ public static class BlogComponentExtension
     public static IServiceCollection AddBlogComponent(this IServiceCollection services)
     {
         services.AddMasaBlazor();
-        
-        services.AddScoped(typeof (EventManager<>));
-        services.AddScoped(typeof (ILoadEventBus<>), typeof (LoadEventBus<>));
+
+        services.AddScoped(typeof(EventManager<>));
+        services.AddScoped(typeof(ILoadEventBus<>), typeof(LoadEventBus<>));
         services.AddScoped<IKeyLoadEventBus, KeyLoadEventBus>();
         services.AddScoped<ITokenService, HelperJsInterop>();
         services.AddScoped<HelperJsInterop>();
         services.AddSemiDesignBlazorMonacoEditor();
-        
+
         return services;
     }
 }

@@ -4,6 +4,15 @@
 		<TargetFramework>net7.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		
+		<PublishTrimmed>true</PublishTrimmed>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+		<EventSourceSupport>false</EventSourceSupport>
+		<HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+		<EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+		<MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+		<UseNativeHttpHandler>true</UseNativeHttpHandler>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -21,19 +30,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.VirtualFileSystem.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Settings.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Threading.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.EventBus.Abstractions.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Features.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Localization.Abstractions.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Localization.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.MultiTenancy.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.ObjectExtending.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Security.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Validation.dll" />
-		<BlazorWebAssemblyLazyLoad Include="System.IO.MemoryMappedFiles.dll" />
-		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.SettingManagement.Domain.Shared.dll" />
+		<BlazorWebAssemblyLazyLoad Include="SkiaSharp.dll" />
+		<BlazorWebAssemblyLazyLoad Include="System.Private.Xml.Linq.dll" />
+		<BlazorWebAssemblyLazyLoad Include="System.Net.WebSockets.dll" />
+		<BlazorWebAssemblyLazyLoad Include="System.Private.Xml.dll" />
+		<BlazorWebAssemblyLazyLoad Include="SkiaSharp.Views.Blazor.dll" />
 	</ItemGroup>
 	
 </Project>
