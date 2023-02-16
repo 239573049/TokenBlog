@@ -8,6 +8,7 @@ using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
+using Volo.Abp.Data;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 
@@ -25,6 +26,12 @@ public class BlogHttpApiHostModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         var configuration = context.Services.GetConfiguration();
+
+        var mssql = Environment.GetEnvironmentVariable("MSSQL");
+        if (!mssql.IsNullOrEmpty())
+        {
+            configuration["ConnectionStrings:Default"] = mssql;
+        }
 
         ConfigureConventionalControllers();
         ConfigureAuthentication(context, configuration);
