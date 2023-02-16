@@ -1,23 +1,39 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
+	</ItemGroup>
 
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Pages\Index.razor" />
-    </ItemGroup>
+	<ItemGroup>
+		<_ContentIncludedByDefault Remove="Pages\Index.razor" />
+	</ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Blog.Component\Blog.Component.csproj" />
-      <ProjectReference Include="..\Blog.HttpApi.Client\Blog.HttpApi.Client.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Blog.Component\Blog.Component.csproj" />
+		<ProjectReference Include="..\Blog.HttpApi.Client\Blog.HttpApi.Client.csproj" />
+	</ItemGroup>
 
+	<ItemGroup>
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.VirtualFileSystem.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Settings.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Threading.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.EventBus.Abstractions.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Features.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Localization.Abstractions.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Localization.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.MultiTenancy.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.ObjectExtending.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Security.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.Validation.dll" />
+		<BlazorWebAssemblyLazyLoad Include="System.IO.MemoryMappedFiles.dll" />
+		<BlazorWebAssemblyLazyLoad Include="Volo.Abp.SettingManagement.Domain.Shared.dll" />
+	</ItemGroup>
+	
 </Project>
