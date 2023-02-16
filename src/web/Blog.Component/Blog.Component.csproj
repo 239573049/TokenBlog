@@ -20,7 +20,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\server\Blog.Application.Contract\Blog.Application.Contract.csproj" />
-    <ProjectReference Include="..\Blog.HttpApi.Client\Blog.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\Blog.Shared\Blog.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Http">
+      <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\7.0.0\Microsoft.Extensions.Http.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

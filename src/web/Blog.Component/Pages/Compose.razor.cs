@@ -16,9 +16,9 @@ public partial class Compose
 
     public List<TagDto> TagDtos { get; set; } = new();
 
-    public IBrowserFile browserFile { get; set; }
+    public IBrowserFile? browserFile { get; set; }
 
-    public IBrowserFile BrowserFile
+    public IBrowserFile? BrowserFile
     {
         get => browserFile;
         set
@@ -54,13 +54,21 @@ public partial class Compose
 
     private async Task CreateAsync()
     {
+        if(BrowserFile == null)
+        {
+            await ArticleService.CreateAsync(_input);
+            await PopupService.ToastErrorAsync("发布成功");
+            return;
+        }
         var result =
-            await FileSystemService.Uploading(await BrowserFile.OpenReadStream(BrowserFile.Size).GetAllBytesAsync(),
+            await FileSystemService.Uploading(BrowserFile.OpenReadStream(BrowserFile.Size),
                 BrowserFile.Name);
+        
         if (!string.IsNullOrEmpty(result))
         {
             _input.PictorialView = result;
             await ArticleService.CreateAsync(_input);
+            await PopupService.ToastErrorAsync("发布成功");
         }
         else
         {

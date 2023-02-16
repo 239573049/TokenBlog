@@ -1,8 +1,6 @@
-﻿using System.Net.Http.Json;
+﻿namespace Blog.HttpClient;
 
-namespace Blog.HttpClient;
-
-public class FileSystemService
+public class FileSystemService : IFileSystemService
 {
     private readonly IHttpClientFactory _httpClientFactory;
 
@@ -13,11 +11,11 @@ public class FileSystemService
         _httpClientFactory = httpClientFactory;
     }
 
-    public async Task<string?> Uploading(byte[] stream, string name)
+    public async Task<string> Uploading(Stream stream, string fileName)
     {
         var http = _httpClientFactory.CreateClient(string.Empty);
         var content = new MultipartFormDataContent();
-        content.Add(new ByteArrayContent(stream), "file", name);
+        content.Add(new ByteArrayContent(await stream.GetAllBytesAsync()), "file", fileName);
         var message = await http.PostAsync(Prefix, content);
         return await message.Content.ReadAsStringAsync();
     }

@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Blog.Component\Blog.Component.csproj" />
+      <ProjectReference Include="..\Blog.HttpApi.Client\Blog.HttpApi.Client.csproj" />
     </ItemGroup>
 
 </Project>

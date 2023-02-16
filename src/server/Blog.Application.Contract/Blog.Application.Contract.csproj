@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.2.0" />
     <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="7.0.1" />
   </ItemGroup>
 

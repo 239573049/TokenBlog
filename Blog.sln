@@ -15,19 +15,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server", "server", "{EA69AC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Application", "src\server\Blog.Application\Blog.Application.csproj", "{4E01079D-39FC-45E6-862F-05826E86B933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Application.Contract", "src\server\Blog.Application.Contract\Blog.Application.Contract.csproj", "{667AF18D-6537-44AC-868B-39EF23DE2816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Application.Contract", "src\server\Blog.Application.Contract\Blog.Application.Contract.csproj", "{667AF18D-6537-44AC-868B-39EF23DE2816}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.HttpApi.Host", "src\server\Blog.HttpApi.Host\Blog.HttpApi.Host.csproj", "{93B8EC4E-40E3-452B-9042-6977FD049C00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.HttpApi.Host", "src\server\Blog.HttpApi.Host\Blog.HttpApi.Host.csproj", "{93B8EC4E-40E3-452B-9042-6977FD049C00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.EntityFrameworkCore", "src\server\Blog.EntityFrameworkCore\Blog.EntityFrameworkCore.csproj", "{07F69075-FE23-4567-9C34-3094120E49E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.EntityFrameworkCore", "src\server\Blog.EntityFrameworkCore\Blog.EntityFrameworkCore.csproj", "{07F69075-FE23-4567-9C34-3094120E49E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Domain", "src\server\Blog.Domain\Blog.Domain.csproj", "{5CC960DA-F85F-4FBF-814A-B50944ED7483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Domain", "src\server\Blog.Domain\Blog.Domain.csproj", "{5CC960DA-F85F-4FBF-814A-B50944ED7483}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Domain.Shared", "src\server\Blog.Domain.Shared\Blog.Domain.Shared.csproj", "{A15BB803-CAF3-47D4-8241-EAF620937040}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Domain.Shared", "src\server\Blog.Domain.Shared\Blog.Domain.Shared.csproj", "{A15BB803-CAF3-47D4-8241-EAF620937040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.DbMigrator", "src\server\Blog.DbMigrator\Blog.DbMigrator.csproj", "{A600F29E-B216-4258-AC2B-AEEE4D1257C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DbMigrator", "src\server\Blog.DbMigrator\Blog.DbMigrator.csproj", "{A600F29E-B216-4258-AC2B-AEEE4D1257C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.HttpApi.Client", "src\web\Blog.HttpApi.Client\Blog.HttpApi.Client.csproj", "{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.HttpApi.Client", "src\web\Blog.HttpApi.Client\Blog.HttpApi.Client.csproj", "{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Shared", "src\web\Blog.Shared\Blog.Shared.csproj", "{0271C009-61BD-48A6-91B1-9C8313B8BAEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0271C009-61BD-48A6-91B1-9C8313B8BAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0271C009-61BD-48A6-91B1-9C8313B8BAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0271C009-61BD-48A6-91B1-9C8313B8BAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0271C009-61BD-48A6-91B1-9C8313B8BAEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{A15BB803-CAF3-47D4-8241-EAF620937040} = {EA69AC5E-31FD-4254-AE4E-7E2E09F9EE9D}
 		{A600F29E-B216-4258-AC2B-AEEE4D1257C5} = {EA69AC5E-31FD-4254-AE4E-7E2E09F9EE9D}
 		{99E17349-FD5A-4EAA-93C2-1CBDE8FE5A39} = {8269A6D7-63F9-492F-83A7-A2055BE695F9}
+		{0271C009-61BD-48A6-91B1-9C8313B8BAEA} = {8269A6D7-63F9-492F-83A7-A2055BE695F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FF0B22F-2F83-4377-AE55-3AEC296BDC45}

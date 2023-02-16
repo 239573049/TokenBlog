@@ -7,6 +7,13 @@ namespace Blog.Controllers;
 [Route("/api/[controller]/[action]")]
 public class FileController : ControllerBase
 {
+    private readonly IFileSystemService _fileSystemService;
+
+    public FileController(IFileSystemService fileSystemService)
+    {
+        _fileSystemService = fileSystemService;
+    }
+
     [HttpPost]
     public async Task<string> Uploading(IFormFile file)
     {
@@ -16,18 +23,8 @@ public class FileController : ControllerBase
             throw new BusinessException("上传文件大于5MB无法上传");
         }
 
-        var path = Path.Combine(AppContext.BaseDirectory, "wwwroot", "file");
-        if (!Directory.Exists(path))
-        {
-            Directory.CreateDirectory(path);
-        }
-
         var name = Guid.NewGuid().ToString("N") + file.FileName;
-        await using var stream = System.IO.File.Create(Path.Combine(path, name));
-        await file.OpenReadStream().CopyToAsync(stream);
-        await stream.FlushAsync();
-        stream.Close();
         
-        return "file/" + name;
+        return await _fileSystemService.Uploading(file.OpenReadStream(), name);
     }
 }

@@ -1,3 +1,4 @@
+using Blog.Shared;
 using Blog.Users;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,7 +44,7 @@ public partial class Header
 
     private async Task LoadUserInfo()
     {
-        if (!string.IsNullOrEmpty(BlogHttpApiClientExtension.Token) && UserInfoDto == null)
+        if (!string.IsNullOrEmpty(StorageService.Token) && UserInfoDto == null)
         {
             try
             {
@@ -52,7 +53,7 @@ public partial class Header
             }
             catch
             {
-                BlogHttpApiClientExtension.SetToken(string.Empty);
+                StorageService.SetToken(string.Empty);
             }
         }
     }

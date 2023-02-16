@@ -8,10 +8,10 @@
 
 <MTabsItems Value="tab">
     <MTabItem >
-        <MTextarea Value="@Comment" ValueChanged="CommentChanged">
+        <MTextarea @bind-Value="@Comment" >
         </MTextarea>
     </MTabItem>
-    <MTabItem >
+    <MTabItem Style="min-height: 180px">
         <Markdown @bind-Source="@Comment"></Markdown>
     </MTabItem>
 </MTabsItems>

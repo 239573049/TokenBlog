@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\server\Blog.Application.Contract\Blog.Application.Contract.csproj" />
+      <ProjectReference Include="..\Blog.Shared\Blog.Shared.csproj" />
     </ItemGroup>
 
 </Project>

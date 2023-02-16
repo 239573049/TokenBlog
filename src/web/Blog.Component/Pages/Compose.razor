@@ -1,11 +1,10 @@
 ﻿@page "/compose"
-@using global::Blog.HttpClient
 @namespace Blog.Component
 @inject IArticleService ArticleService
 @inject ITagService TagService
 @inject NavigationManager NavigationManager
 @inject HelperJsInterop HelperJsInterop
-@inject FileSystemService FileSystemService 
+@inject IFileSystemService FileSystemService 
 @inject IPopupService PopupService
 @layout EmptyLayout
 
@@ -61,7 +60,6 @@
 </MAppBar>
 
 <MMain>
-    <!-- 给应用提供合适的间距 -->
     <MContainer App Fluid Style="height: 60vh">
         <MTabs @bind-Value="Tab">
             <MTab>编辑</MTab>

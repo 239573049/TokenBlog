@@ -3,9 +3,8 @@
 @inject NavigationManager NavigationManager
 @page "/login"
 @namespace Blog.Component
+@using global::Blog.Shared
 @using System.Net.Http.Json
-@using Microsoft.Extensions.DependencyInjection
-@using Token.Events
 @inject IKeyLoadEventBus KeyLoadEventBus
 <div>
     登录中
@@ -28,7 +27,7 @@
 
     private async Task OnLogin()
     {
-        if (!string.IsNullOrEmpty(BlogHttpApiClientExtension.Token))
+        if (!string.IsNullOrEmpty(StorageService.Token))
         {
             return;
         }
@@ -36,7 +35,7 @@
         var message = await http.PostAsJsonAsync<string>("/api/app/auth/git-hub-auth?code=" + Code + "&state=" + Guid.NewGuid(), null);
         var token = await message.Content.ReadAsStringAsync();
         await JsRuntime.InvokeVoidAsync("window.sessionStorage.setItem", "token", token);
-        BlogHttpApiClientExtension.SetToken(token);
+        StorageService.SetToken(token);
         NavigationManager.NavigateTo("/");
         await KeyLoadEventBus.PushAsync(EventBusName.GetProfile, true);
     }
