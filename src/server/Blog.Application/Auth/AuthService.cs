@@ -71,7 +71,7 @@ public class AuthService : ApplicationService, IAuthService
         if (userInfo == null)
         {
             userInfo = new UserInfo(Guid.NewGuid(), info.id.ToString(), info.avatar_url, info.name,
-                info.url);
+                info.html_url);
             await _userInfoRepository.InsertAsync(userInfo);
         }
 

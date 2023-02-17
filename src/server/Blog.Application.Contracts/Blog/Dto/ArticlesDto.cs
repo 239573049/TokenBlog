@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Blog.Users;
+using System;
 using Volo.Abp.Application.Dtos;
 
 namespace Blog.Blog.Dto;
 
 public class ArticlesDto : EntityDto<Guid>
 {
-
     /// <summary>
     /// 标题
     /// </summary>
@@ -32,12 +32,12 @@ public class ArticlesDto : EntityDto<Guid>
     public long Flow { get; set; }
 
     /// <summary>
-    /// 示图
-    /// </summary>
-    public string PictorialView { get; set; }
-
-    /// <summary>
     /// 点赞
     /// </summary>
     public int Praise { get; set; }
+
+    /// <summary>
+    /// 作者信息
+    /// </summary>
+    public UserInfoDto UserInfo{ get; set; }
 }

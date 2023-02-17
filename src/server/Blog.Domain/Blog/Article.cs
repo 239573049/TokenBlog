@@ -31,11 +31,6 @@ public class Article : FullAuditedAggregateRoot<Guid>
     public long Flow { get; set; }
 
     /// <summary>
-    /// 示图
-    /// </summary>
-    public string PictorialView { get; set; }
-
-    /// <summary>
     /// 点赞
     /// </summary>
     public int Praise { get; set; }

@@ -36,4 +36,15 @@ public class ArticleService : IArticleService
     {
         return await _httpClient.GetFromJsonAsync<List<ArticlesDto>>(Prefix + "/top-search");
     }
+
+    public async Task<PagedResultDto<ArticleUserInfoDto>> GetArticleUserInfoAsync(GetArticleUserInfoInput input)
+    {
+        return await _httpClient.GetFromJsonAsync<PagedResultDto<ArticleUserInfoDto>>(Prefix + "/article-user-info" +
+            input.ToUriParam());
+    }
+
+    public async Task DeleteUserInfoAsync(Guid id)
+    {
+        await _httpClient.DeleteAsync(Prefix + $"/{id}/user-info/");
+    }
 }

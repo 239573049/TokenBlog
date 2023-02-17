@@ -1,5 +1,6 @@
 ﻿using Blog.Blog.Dto;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using Volo.Abp.Application.Dtos;
 
 namespace Blog.Component;
@@ -51,6 +52,11 @@ public partial class ArticleList
         _ = InvokeAsync(StateHasChanged);
     }
 
+    private async Task GoTo(string url)
+    {
+        // 调用js跳转到指定url
+        await JsRuntime.InvokeVoidAsync("window.open", url, "_blank");
+    }
     private void OpenArticle(ArticlesDto dto)
     {
         NavigationManager.NavigateTo("/show-article/" + dto.Id);

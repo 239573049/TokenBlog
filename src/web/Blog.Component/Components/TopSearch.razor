@@ -3,8 +3,8 @@
 @inject IArticleService ArticleService
 @inject NavigationManager NavigationManager
 
- <BCardTitle Style="text-align: center">热榜排名</BCardTitle>
-    <MList>
+ <BCardTitle Class="title">热榜排名</BCardTitle>
+    <MList Style="border-radius: 10px">
         @if (ArticlesDto != null)
         {
             @foreach (var item in ArticlesDto)
@@ -26,5 +26,10 @@
         float: right;
         font-size: 10px;
         color: #f60404;
+    }
+    .title{
+        font-size: 18px;
+        text-align: center;
+        margin: 5px;
     }
 </style>

@@ -20,11 +20,6 @@ public class CreateArticlesInput
     public string Content { get; set; }
 
     /// <summary>
-    /// 示图
-    /// </summary>
-    public string PictorialView { get; set; }
-
-    /// <summary>
     /// 标签Id
     /// </summary>
     public Guid TagId { get; set; }

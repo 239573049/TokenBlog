@@ -12,6 +12,11 @@ public class GitHubUserInfo
     /// </summary>
     public string avatar_url { get; set; }
 
+    /// <summary>
+    /// github首页地址
+    /// </summary>
+    public string html_url { get; set; }
+
     public string url { get; set; }
 
     public string type { get; set; }

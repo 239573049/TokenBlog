@@ -26,18 +26,16 @@
 
     private async Task OnLogin()
     {
-        var value = await HelperJsInterop.GetTokenAsync();
-        if (!string.IsNullOrEmpty(value))
-        {
-            return;
-        }
-
         var message = await HttpClient.PostAsJsonAsync<string>("/api/app/auth/git-hub-auth?code=" + Code + "&state=" + Guid.NewGuid(), null);
         var token = await message.Content.ReadAsStringAsync();
         await HelperJsInterop.SetToken(token);
+        if (HttpClient.DefaultRequestHeaders.Any(x => x.Key == "Authorization"))
+        {
+            HttpClient.DefaultRequestHeaders.Remove("Authorization");
+        }
         HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-        NavigationManager.NavigateTo("/");
         await KeyLoadEventBus.PushAsync(EventBusName.GetProfile, true);
+        NavigationManager.NavigateTo("/");
     }
 
 }

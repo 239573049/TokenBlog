@@ -7,9 +7,9 @@ namespace Blog.Blog;
 
 public interface IArticlesRepository : IRepository<Article>
 {
-    Task<List<Article>> GetListAsync(Guid? tagId, string? search, int page = 0, int pageSize = 20);
+    Task<List<ArticleView>> GetListAsync(Guid? tagId, string? search, Guid? userId, int page = 0, int pageSize = 20);
 
-    Task<int> GetCountAsync(Guid? tagId, string? search);
+    Task<int> GetCountAsync(Guid? tagId, string? search,Guid? userId);
 
     /// <summary>
     /// 获取博客详情

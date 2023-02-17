@@ -3,8 +3,6 @@
 @inject IArticleService ArticleService
 @inject ITagService TagService
 @inject NavigationManager NavigationManager
-@inject HelperJsInterop HelperJsInterop
-@inject IFileSystemService FileSystemService 
 @inject IPopupService PopupService
 @layout EmptyLayout
 
@@ -32,12 +30,6 @@
         <ChildContent>
             <MTextField @bind-Value="_input.Description" Label="描述"></MTextField>
             <MDivider></MDivider>
-            <Uploading @bind-BrowserFile="BrowserFile"/>
-            @if (!string.IsNullOrEmpty(filePage))
-            {
-                <MImage Src="@filePage"></MImage>
-            }
-            <MDivider></MDivider>
             <MContainer Fluid>
                 <p>文章标签</p>
                 <MRadioGroup
@@ -60,18 +52,44 @@
 </MAppBar>
 
 <MMain>
-    <MContainer App Fluid Style="height: 100%">
+    <MContainer App Fluid Style="height: 95%">
         <MTabs @bind-Value="Tab">
             <MTab>编辑</MTab>
             <MTab OnClick="async () => _input.Content = await _monacoEditor.GetValue()">预览</MTab>
         </MTabs>
-        <MTabsItems Style="height: 95%" Value="Tab">
+        <MTabsItems Style="height: 100%" Value="Tab">
             <MTabItem Style="height: 100%">
                 <SMonacoEditor Style="height: 100%" EditorOptions="Options" @ref="_monacoEditor"/>
             </MTabItem>
-            <MTabItem>
+            <MTabItem Class="preview">
                 <Markdown @bind-Source="_input.Content"></Markdown>
             </MTabItem>
         </MTabsItems>
     </MContainer>
 </MMain>
+
+<style>
+    .preview{
+        overflow: auto;
+        max-height: 85vh;
+    }
+    .preview::-webkit-scrollbar{
+        width: 10px;
+    }
+    
+    .preview::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #ccc; // 滑块颜色
+        border-radius: 5px; // 滑块圆角
+    }
+    
+    .preview::-webkit-scrollbar-thumb:hover {
+        background: #0396FF; // 鼠标移入滑块变红
+    }
+    
+    .preview::-webkit-scrollbar-track {
+        border-radius: 10px; // 轨道圆角
+        background-color: #1890ff // 轨道颜色 
+    }
+    
+</style>

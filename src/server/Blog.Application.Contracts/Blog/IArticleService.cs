@@ -29,4 +29,17 @@ public interface IArticleService
     /// </summary>
     /// <returns></returns>
     Task<List<ArticlesDto>> GetTopSearch();
+
+    /// <summary>
+    /// 用户博客列表
+    /// </summary>
+    /// <returns></returns>
+    Task<PagedResultDto<ArticleUserInfoDto>> GetArticleUserInfoAsync(GetArticleUserInfoInput input);
+    
+    /// <summary>
+    /// 删除用户博客
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task DeleteUserInfoAsync(Guid id);
 }

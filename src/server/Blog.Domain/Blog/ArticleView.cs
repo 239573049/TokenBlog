@@ -31,11 +31,6 @@ public class ArticleView : FullAuditedAggregateRoot<Guid>
     public long Flow { get; set; }
 
     /// <summary>
-    /// 示图
-    /// </summary>
-    public string PictorialView { get; set; }
-
-    /// <summary>
     /// 点赞
     /// </summary>
     public int Praise { get; set; }
@@ -44,6 +39,8 @@ public class ArticleView : FullAuditedAggregateRoot<Guid>
     /// 标记
     /// </summary>
     public Guid TagId { get; set; }
+
+    public UserInfo? UserInfo { get; set; }
 
     public ArticleView(Guid id) : base(id)
     {

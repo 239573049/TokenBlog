@@ -1,10 +1,13 @@
 ﻿using Blog.Blog.Dto;
 using Blog.Dto;
 using Blog.ETO;
+using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Domain.Repositories;
 using Volo.Abp.EventBus.Local;
+using Volo.Abp.Users;
 
 namespace Blog.Blog;
 
@@ -21,12 +24,12 @@ public class ArticleService : ApplicationService, IArticleService
 
     public async Task<PagedResultDto<ArticlesDto>> GetListAsync(GetArticlesInput input)
     {
-        var data = await _articlesRepository.GetListAsync(input.TagId, input.Search, input.SkipCount,
+        var data = await _articlesRepository.GetListAsync(input.TagId, input.Search, null, input.SkipCount,
             input.MaxResultCount);
 
-        var count = await _articlesRepository.GetCountAsync(input.TagId, input.Search);
+        var count = await _articlesRepository.GetCountAsync(input.TagId, input.Search, null);
 
-        var dto = ObjectMapper.Map<List<Article>, List<ArticlesDto>>(data);
+        var dto = ObjectMapper.Map<List<ArticleView>, List<ArticlesDto>>(data);
 
         return new PagedResultDto<ArticlesDto>(count, dto);
     }
@@ -38,7 +41,6 @@ public class ArticleService : ApplicationService, IArticleService
             Title = input.Title,
             Description = input.Description,
             UserId = CurrentUser.Id!.Value,
-            PictorialView = input.PictorialView,
             Content = input.Content,
             TagId = input.TagId
         };
@@ -61,5 +63,25 @@ public class ArticleService : ApplicationService, IArticleService
         var data = await _articlesRepository.GetTopSearchAsync();
 
         return ObjectMapper.Map<List<Article>, List<ArticlesDto>>(data);
+    }
+
+    /// <inheritdoc />
+    [Authorize]
+    public async Task<PagedResultDto<ArticleUserInfoDto>> GetArticleUserInfoAsync(GetArticleUserInfoInput input)
+    {
+        var data = await _articlesRepository.GetListAsync(null, input.Search, CurrentUser.GetId(), input.SkipCount,
+            input.MaxResultCount);
+
+        var count = await _articlesRepository.GetCountAsync(null, input.Search, CurrentUser.GetId());
+
+        var dto = ObjectMapper.Map<List<ArticleView>, List<ArticleUserInfoDto>>(data);
+
+        return new PagedResultDto<ArticleUserInfoDto>(count, dto);
+    }
+
+    /// <inheritdoc />
+    public async Task DeleteUserInfoAsync(Guid id)
+    {
+        await _articlesRepository.DeleteAsync(x => x.Id == id && x.UserId == CurrentUser.GetId());
     }
 }

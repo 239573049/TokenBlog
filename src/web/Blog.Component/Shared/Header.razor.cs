@@ -36,6 +36,11 @@ public partial class Header
         NavigationManager.NavigateTo("/compose");
     }
 
+    private void Manage()
+    {
+        NavigationManager.NavigateTo("/manage");
+    }
+    
     private async Task LoadUserInfo()
     {
         var token = await HelperJsInterop.GetTokenAsync();
@@ -43,7 +48,11 @@ public partial class Header
         {
             try
             {
-                HttpClient.DefaultRequestHeaders.Add("Authorization", token);
+                if (HttpClient.DefaultRequestHeaders.Any(x => x.Key == "Authorization"))
+                {
+                    HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                }
+                HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer "+token);
                 UserInfoDto = await UserInfoService.GetProfileAsync();
                 _ = InvokeAsync(StateHasChanged);
             }
@@ -51,5 +60,17 @@ public partial class Header
             {
             }
         }
+    }
+
+    private async Task Logout()
+    {
+        if (HttpClient.DefaultRequestHeaders.Any(x => x.Key == "Authorization"))
+        {
+            HttpClient.DefaultRequestHeaders.Remove("Authorization");
+        }
+
+        UserInfoDto = null;
+        await HelperJsInterop.SetToken(string.Empty);
+        NavigationManager.NavigateTo("/");
     }
 }

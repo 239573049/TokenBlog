@@ -5,30 +5,40 @@
 @inject IArticleService ArticleService
 @inject IKeyLoadEventBus KeyLoadEventBus
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JsRuntime
 
 <MList Style="margin: 5px">
     @if (ArticlesDto != null)
     {
         @foreach (var item in ArticlesDto.Items)
         {
-            <MListItem Class="article" Style="margin: 5px;height: 165px" OnClick="() => OpenArticle(item)">
-                @if (!string.IsNullOrEmpty(item.PictorialView))
-                {
-                    var pictorialView = @item.PictorialView.StartsWith("http") ? @item.PictorialView : StorageService.BaseAddress + "/" + item.PictorialView;
-                    <MListItemAvatar Height="100" Width="140">
-                        <MImage Src="@pictorialView"></MImage>
-                    </MListItemAvatar>
-                }
+            <MListItem Class="article" Style="margin: 5px;height: 100px">
+                <MListItemAvatar Height="50" Width="50">
+                    <MAvatar>
+                        <MImage Src="@item.UserInfo.Avatar" Alt="Jack"></MImage>
+                    </MAvatar>
+                </MListItemAvatar>
                 <MListItemContent Style="text-align: left">
-                    <MListItemTitle Class="article-title"> @((MarkupString)item.Title)</MListItemTitle>
-                    <MListItemSubtitle>@((MarkupString)item.Description)</MListItemSubtitle>
+                    <span @onclick="() => OpenArticle(item)">
+                        <MListItemTitle Class="article-title">
+                            @item.Title
+                        </MListItemTitle>
+                        <MListItemSubtitle>@item.Description</MListItemSubtitle>
+                    </span>
+                    <MListItemContent>
+                        <span class="article-name" @onclick="() => GoTo(item.UserInfo.GitHubUrl)">
+                            @item.UserInfo.Name
+                        </span>
+                        
+                    </MListItemContent>
                 </MListItemContent>
             </MListItem>
         }
-        <MPagination @bind-Value="_input.Page"
-                     OnNext="async () => await GetListAsync()"
+        <MPagination Value="_input.Page"
+                     ValueChanged="async (v) => {_input.Page=v;await GetListAsync(); }"
                      Length="(int)ArticlesDto.TotalCount / _input.PageSize + (ArticlesDto.TotalCount % _input.PageSize == 0 ? 0 : 1)"
-                     TotalVisible="7"></MPagination>
+                     TotalVisible="7">
+        </MPagination>
     }
 </MList>
 
@@ -45,5 +55,12 @@
             transition: 0.8s;
             color: #b32121;
         }
-
+        .article-name{
+            transition: 0.8s;
+            color: #0396FF;
+        }
+        .article-name:hover{
+            transition: 0.8s;
+            transform: scale(0.97);
+        }
 </style>

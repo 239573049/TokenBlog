@@ -20,25 +20,6 @@ public partial class Compose
 
     public List<TagDto> TagDtos { get; set; } = new();
 
-    public IBrowserFile? browserFile { get; set; }
-
-    public IBrowserFile? BrowserFile
-    {
-        get => browserFile;
-        set
-        {
-            browserFile = value;
-            LoadFile();
-        }
-    }
-
-    private async Task LoadFile()
-    {
-        filePage = await HelperJsInterop.ByteToUrl(
-            await browserFile.OpenReadStream(browserFile.Size).GetAllBytesAsync());
-        _ = InvokeAsync(StateHasChanged);
-    }
-
     protected override void OnInitialized()
     {
         Options = new
@@ -65,26 +46,10 @@ public partial class Compose
     private async Task CreateAsync()
     {
         _input.Content = await _monacoEditor.GetValue();
-        if (BrowserFile == null)
-        {
-            await ArticleService.CreateAsync(_input);
-            await PopupService.ToastSuccessAsync("发布成功");
-            return;
-        }
-        var result =
-            await FileSystemService.Uploading(BrowserFile.OpenReadStream(BrowserFile.Size),
-                BrowserFile.Name);
-
-        if (!string.IsNullOrEmpty(result))
-        {
-            _input.PictorialView = result;
-            await ArticleService.CreateAsync(_input);
-            await PopupService.ToastSuccessAsync("发布成功");
-        }
-        else
-        {
-            await PopupService.ToastErrorAsync("上传图片的时候似乎出现了问题");
-        }
+        await ArticleService.CreateAsync(_input);
+        await PopupService.ToastSuccessAsync("发布成功");
+        await Task.Delay(1000);
+        Back();
     }
 
     private void Back()

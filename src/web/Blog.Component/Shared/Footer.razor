@@ -12,7 +12,15 @@
             <MButton Text Block OnClick="() => GoTo(item.ExternalConnection)">@item.Title</MButton>
         }
     </div>
-    <div style="float: right;margin-left: auto; width: 150px">
+    <div class="blog-info">
+        <span>
+            由.NET 7.0 支持
+        </span>
+        <span>
+            联系我们：239573049@qq.com
+        </span>
+    </div>
+    <div style="float: right; width: 150px">
         <h3 style="font-weight: 900;text-align: center;color: #000000">
             分享地址
         </h3>
@@ -25,3 +33,14 @@
         </MButton>
     </div>
 </MFooter>
+
+<style>
+    .blog-info{
+        text-align: center;
+        margin-top: auto;
+        width: calc(100% - 300px);
+    }
+    .blog-info span{
+        margin: 5px;
+    }
+</style>

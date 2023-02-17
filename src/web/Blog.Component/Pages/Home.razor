@@ -24,7 +24,7 @@
         </div>
         <Tab/>
     </MCol>
-    <MCol Id="@("top-search")" Cols="6"
+    <MCol Id="@("top-search")"  Style="background-color: #f9f9f9" Cols="6"
           Md="4">
         <TopSearch></TopSearch>
     </MCol>
@@ -37,4 +37,23 @@
         display: none;
     }
 }
+
+    -webkit-scrollbar{
+        width: 10px;
+    }
+    
+    -webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #ccc; // 滑块颜色
+        border-radius: 5px; // 滑块圆角
+    }
+    
+    -webkit-scrollbar-thumb:hover {
+        background: #0396FF; // 鼠标移入滑块变红
+    }
+    
+    -webkit-scrollbar-track {
+        border-radius: 10px; // 轨道圆角
+        background-color: #1890ff // 轨道颜色 
+    }
 </style>

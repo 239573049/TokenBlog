@@ -1,9 +1,25 @@
-
 using Blog.Shared;
+using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+builder.Services.AddServerSideBlazor()
+    .AddHubOptions(options =>
+    {
+        options.ClientTimeoutInterval = TimeSpan.FromSeconds(30);
+        options.EnableDetailedErrors = false;
+        options.HandshakeTimeout = TimeSpan.FromSeconds(15);
+        options.KeepAliveInterval = TimeSpan.FromSeconds(15);
+        options.MaximumParallelInvocationsPerClient = 1;
+        options.MaximumReceiveMessageSize = 1024 * 1024;
+        options.StreamBufferCapacity = 100;
+    });;
+builder.Services.AddResponseCompression(opts =>
+{
+    opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+        new[] { "application/octet-stream" });
+});
+
 builder.Services.AddScoped<StorageService>();
 builder.Services.AddBlogComponent();
 builder.Services.AddBlogHttpApiClient();
@@ -25,7 +41,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.MapBlazorHub();
+app.MapBlazorHub(options =>
+{
+    options.ApplicationMaxBufferSize = 1024 * 1024 * 1024;
+    options.TransportMaxBufferSize = 1024 * 1024 * 1024;
+});
 app.MapFallbackToPage("/_Host");
 
 app.Run();
