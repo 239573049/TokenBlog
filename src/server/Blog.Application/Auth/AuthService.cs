@@ -38,9 +38,16 @@ public class AuthService : ApplicationService, IAuthService
     {
         var http = _httpClientFactory.CreateClient("github");
 
+        var clientSecret = Environment.GetEnvironmentVariable("ClientSecret");
+
+        if (clientSecret.IsNullOrEmpty())
+        {
+            clientSecret = _gitHubOptions.ClientSecret;
+        }
+
         var uri = $"https://github.com/login/oauth/access_token?client_id=" + _gitHubOptions.ClientId
                                                                             + "&client_secret=" +
-                                                                            _gitHubOptions.ClientSecret
+                                                                            clientSecret
                                                                             + "&redirect_uri=" + _gitHubOptions.Callback
                                                                             + "&code=" + code
                                                                             + "&state=" + state;
@@ -55,7 +62,6 @@ public class AuthService : ApplicationService, IAuthService
             {
                 throw new BusinessException(message: "获取GitHub token失败");
             }
-
         }
         catch (Exception e)
         {
@@ -64,7 +70,8 @@ public class AuthService : ApplicationService, IAuthService
 
         http = _httpClientFactory.CreateClient("GitHubAuth");
         http.DefaultRequestHeaders.Add("Authorization", "Bearer " + data.AccessToken);
-        http.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41");
+        http.DefaultRequestHeaders.Add("User-Agent",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41");
         var info = await http.GetFromJsonAsync<GitHubUserInfo>($"https://api.github.com/user");
 
         var userInfo = await _userInfoRepository.FirstOrDefaultAsync(x => x.GitHubId == info!.id.ToString());
