@@ -6,7 +6,7 @@ namespace Blog.Component.Shared;
 
 public partial class Header
 {
-    [Parameter][SupplyParameterFromQuery] public string? Search { get; set; }
+    [Parameter] [SupplyParameterFromQuery] public string? Search { get; set; }
 
     public UserInfoDto UserInfoDto { get; set; }
 
@@ -17,11 +17,7 @@ public partial class Header
 
     private async Task Login()
     {
-        var authorize_uri = "https://github.com/login/oauth/authorize";
-        var client_id = "8771a2c32e83bfd7c38f";
-        var redirect_url = "http://localhost:5095/login";
-        await JsRuntime.InvokeVoidAsync("location.replace",
-            $"{authorize_uri}?client_id={client_id}&redirect_url={redirect_url}");
+        await AuthService.GitHub();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -47,12 +43,12 @@ public partial class Header
         {
             try
             {
+                HttpClient.DefaultRequestHeaders.Add("Authorization", token);
                 UserInfoDto = await UserInfoService.GetProfileAsync();
                 _ = InvokeAsync(StateHasChanged);
             }
             catch
             {
-                await HelperJsInterop.SetToken(string.Empty);
             }
         }
     }

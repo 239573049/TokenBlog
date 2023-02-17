@@ -1,4 +1,5 @@
-﻿using Blog.Blog.Dto;
+﻿using Blog.Dto;
+using System.Collections.Generic;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;

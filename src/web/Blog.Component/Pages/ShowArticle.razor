@@ -1,10 +1,9 @@
 ﻿@page "/show-article/{Id:guid}"
-@using global::Blog.Shared
 @namespace Blog.Component
 
 @inject IArticleService ArticleService
 @inject NavigationManager NavigationManager
-@inject StorageService StorageService
+@inject AuthService AuthService
 @inject HelperJsInterop HelperJsInterop
 @layout EmptyLayout
 <CascadingValue Value="Id" Name="ArticleId">
@@ -35,6 +34,10 @@
                 <CommentList/>
                 <MDivider>编辑评论</MDivider>
                 <SendComment/>
+            }
+            else
+            {
+                <MButton Style="margin: 5px" Block OnClick="async () => await AuthService.GitHub()">登录账号</MButton>
             }
             <div style="margin: 20px;height: 200px;"></div>
         </MContainer>

@@ -1,5 +1,6 @@
 ﻿using Blog.Blog.Dto;
 using Microsoft.AspNetCore.Components;
+using Volo.Abp.Application.Dtos;
 
 namespace Blog.Component;
 
@@ -45,17 +46,9 @@ public partial class ArticleList
     {
         _input.Search = Search;
         _input.TagId = TagId;
-        try
-        {
+        ArticlesDto = await ArticleService.GetListAsync(_input);
 
-            ArticlesDto = await ArticleService.GetListAsync(_input);
-
-            _ = InvokeAsync(StateHasChanged);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-        }
+        _ = InvokeAsync(StateHasChanged);
     }
 
     private void OpenArticle(ArticlesDto dto)

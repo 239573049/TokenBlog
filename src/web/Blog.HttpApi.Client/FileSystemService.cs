@@ -3,11 +3,11 @@ namespace Blog;
 
 public class FileSystemService : IFileSystemService
 {
-    private readonly System.Net.Http.HttpClient _httpClient;
+    private readonly HttpClient _httpClient;
 
     private const string Prefix = "/api/File/Uploading";
 
-    public FileSystemService(System.Net.Http.HttpClient httpClient)
+    public FileSystemService(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

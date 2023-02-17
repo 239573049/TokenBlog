@@ -14,8 +14,8 @@ public static class BlogComponentExtension
         services.AddScoped(typeof(EventManager<>));
         services.AddScoped(typeof(ILoadEventBus<>), typeof(LoadEventBus<>));
         services.AddScoped<IKeyLoadEventBus, KeyLoadEventBus>();
-        services.AddScoped<ITokenService, HelperJsInterop>();
         services.AddScoped<HelperJsInterop>();
+        services.AddScoped<AuthService>();
         services.AddSemiDesignBlazorMonacoEditor();
 
         return services;

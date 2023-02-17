@@ -1,10 +1,27 @@
 @page "/"
+@using global::Blog.Settings
 @namespace Blog.Component
+@inject ISettingService SettingService 
+@inject IJSRuntime JsRuntime
 
 <MRow>
     <MCol Cols="12"
           Sm="6"
           Md="8">
+        <div style="margin: 5px">
+            <MCarousel Height="@("300px")">
+                @foreach (var item in Carousels)
+                {
+                    <div @onclick="async () => await GoTo(item.ExternalConnection)">
+                        <MCarouselItem
+                            Src="@item.Uri"
+                            ReverseTransition="fade-transition"
+                            Transition="fade-transition">
+                        </MCarouselItem>
+                    </div>
+                }
+            </MCarousel>
+        </div>
         <Tab/>
     </MCol>
     <MCol Id="@("top-search")" Cols="6"

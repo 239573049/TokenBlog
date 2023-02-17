@@ -1,47 +1,51 @@
-﻿using Blog;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
+using System;
+using System.Threading.Tasks;
 
+namespace Blog;
 
-Log.Logger = new LoggerConfiguration()
+public class Program
+{
+    public async static Task<int> Main(string[] args)
+    {
+        Log.Logger = new LoggerConfiguration()
 #if DEBUG
-    .MinimumLevel.Debug()
+            .MinimumLevel.Debug()
 #else
             .MinimumLevel.Information()
 #endif
-    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-    .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
-    .Enrich.FromLogContext()
-    .WriteTo.Async(c => c.File("Logs/logs.txt"))
-    .WriteTo.Async(c => c.Console())
-    .CreateLogger();
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+            .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Async(c => c.File("Logs/logs.txt"))
+            .WriteTo.Async(c => c.Console())
+            .CreateLogger();
 
-try
-{
-    Log.Information("Starting Blog.HttpApi.Host.");
-    var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
-    {
-        Args = args,
-        WebRootPath = AppContext.BaseDirectory
-    });
-
-    builder.Host.AddAppSettingsSecretsJson()
-        .UseAutofac()
-        .UseSerilog();
-
-    await builder.AddApplicationAsync<BlogHttpApiHostModule>();
-    var app = builder.Build();
-
-    await app.InitializeApplicationAsync();
-    await app.RunAsync();
-    return 0;
-}
-catch (Exception ex)
-{
-    Log.Fatal(ex, "Host terminated unexpectedly!");
-    return 1;
-}
-finally
-{
-    Log.CloseAndFlush();
+        try
+        {
+            Log.Information("Starting Blog.HttpApi.Host.");
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Host.AddAppSettingsSecretsJson()
+                .UseAutofac()
+                .UseSerilog();
+            await builder.AddApplicationAsync<BlogHttpApiHostModule>();
+            var app = builder.Build();
+            await app.InitializeApplicationAsync();
+            await app.RunAsync();
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            Log.Fatal(ex, "Host terminated unexpectedly!");
+            return 1;
+        }
+        finally
+        {
+            Log.CloseAndFlush();
+        }
+    }
 }

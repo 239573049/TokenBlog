@@ -4,10 +4,12 @@
 @inject IKeyLoadEventBus KeyLoadEventBus
 @inject NavigationManager NavigationManager
 @inject IUserInfoService UserInfoService 
+@inject HttpClient HttpClient
+@inject AuthService AuthService
 @inject StorageService StorageService
 @inject HelperJsInterop HelperJsInterop
 
-<MAppBar App >
+<MAppBar App Style="background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);">
     <CascadingValue Value="Search" Name="@nameof(Search)">
         <MImage Style="margin-right: 5px" MaxWidth="@("55px")" Height="@("100%")" Alt="Avatar" Src="https://blog-simple.oss-cn-shenzhen.aliyuncs.com/blazor.jpg"></MImage>
         <MButton Href="/" Height="@("100%")" Text>博客</MButton>
@@ -18,6 +20,7 @@
             HideDetails="@true"
             Label="搜索关键字"
             FullWidth="true"
+            Light
             OnAppendClick="OnSearch"
             AppendIcon="mdi-magnify"
             @bind-Value="Search"
@@ -25,7 +28,7 @@
         </MTextField>
         @if (UserInfoDto == null)
         {
-            <MButton OnClick="Login" Height="@("100%")" Text>登录</MButton>
+            <MButton OnClick="Login" Height="@("100%")" Text>GitHub登录</MButton>
         }
         else
         {

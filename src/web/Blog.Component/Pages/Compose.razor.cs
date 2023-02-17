@@ -1,5 +1,6 @@
 ﻿using BlazorComponent;
 using Blog.Blog.Dto;
+using Blog.Dto;
 using Microsoft.AspNetCore.Components.Forms;
 using Semi.Design.Blazor;
 
@@ -33,9 +34,8 @@ public partial class Compose
 
     private async Task LoadFile()
     {
-        await using var memoryStream = new MemoryStream();
-        await browserFile.OpenReadStream(browserFile.Size).CopyToAsync(memoryStream);
-        filePage = await HelperJsInterop.ByteToUrl(memoryStream.ToArray());
+        filePage = await HelperJsInterop.ByteToUrl(
+            await browserFile.OpenReadStream(browserFile.Size).GetAllBytesAsync());
         _ = InvokeAsync(StateHasChanged);
     }
 
@@ -71,7 +71,6 @@ public partial class Compose
             await PopupService.ToastSuccessAsync("发布成功");
             return;
         }
-
         var result =
             await FileSystemService.Uploading(BrowserFile.OpenReadStream(BrowserFile.Size),
                 BrowserFile.Name);

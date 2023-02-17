@@ -1,5 +1,8 @@
 ﻿using Blog.Blog.Dto;
+using Blog.Dto;
 using Blog.ETO;
+using System.Collections.Generic;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.EventBus.Local;
 
@@ -16,7 +19,7 @@ public class ArticleService : ApplicationService, IArticleService
         _localEventBus = localEventBus;
     }
 
-    public async Task<PagedResultDto<ArticlesDto>?> GetListAsync(GetArticlesInput input)
+    public async Task<PagedResultDto<ArticlesDto>> GetListAsync(GetArticlesInput input)
     {
         var data = await _articlesRepository.GetListAsync(input.TagId, input.Search, input.SkipCount,
             input.MaxResultCount);

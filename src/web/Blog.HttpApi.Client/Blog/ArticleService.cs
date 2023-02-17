@@ -1,6 +1,8 @@
 ﻿using Blog.Blog;
 using Blog.Blog.Dto;
 using System.Net.Http.Json;
+using Blog.Dto;
+using Volo.Abp.Application.Dtos;
 
 namespace Blog;
 

@@ -1,22 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <RootNamespace>Blog</RootNamespace>
-    </PropertyGroup>
+  <Import Project="..\..\..\common.props" />
 
-    <ItemGroup>
-        <ProjectReference Include="..\Blog.Domain.Shared\Blog.Domain.Shared.csproj" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Blog</RootNamespace>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="ETO\" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Domain.Shared\Blog.Domain.Shared.csproj" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Volo.Abp.Ddd.Domain" Version="7.0.1" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="7.0.1" />
+  </ItemGroup>
 
 </Project>

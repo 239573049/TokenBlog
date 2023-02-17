@@ -5,11 +5,11 @@ namespace Blog;
 
 public class UserInfoService : IUserInfoService
 {
-    private readonly System.Net.Http.HttpClient _httpClient;
+    private readonly HttpClient _httpClient;
 
     private const string Prefix = "/api/app/user-info";
 
-    public UserInfoService(System.Net.Http.HttpClient httpClient)
+    public UserInfoService(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

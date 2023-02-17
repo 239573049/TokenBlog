@@ -9,7 +9,7 @@ namespace Blog.Component;
 // This class can be registered as scoped DI service and then injected into Blazor
 // components for use.
 
-public class HelperJsInterop : ITokenService, IAsyncDisposable
+public class HelperJsInterop : IAsyncDisposable
 {
     private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 

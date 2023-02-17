@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 
 namespace Blog.EntityFrameworkCore;
@@ -29,10 +30,11 @@ public class BlogDbContext :
     {
         base.OnModelCreating(builder);
 
+        /* Include modules to your migration db context */
+
+        builder.ConfigurePermissionManagement();
         builder.ConfigureSettingManagement();
         builder.ConfigureAuditLogging();
-
-        builder.ConfigureBlog();
 
     }
 }

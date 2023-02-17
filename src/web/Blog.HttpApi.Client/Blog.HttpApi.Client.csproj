@@ -15,8 +15,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\server\Blog.Application.Contract\Blog.Application.Contract.csproj" />
+      <ProjectReference Include="..\..\server\Blog.Application.Contracts\Blog.Application.Contracts.csproj" />
       <ProjectReference Include="..\Blog.Shared\Blog.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Settings\" />
     </ItemGroup>
 
 </Project>

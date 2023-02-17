@@ -2,12 +2,16 @@
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
+using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 
 namespace Blog;
 
 [DependsOn(
+    typeof(BlogDomainModule),
+    typeof(BlogApplicationContractsModule),
     typeof(AbpAutoMapperModule),
+    typeof(AbpPermissionManagementApplicationModule),
     typeof(AbpSettingManagementApplicationModule)
     )]
 public class BlogApplicationModule : AbpModule
@@ -24,6 +28,5 @@ public class BlogApplicationModule : AbpModule
         {
             options.AddMaps<BlogApplicationModule>();
         });
-
     }
 }

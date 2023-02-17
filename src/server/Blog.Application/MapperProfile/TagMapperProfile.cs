@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Blog.Blog;
-using Blog.Blog.Dto;
+using Blog.Dto;
 
 namespace Blog.MapperProfile;
 

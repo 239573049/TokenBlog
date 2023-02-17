@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace Blog.EntityFrameworkCore;
 
@@ -10,6 +11,8 @@ public class BlogDbContextFactory : IDesignTimeDbContextFactory<BlogDbContext>
 {
     public BlogDbContext CreateDbContext(string[] args)
     {
+        BlogEfCoreEntityExtensionMappings.Configure();
+
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<BlogDbContext>()
