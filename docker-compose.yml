@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql
+    volumes:
+      - ./mssql:/var/opt/mssql/data
+      - /etc/localtime:/etc/localtime
+    environment:
+      - "MSSQL_SA_PASSWORD=Aa123456."
+      - "ACCEPT_EULA=Y"
+      - "TZ=Asia/Shanghai"
+    ports:
+      - "1433:1433"
+    networks:
+      - blog
+
+  blog-api:
+    build:
+      context: .
+      dockerfile: ./src/server/Blog.HttpApi.Host/Dockerfile
+    container_name: blog-api
+    depends_on:
+      - mssql
+    networks:
+      - blog
+
+  blog-web:
+    build:
+      context: .
+      dockerfile: ./src/web/Blog.Server.Web/Dockerfile
+    container_name: blog-web
+    networks:
+      - blog
+
+networks:
+  blog:
+    driver: bridge
