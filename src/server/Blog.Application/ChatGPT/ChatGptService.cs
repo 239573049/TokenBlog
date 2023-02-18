@@ -59,7 +59,7 @@ public class ChatGptService : ApplicationService, IChatGptService
 
         await foreach (var result in api.Completions.StreamCompletionEnumerableAsync(new CompletionRequest(input.Message,
                            model: Model.DavinciText,
-                           temperature: 0.9, max_tokens: 500)))
+                           temperature: 0.9, max_tokens: 1000)))
         {
             data += result.ToString();
         }
