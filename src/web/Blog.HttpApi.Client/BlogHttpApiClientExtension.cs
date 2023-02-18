@@ -22,6 +22,7 @@ public static class BlogHttpApiClientExtension
         services.AddScoped<IFileSystemService, FileSystemService>();
         services.AddScoped<IArticleCommentService, ArticleCommentService>();
         services.AddScoped<ISettingService, SettingService>();
+        services.AddScoped<IChatGptService, ChatGptService>();
 
         return services;
     }

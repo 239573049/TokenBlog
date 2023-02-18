@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
@@ -50,6 +51,7 @@ public class BlogHttpApiHostModule : AbpModule
     {
 
         context.Services.Configure<JWTOptions>(configuration.GetSection(nameof(JWTOptions)));
+        context.Services.Configure<ChatGPTOptions>(configuration.GetSection(nameof(ChatGPTOptions)));
 
         var jwt = configuration.GetSection(nameof(JWTOptions)).Get<JWTOptions>();
         context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -122,11 +124,14 @@ public class BlogHttpApiHostModule : AbpModule
         app.UseRouting();
         app.UseCors();
 
-        app.UseSwagger();
-        app.UseAbpSwaggerUI(options =>
+        if (env.IsDevelopment())
         {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Test API");
-        });
+            app.UseSwagger();
+            app.UseAbpSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Test API");
+            });
+        }
 
 
         app.UseAuthentication();

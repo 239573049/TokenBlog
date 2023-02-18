@@ -2,5 +2,7 @@
 
 public static class BlogDomainErrorCodes
 {
-    /* You can add your business exception error codes here, as constants */
+    private const string AppName = "Blog";
+
+    public const string NotSufficientFunds = AppName + ":NotSufficientFunds";
 }

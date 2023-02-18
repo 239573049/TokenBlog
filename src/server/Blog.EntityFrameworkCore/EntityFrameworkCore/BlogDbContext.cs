@@ -20,6 +20,8 @@ public class BlogDbContext :
 
     public DbSet<Tag> Tags { get; set; }
 
+    public DbSet<ChatGpt> ChatGpts { get; set; }
+
     public BlogDbContext(DbContextOptions<BlogDbContext> options)
         : base(options)
     {

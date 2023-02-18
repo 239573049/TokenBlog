@@ -1,5 +1,5 @@
-using Blog.Shared;
 using Microsoft.JSInterop;
+using System.Text.Json;
 
 namespace Blog.Component;
 // This class provides an example of how JavaScript functionality can be wrapped
@@ -49,6 +49,36 @@ public class HelperJsInterop : IAsyncDisposable
         await module.InvokeVoidAsync("setToken", value);
     }
 
+    public async ValueTask SetLocalStorage(string key, string value)
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("setLocalStorage", key, value);
+    }
+
+    public async ValueTask<string> GetLocalStorage(string key)
+    {
+        var module = await moduleTask.Value;
+        return await module.InvokeAsync<string>("getLocalStorage", key);
+    }
+
+    public async ValueTask SetLocalStorage<T>(string key, T value) where T : class
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("setLocalStorage", key, JsonSerializer.Serialize(value));
+    }
+
+    public async ValueTask<T> GetLocalStorage<T>(string key) where T : class
+    {
+        var module = await moduleTask.Value;
+        return await module.InvokeAsync<T>("getLocalStorage", key);
+    }
+
+    public async ValueTask ScrollHeight(string id)
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("scrollHeight", id);
+    }
+    
     public async ValueTask DisposeAsync()
     {
         if (moduleTask.IsValueCreated)

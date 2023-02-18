@@ -13,7 +13,7 @@ builder.Services.AddServerSideBlazor()
         options.MaximumParallelInvocationsPerClient = 1; // 默认情况下，客户端一次只允许调用一个Hub方法。更改此属性将允许客户端在排队之前同时调用多个方法。
         options.MaximumReceiveMessageSize = 1024 * 1024; // 获取或设置单个传入集线器消息的最大消息大小。默认值是32KB。
         options.StreamBufferCapacity = 100; // 获取或设置客户端上传流的最大缓冲区大小
-    });;
+    }); ;
 builder.Services.AddResponseCompression(opts =>
 {
     opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
@@ -22,12 +22,11 @@ builder.Services.AddResponseCompression(opts =>
 
 builder.Services.AddScoped<StorageService>()
     .AddBlogComponent()
-    .AddBlogHttpApiClient();
-
-builder.Services.AddScoped<HttpClient>(services => new HttpClient
-{
-    BaseAddress = new Uri(StorageService.BaseAddress)
-});
+    .AddBlogHttpApiClient()
+    .AddScoped(services => new HttpClient
+    {
+        BaseAddress = new Uri(StorageService.BaseAddress)
+    });
 
 var app = builder.Build();
 

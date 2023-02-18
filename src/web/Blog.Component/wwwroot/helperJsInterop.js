@@ -23,3 +23,16 @@ export function getToken() {
 export function setToken(value) {
     localStorage.setItem('token', value);
 }
+
+export function setLocalStorage(key, value) {
+    localStorage.setItem(key, value);
+}
+
+export function getLocalStorage(key) {
+    return localStorage.getItem(key);
+}
+
+export function scrollHeight(id) {
+    const message = document.getElementById(id);
+    message.scrollTop = message.scrollHeight;
+}

@@ -16,6 +16,7 @@
 
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+		<PackageReference Include="OpenAI" Version="1.5.0" />
 		<PackageReference Include="Volo.Abp.AutoMapper" Version="7.0.1" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="7.0.1" />
 		<PackageReference Include="Volo.Abp.SettingManagement.Application" Version="7.0.1" />

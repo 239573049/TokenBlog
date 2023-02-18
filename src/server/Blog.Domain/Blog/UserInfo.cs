@@ -13,6 +13,11 @@ public class UserInfo : FullAuditedAggregateRoot<Guid>
 
     public string GiteeUrl { get; set; }
 
+    /// <summary>
+    /// 剩余使用ChatGpt次数
+    /// </summary>
+    public int ChatGptNumber { get; set; }
+
     public UserInfo(Guid id, string giteeId, string avatar, string name, string giteeUrl) : base(id)
     {
         GiteeId = giteeId;
