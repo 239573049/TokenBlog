@@ -57,9 +57,11 @@ public class AuthService : ApplicationService, IAuthService
         AccessTokenModel data = null;
         try
         {
-            data = await http.GetFromJsonAsync<AccessTokenModel>(uri);
+            var message = await http.GetAsync(uri);
+            data = await message.Content.ReadFromJsonAsync<AccessTokenModel>();
             if (data == null || data.AccessToken.IsNullOrEmpty())
             {
+                Console.WriteLine(await message.Content.ReadAsStringAsync());
                 throw new BusinessException(message: "获取GitHub token失败");
             }
         }
