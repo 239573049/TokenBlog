@@ -20,7 +20,7 @@ public class BlogApplicationModule : AbpModule
     {
         var configuration = context.Services.GetConfiguration();
 
-        context.Services.Configure<GitHubAuthOptions>(configuration.GetSection(nameof(GitHubAuthOptions)));
+        context.Services.Configure<GiteeAuthOptions>(configuration.GetSection(nameof(GiteeAuthOptions)));
 
         context.Services.AddHttpClient();
 

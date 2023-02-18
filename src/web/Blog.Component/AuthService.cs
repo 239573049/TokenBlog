@@ -13,15 +13,15 @@ public class AuthService
 
     public async Task GitHub()
     {
-        var authorize_uri = "https://github.com/login/oauth/authorize";
+        var authorize_uri = "https://gitee.com/oauth/authorize";
 #if DEBUG
-        var client_id = "19c959e3a2f19a495905";
+        var client_id = "55f3dce429160a074204b93a6dc886a1d764ebb58383fb6e03c33b395aefbe34";
         var redirect_url = "http://localhost:5095/login";
 #else
-        var client_id = "8771a2c32e83bfd7c38f";
+        var client_id = "55f3dce429160a074204b93a6dc886a1d764ebb58383fb6e03c33b395aefbe34";
         var redirect_url = "https://blog.tokengo.top/login";
 #endif
         await JsRuntime.InvokeVoidAsync("location.replace",
-            $"{authorize_uri}?client_id={client_id}&redirect_url={redirect_url}");
+            $"{authorize_uri}?client_id={client_id}&response_type=code&redirect_uri={redirect_url}");
     }
 }

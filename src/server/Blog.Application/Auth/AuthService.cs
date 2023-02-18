@@ -20,63 +20,61 @@ namespace Blog.Auth;
 public class AuthService : ApplicationService, IAuthService
 {
     private readonly IHttpClientFactory _httpClientFactory;
-    private readonly GitHubAuthOptions _gitHubOptions;
+    private readonly GiteeAuthOptions _giteeOptions;
     private readonly JWTOptions _jwtOptions;
     private readonly IRepository<UserInfo> _userInfoRepository;
 
-    public AuthService(IHttpClientFactory httpClientFactory, IOptions<GitHubAuthOptions> gitHubOptions,
+    public AuthService(IHttpClientFactory httpClientFactory, IOptions<GiteeAuthOptions> giteeOptions,
         IOptions<JWTOptions> jwtOptions, IRepository<UserInfo> userInfoRepository)
     {
         _httpClientFactory = httpClientFactory;
         _userInfoRepository = userInfoRepository;
         _jwtOptions = jwtOptions.Value;
-        _gitHubOptions = gitHubOptions.Value;
+        _giteeOptions = giteeOptions.Value;
     }
 
     /// <inheritdoc />
-    public async Task<string> GitHubAuthAsync(string code, string state)
+    public async Task<string> GiteeAuthAsync(string code, string state)
     {
-        var http = _httpClientFactory.CreateClient("github");
+        var http = _httpClientFactory.CreateClient("gitee");
 
         var clientSecret = Environment.GetEnvironmentVariable("ClientSecret");
 
         if (clientSecret.IsNullOrEmpty())
         {
-            clientSecret = _gitHubOptions.ClientSecret;
+            clientSecret = _giteeOptions.ClientSecret;
         }
 
-        var uri = $"https://github.com/login/oauth/access_token?client_id=" + _gitHubOptions.ClientId
+        var uri = $"https://gitee.com/oauth/token?grant_type=authorization_code&client_id=" + _giteeOptions.ClientId
                                                                             + "&client_secret=" +
                                                                             clientSecret
-                                                                            + "&redirect_uri=" + _gitHubOptions.Callback
-                                                                            + "&code=" + code
-                                                                            + "&state=" + state;
+                                                                            + "&redirect_uri=" + _giteeOptions.Callback
+                                                                            + "&code=" + code;
 
         http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
         AccessTokenModel data = null;
         try
         {
-            var message = await http.GetAsync(uri);
+            var message = await http.PostAsync(uri,null);
             data = await message.Content.ReadFromJsonAsync<AccessTokenModel>();
             if (data == null || data.AccessToken.IsNullOrEmpty())
             {
                 Console.WriteLine(await message.Content.ReadAsStringAsync());
-                throw new BusinessException(message: "获取GitHub token失败");
+                throw new BusinessException(message: "获取Gitee token失败");
             }
         }
         catch (Exception e)
         {
-            throw new BusinessException(message: "获取GitHub token失败");
+            throw new BusinessException(message: "获取Gitee token失败");
         }
 
-        http = _httpClientFactory.CreateClient("GitHubAuth");
-        http.DefaultRequestHeaders.Add("Authorization", "Bearer " + data.AccessToken);
+        http = _httpClientFactory.CreateClient("GiteeAuth");
         http.DefaultRequestHeaders.Add("User-Agent",
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41");
-        var info = await http.GetFromJsonAsync<GitHubUserInfo>($"https://api.github.com/user");
+        var info = await http.GetFromJsonAsync<GiteeUserInfo>($"https://gitee.com/api/v5/user?access_token={data.AccessToken}");
 
-        var userInfo = await _userInfoRepository.FirstOrDefaultAsync(x => x.GitHubId == info!.id.ToString());
+        var userInfo = await _userInfoRepository.FirstOrDefaultAsync(x => x.GiteeId == info!.id.ToString());
         if (userInfo == null)
         {
             userInfo = new UserInfo(Guid.NewGuid(), info.id.ToString(), info.avatar_url, info.name,

@@ -26,7 +26,7 @@
 
     private async Task OnLogin()
     {
-        var message = await HttpClient.PostAsJsonAsync<string>("/api/app/auth/git-hub-auth?code=" + Code + "&state=" + Guid.NewGuid(), null);
+        var message = await HttpClient.PostAsJsonAsync<string>("/api/app/auth/gitee-auth?code=" + Code + "&state=" + Guid.NewGuid(), null);
         var token = await message.Content.ReadAsStringAsync();
         await HelperJsInterop.SetToken(token);
         if (HttpClient.DefaultRequestHeaders.Any(x => x.Key == "Authorization"))

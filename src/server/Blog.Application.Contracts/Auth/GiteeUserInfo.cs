@@ -1,6 +1,6 @@
 ﻿namespace Blog.Auth;
 
-public class GitHubUserInfo
+public class GiteeUserInfo
 {
     public string login { get; set; }
     public int id { get; set; }

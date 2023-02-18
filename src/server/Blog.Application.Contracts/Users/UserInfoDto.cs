@@ -11,5 +11,5 @@ public class UserInfoDto : EntityDto<Guid>
 
     public string Name { get; set; }
 
-    public string GitHubUrl { get; set; }
+    public string GiteeUrl { get; set; }
 }

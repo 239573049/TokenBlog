@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Blog.Options;
 
-public class GitHubAuthOptions
+public class GiteeAuthOptions
 {
     public string ClientId { get; set; }
 

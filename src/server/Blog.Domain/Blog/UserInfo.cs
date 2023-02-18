@@ -5,19 +5,19 @@ namespace Blog.Blog;
 
 public class UserInfo : FullAuditedAggregateRoot<Guid>
 {
-    public string GitHubId { get; set; }
+    public string GiteeId { get; set; }
 
     public string Avatar { get; set; }
 
     public string Name { get; set; }
 
-    public string GitHubUrl { get; set; }
+    public string GiteeUrl { get; set; }
 
-    public UserInfo(Guid id, string gitHubId, string avatar, string name, string gitHubUrl) : base(id)
+    public UserInfo(Guid id, string giteeId, string avatar, string name, string giteeUrl) : base(id)
     {
-        GitHubId = gitHubId;
+        GiteeId = giteeId;
         Avatar = avatar;
         Name = name;
-        GitHubUrl = gitHubUrl;
+        GiteeUrl = giteeUrl;
     }
 }

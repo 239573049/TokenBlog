@@ -27,7 +27,22 @@
         </MTextField>
         @if (UserInfoDto == null)
         {
-            <MButton OnClick="Login" Height="@("100%")" Text>GitHub登录</MButton>
+            <MMenu OpenOnHover OffsetY>
+                <ActivatorContent>
+                    <MButton @attributes="@context.Attrs"  Height="@("100%")" Text>登录</MButton>
+                </ActivatorContent>
+                <ChildContent>
+                    <MList>
+                        <MListItem OnClick="Login">
+                            <MListItemContent >
+                                <MListItemTitle >
+                                    Gitee
+                                </MListItemTitle>
+                            </MListItemContent>
+                        </MListItem>
+                    </MList>
+                </ChildContent>
+            </MMenu>
         }
         else
         {
