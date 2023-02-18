@@ -12,7 +12,10 @@
 <MAppBar App Style="background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);">
     <CascadingValue Value="Search" Name="@nameof(Search)">
         <MButton Href="/" Height="@("100%")" Text>博客</MButton>
-        <MButton Href="/chat-gpt" Height="@("100%")" Text>ChatGPT</MButton>
+        @if (UserInfoDto != null)
+        {
+            <MButton Href="/chat-gpt" Height="@("100%")" Text>智能AI</MButton>
+        }
         <MTextField
             Class="mx-4"
             Flat

@@ -8,7 +8,7 @@ public partial class Header
 {
     [Parameter] [SupplyParameterFromQuery] public string? Search { get; set; }
 
-    public UserInfoDto UserInfoDto { get; set; }
+    public UserInfoDto? UserInfoDto { get; set; }
 
     private void OnSearch()
     {

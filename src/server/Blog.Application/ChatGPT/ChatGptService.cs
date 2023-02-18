@@ -2,6 +2,7 @@
 using Blog.Component.Pages.Module;
 using Blog.Eto;
 using Blog.Options;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using OpenAI_API;
 using OpenAI_API.Completions;
@@ -16,6 +17,7 @@ using Volo.Abp.Users;
 
 namespace Blog;
 
+[Authorize]
 public class ChatGptService : ApplicationService, IChatGptService
 {
     private readonly ChatGPTOptions _chatGptOptions;
