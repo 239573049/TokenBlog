@@ -21,6 +21,9 @@ services:
       context: .
       dockerfile: ./src/server/Blog.HttpApi.Host/Dockerfile
     container_name: blog-api
+    environment:
+      - "OPENAI_API_KEY="
+      - "ClientSecret="
     depends_on:
       - mssql
     networks:
@@ -36,4 +39,4 @@ services:
 
 networks:
   blog:
-    driver: bridge
+    external: true
