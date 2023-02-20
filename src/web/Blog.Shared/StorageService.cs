@@ -1,4 +1,4 @@
-﻿namespace Blog.Shared
+namespace Blog.Shared
 {
     public class StorageService
     {
