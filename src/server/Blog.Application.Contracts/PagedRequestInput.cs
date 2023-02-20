@@ -3,7 +3,7 @@
 public class PagedRequestInput
 {
     private int _page = 1;
-    private int _pageSize = 5;
+    private int _pageSize = 10;
 
     /// <summary>
     /// 页码, 默认1

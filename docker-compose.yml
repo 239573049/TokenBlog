@@ -16,7 +16,7 @@ services:
     networks:
       - blog
 
-  registry.cn-shenzhen.aliyuncs.com/tokengo/blog-api:
+  blog-api:
     build:
       context: .
       dockerfile: ./src/server/Blog.HttpApi.Host/Dockerfile
@@ -29,7 +29,7 @@ services:
     networks:
       - blog
 
-  registry.cn-shenzhen.aliyuncs.com/tokengo/blog-web:
+  blog-web:
     build:
       context: .
       dockerfile: ./src/web/Blog.Server.Web/Dockerfile

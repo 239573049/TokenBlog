@@ -7,9 +7,10 @@
 <MRow>
     <MCol Cols="12"
           Sm="6"
+          Id="@("article")"
           Md="8">
         <div style="margin: 5px">
-            <MCarousel Height="@("300px")">
+            <MCarousel Height="@("300px")" Id="@("carousel")">
                 @foreach (var item in Carousels)
                 {
                     <div @onclick="async () => await GoTo(item.ExternalConnection)">
@@ -34,6 +35,23 @@
     
 @@media screen and (max-width: 1050px) {
     #top-search{
+        display: none;
+    }
+    
+    #article{
+        min-width: 100%;
+    }
+}
+@@media only screen and (max-width: 767px) {
+    #top-search{
+        display: none;
+    }
+    
+    #article{
+        min-width: 100%;
+    }
+    
+    #carousel{
         display: none;
     }
 }
