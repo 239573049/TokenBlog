@@ -4,7 +4,7 @@
 
 @inject IJSRuntime JsRuntime
 @inject ISettingService SettingService
-<MFooter App Dark Color="#42A5F5">
+<MFooter App Dark Color="#42A5F5" Id="@("footer")">
     <div style="float:left; width: 150px">
         <h3 style="font-weight: 900;text-align: center;color: #000000">友链</h3>
         @foreach (var item in ExternalLinks)
@@ -35,6 +35,13 @@
 </MFooter>
 
 <style>
+    @@media only screen and (max-width: 767px) {
+        #footer {
+            display: none;
+        }
+
+    }
+
     .blog-info{
         text-align: center;
         margin-top: auto;
