@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using System.Net;
+using System.Net.Http.Json;
 using Blog.Component.Pages.Module;
 
 namespace Blog;
@@ -23,6 +24,11 @@ public class ChatGptService : IChatGptService
                 .message);
         }
 
+        if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+        {
+            throw new UnauthorizedAccessException();
+        }
+        
         return await responseMessage.Content.ReadAsStringAsync();
     }
 

@@ -25,8 +25,8 @@ public partial class ChatGPT
         {
             await SendMessage();
         }
-            
     }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -40,7 +40,16 @@ public partial class ChatGPT
 
             HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             Id = Guid.NewGuid().ToString();
-            UserInfoDto = await UserInfoService.GetProfileAsync();
+            try
+            {
+                UserInfoDto = await UserInfoService.GetProfileAsync();
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                await PopupService.ToastErrorAsync("请先登录");
+                await Task.Delay(2000);
+                NavigationManager.NavigateTo("/");
+            }
             await GetListAsync();
         }
 
@@ -51,8 +60,8 @@ public partial class ChatGPT
     {
         chatDtos = await ChatGPTService.GetListAsync();
         StateHasChanged();
-        await HelperJsInterop.ScrollHeight(Id,200);
-        await HelperJsInterop.ScrollHeight(Id,50);
+        await HelperJsInterop.ScrollHeight(Id, 200);
+        await HelperJsInterop.ScrollHeight(Id, 50);
     }
 
     private async Task SendMessage()
@@ -67,9 +76,8 @@ public partial class ChatGPT
         await HelperJsInterop.ScrollHeight(Id);
         try
         {
-            
             Message = string.Empty;
-            
+
             var message = await ChatGPTService.PostResponse(new PostResponseInput()
             {
                 Message = Message
@@ -82,6 +90,12 @@ public partial class ChatGPT
                 CreatedTime = DateTime.Now.ToString("yyyy-MM-dd")
             });
             await HelperJsInterop.ScrollHeight(Id);
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            await PopupService.ToastErrorAsync("请先登录");
+            await Task.Delay(2000);
+            NavigationManager.NavigateTo("/");
         }
         catch (Exception e)
         {

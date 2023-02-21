@@ -1,4 +1,5 @@
-﻿using Blog.Users;
+﻿using System.Net;
+using Blog.Users;
 using System.Net.Http.Json;
 
 namespace Blog;
@@ -16,8 +17,13 @@ public class UserInfoService : IUserInfoService
 
     public async Task<UserInfoDto> GetProfileAsync()
     {
-        var user = await _httpClient.GetFromJsonAsync<UserInfoDto>(Prefix + "/profile");
+        var message = await _httpClient.GetAsync(Prefix + "/profile");
 
-        return user;
+        if (message.StatusCode == HttpStatusCode.Unauthorized)
+        {
+            throw new UnauthorizedAccessException();
+        }
+        
+        return await message.Content.ReadFromJsonAsync<UserInfoDto>();
     }
 }
