@@ -22,6 +22,13 @@ public partial class ChatGPT
     {
         if (firstRender)
         {
+            var token = await HelperJsInterop.GetTokenAsync();
+            
+            if (HttpClient.DefaultRequestHeaders.Any(x => x.Key == "Authorization"))
+            {
+                HttpClient.DefaultRequestHeaders.Remove("Authorization");
+            }
+            
             Id = Guid.NewGuid().ToString();
             UserInfoDto = await UserInfoService.GetProfileAsync();
             await GetListAsync();
