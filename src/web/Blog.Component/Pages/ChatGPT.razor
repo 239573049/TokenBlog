@@ -54,24 +54,24 @@
         <div class="send">
             <MTextarea Class="mx-2"
                        Label="发送内容"
-                       AppendOuterIcon="mdi-send-circle"
                        @bind-Value="Message"
                        Rows="3"
+                       OnKeyDown="OnKey"
                        Filled
                        AutoGrow
-                       OnAppendOuterClick="async()=>await SendMessage()"
                        RowHeight="@("30")">
+                <AppendOuterContent>
+                    <MButton Block OnClick="async () =>await SendMessage()" Text>发送</MButton>
+                </AppendOuterContent>
             </MTextarea>
         </div>
         </MContainer>
         </MMain>
 
-        <Blog.Component.Footer>
-        </Blog.Component.Footer>
-
-
         <style>
-
+    html{
+        overflow-y: hidden !important;
+    }
     chat::-webkit-scrollbar{
         width: 10px;
     }
@@ -105,8 +105,7 @@
 
             .chat {
                 background-color: rgb(236, 236, 236);
-                height: 69vh;
-                max-height: 69vh;
+                max-height: 73vh;
                 overflow: auto;
                 border-top: 1px solid rgb(214, 214, 214);
                 border-bottom: 1px solid rgb(214, 214, 214);

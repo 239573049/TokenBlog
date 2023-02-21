@@ -73,8 +73,9 @@ public class HelperJsInterop : IAsyncDisposable
         return await module.InvokeAsync<T>("getLocalStorage", key);
     }
 
-    public async ValueTask ScrollHeight(string id)
+    public async ValueTask ScrollHeight(string id,int time = 50)
     {
+        await Task.Delay(time);
         var module = await moduleTask.Value;
         await module.InvokeVoidAsync("scrollHeight", id);
     }

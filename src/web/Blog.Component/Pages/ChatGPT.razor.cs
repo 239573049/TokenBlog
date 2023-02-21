@@ -1,5 +1,6 @@
 ﻿using Blog.Component.Pages.Module;
 using Blog.Users;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace Blog;
 
@@ -18,6 +19,14 @@ public partial class ChatGPT
         NavigationManager.NavigateTo("/");
     }
 
+    private async Task OnKey(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+        {
+            await SendMessage();
+        }
+            
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -42,7 +51,8 @@ public partial class ChatGPT
     {
         chatDtos = await ChatGPTService.GetListAsync();
         StateHasChanged();
-        await HelperJsInterop.ScrollHeight(Id);
+        await HelperJsInterop.ScrollHeight(Id,200);
+        await HelperJsInterop.ScrollHeight(Id,50);
     }
 
     private async Task SendMessage()
@@ -57,12 +67,13 @@ public partial class ChatGPT
         await HelperJsInterop.ScrollHeight(Id);
         try
         {
+            
+            Message = string.Empty;
+            
             var message = await ChatGPTService.PostResponse(new PostResponseInput()
             {
                 Message = Message
             });
-
-            Message = string.Empty;
 
             chatDtos.Add(new ChatGptDto()
             {
