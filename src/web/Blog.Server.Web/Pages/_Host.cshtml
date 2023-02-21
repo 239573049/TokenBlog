@@ -48,7 +48,7 @@
   Blazor.start({
     configureSignalR: function (builder) {
       let c = builder.build();
-      c.serverTimeoutInMilliseconds = 6000000;
+      c.serverTimeoutInMilliseconds = 600000;
       builder.build = () => {
         return c;
       };
