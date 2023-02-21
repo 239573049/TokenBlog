@@ -56,11 +56,11 @@
                        Label="发送内容"
                        AppendOuterIcon="mdi-send-circle"
                        @bind-Value="Message"
-                       Rows="4"
+                       Rows="3"
                        Filled
                        AutoGrow
                        OnAppendOuterClick="async()=>await SendMessage()"
-                       RowHeight="@("40")">
+                       RowHeight="@("30")">
             </MTextarea>
         </div>
         </MContainer>
@@ -150,7 +150,7 @@
             .chat-content {
                 left: 3px;
                 min-width: 20px;
-                max-width: 100%;
+                max-width: 90%;
                 background: white;
                 -webkit-border-radius: 5px;
                 -moz-border-radius: 5px;
@@ -177,7 +177,7 @@
             .oneself-content {
                 right: 3px;
                 min-width: 20px;
-                max-width: 100%;
+                max-width: 90%;
                 background: rgb(150 237 107);
                 -webkit-border-radius: 5px;
                 -moz-border-radius: 5px;
