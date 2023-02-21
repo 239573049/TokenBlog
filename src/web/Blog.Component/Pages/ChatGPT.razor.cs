@@ -61,7 +61,7 @@ public partial class ChatGPT
         chatDtos = await ChatGPTService.GetListAsync();
         StateHasChanged();
         await HelperJsInterop.ScrollHeight(Id, 200);
-        await HelperJsInterop.ScrollHeight(Id, 50);
+        await HelperJsInterop.ScrollHeight(Id, 100);
     }
 
     private async Task SendMessage()
