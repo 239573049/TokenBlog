@@ -1,4 +1,4 @@
-﻿using Blog.Blog;
+using Blog.Blog;
 using Blog.Component.Pages.Module;
 using Blog.Eto;
 using Blog.Options;
@@ -59,7 +59,7 @@ public class ChatGptService : ApplicationService, IChatGptService
 
         await foreach (var result in api.Completions.StreamCompletionEnumerableAsync(new CompletionRequest(input.Message,
                            model: Model.DavinciText,
-                           temperature: 0.9, max_tokens: 1000)))
+                           temperature: 1, max_tokens: 1000)))
         {
             data += result.ToString();
         }
