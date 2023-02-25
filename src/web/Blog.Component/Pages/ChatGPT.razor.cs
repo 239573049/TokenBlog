@@ -82,6 +82,7 @@ public partial class ChatGPT
             });
 
             Message = string.Empty;
+            await Task.Delay(10);
 
             chatDtos.Add(new ChatGptDto()
             {
