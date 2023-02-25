@@ -24,7 +24,7 @@
 
 <MMain>
     <!-- 给应用提供合适的间距 -->
-    <MContainer Fluid Style="height: 100%;">
+    <MContainer Fluid App >
         <div class="chat" id="@Id">
             <!-- 对话内容 -->
             @foreach (var item in chatDtos)
@@ -57,7 +57,7 @@
         </div>
     </MContainer>
 </MMain>
-<MFooter>
+<MFooter  App>
     <MTextarea Class="mx-2"
                Label="发送内容"
                @bind-Value="Message"
@@ -101,7 +101,8 @@
 
             .chat {
                 background-color: rgb(236, 236, 236);
-                max-height: 100%;
+                max-height: calc(100vh - 250px);
+                margin-bottom: 180px;
                 min-height: 100%;
                 overflow: auto;
                 border-top: 1px solid rgb(214, 214, 214);
