@@ -76,12 +76,12 @@ public partial class ChatGPT
         await HelperJsInterop.ScrollHeight(Id);
         try
         {
-            Message = string.Empty;
-
             var message = await ChatGPTService.PostResponse(new PostResponseInput()
             {
                 Message = Message
             });
+
+            Message = string.Empty;
 
             chatDtos.Add(new ChatGptDto()
             {
@@ -89,6 +89,7 @@ public partial class ChatGPT
                 Content = message,
                 CreatedTime = DateTime.Now.ToString("yyyy-MM-dd")
             });
+            
             await HelperJsInterop.ScrollHeight(Id);
         }
         catch (UnauthorizedAccessException e)
