@@ -51,7 +51,7 @@ public class ChatGptService : ApplicationService, IChatGptService
 
         var token = Environment.GetEnvironmentVariable("OPENAI_API_KEY") ?? _chatGptOptions.Token;
 
-        var api = new OpenAIAPI("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");
+        var api = new OpenAIAPI(token);
 
         var data = string.Empty;
 
