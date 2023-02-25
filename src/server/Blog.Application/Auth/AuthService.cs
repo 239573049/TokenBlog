@@ -81,7 +81,7 @@ public class AuthService : ApplicationService, IAuthService
                 info.html_url);
 
             // 新用户赠送额度
-            userInfo.ChatGptNumber = 50;
+            userInfo.ChatGptNumber = 100;
             await _userInfoRepository.InsertAsync(userInfo);
         }
 
