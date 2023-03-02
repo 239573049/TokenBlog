@@ -34,5 +34,5 @@ export function getLocalStorage(key) {
 
 export function scrollHeight(id) {
     const message = document.getElementById(id);
-    message.scrollTop = message.scrollHeight;
+    message.scrollTop = message.scrollHeight+50;
 }

@@ -84,6 +84,13 @@ public class AuthService : ApplicationService, IAuthService
             userInfo.ChatGptNumber = 100;
             await _userInfoRepository.InsertAsync(userInfo);
         }
+        else
+        {
+            userInfo.Avatar = info.avatar_url;
+            userInfo.Name = info.name;
+            userInfo.GiteeUrl = info.html_url;
+            await _userInfoRepository.UpdateAsync(userInfo);
+        }
 
         // 设置角色
         var roles = new List<Claim>

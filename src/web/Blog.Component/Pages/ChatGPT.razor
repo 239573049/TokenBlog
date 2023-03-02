@@ -24,7 +24,7 @@
 
 <MMain>
     <!-- 给应用提供合适的间距 -->
-    <MContainer Fluid App >
+    <MContainer Fluid  >
         <div class="chat" id="@Id">
             <!-- 对话内容 -->
             @foreach (var item in chatDtos)
@@ -92,19 +92,13 @@
         border-radius: 10px; // 轨道圆角
         background-color: #1890ff // 轨道颜色 
     }
-            .content {
-                height: 80%;
-                width: 100%;
-                margin: 5px;
-                background-color: antiquewhite;
-            }
-
             .chat {
                 background-color: rgb(236, 236, 236);
-                max-height: calc(100vh - 250px);
                 margin-bottom: 180px;
                 min-height: 100%;
-                overflow: auto;
+                max-height: calc(100vh - 240px);
+                overflow-y: auto;
+                overflow-x: hidden;
                 border-top: 1px solid rgb(214, 214, 214);
                 border-bottom: 1px solid rgb(214, 214, 214);
                 padding: 5px 0 0 0;
@@ -147,7 +141,7 @@
             .chat-content {
                 left: 3px;
                 min-width: 20px;
-                max-width: 90%;
+                max-width: 85%;
                 background: white;
                 -webkit-border-radius: 5px;
                 -moz-border-radius: 5px;
@@ -174,7 +168,7 @@
             .oneself-content {
                 right: 3px;
                 min-width: 20px;
-                max-width: 90%;
+                max-width: 85%;
                 background: rgb(150 237 107);
                 -webkit-border-radius: 5px;
                 -moz-border-radius: 5px;

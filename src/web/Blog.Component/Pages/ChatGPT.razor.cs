@@ -11,6 +11,8 @@ public partial class ChatGPT
     public UserInfoDto UserInfoDto { get; set; }
 
     private string Message = string.Empty;
+    
+    private object Options;
 
     private string Id;
 
@@ -56,6 +58,20 @@ public partial class ChatGPT
         await base.OnAfterRenderAsync(firstRender);
     }
 
+    protected override void OnInitialized()
+    {
+        
+        Options = new
+        {
+            value = "", // 初始代码
+            language = "markdown", // 语法支持语言
+            automaticLayout = true, //自动适应父容器大小
+            theme = "vs-dark" // monaco主题 
+        };
+        
+        base.OnInitialized();
+    }
+
     private async Task GetListAsync()
     {
         chatDtos = await ChatGPTService.GetListAsync();
@@ -76,13 +92,13 @@ public partial class ChatGPT
         await HelperJsInterop.ScrollHeight(Id);
         try
         {
+            Message = string.Empty;
+            await Task.Delay(10);
+            
             var message = await ChatGPTService.PostResponse(new PostResponseInput()
             {
                 Message = Message
             });
-
-            Message = string.Empty;
-            await Task.Delay(10);
 
             chatDtos.Add(new ChatGptDto()
             {
