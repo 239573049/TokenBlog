@@ -4,7 +4,7 @@
 
 @inject IJSRuntime JsRuntime
 @inject ISettingService SettingService
-<MFooter App Dark Color="#42A5F5" Id="@("footer")">
+<MFooter App  Id="@("footer")">
     <div style="float:left; width: 150px">
         <h3 style="font-weight: 900;text-align: center;color: #000000">友链</h3>
         @foreach (var item in ExternalLinks)
@@ -28,8 +28,8 @@
             <MIcon>mdi-github</MIcon>
         </MButton>
 
-        <MButton Block Text>
-            <MImage Style="max-width: 30px;" Src="https://tokenblog.oss-cn-hangzhou.aliyuncs.com/bilibili.png" Alt="Jack"></MImage>
+        <MButton OnClick="() => GoTo(BiliBili)" Block Text>
+            <MImage Style="max-width: 30px;" Src="bilibili.png" Alt="Jack"></MImage>
         </MButton>
     </div>
 </MFooter>
@@ -39,9 +39,13 @@
         #footer {
             display: none;
         }
-
     }
 
+    @@media only screen and (max-height: 900px) {
+        #footer {
+            display: none;
+        }
+    }
     .blog-info{
         text-align: center;
         margin-top: auto;

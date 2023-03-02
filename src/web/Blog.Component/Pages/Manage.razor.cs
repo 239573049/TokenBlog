@@ -6,7 +6,7 @@ namespace Blog.Component;
 
 public partial class Manage
 {
-    private StringNumber Tab;
+    private StringNumber Tab ;
 
     private bool _dialogDelete;
 
