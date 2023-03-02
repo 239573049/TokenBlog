@@ -7,25 +7,12 @@
 <MRow>
     <MCol Cols="12"
           Sm="6"
+           Style="background-color: #f9f9f9"
           Id="@("article")"
           Md="8">
-        <div style="margin: 5px">
-            <MCarousel Height="@("300px")" Id="@("carousel")">
-                @foreach (var item in Carousels)
-                {
-                    <div @onclick="async () => await GoTo(item.ExternalConnection)">
-                        <MCarouselItem
-                            Src="@item.Uri"
-                            ReverseTransition="fade-transition"
-                            Transition="fade-transition">
-                        </MCarouselItem>
-                    </div>
-                }
-            </MCarousel>
-        </div>
         <Tab/>
     </MCol>
-    <MCol Id="@("top-search")"  Style="background-color: #f9f9f9" Cols="6"
+    <MCol Id="@("top-search")" Style="background-color: #f9f9f9" Cols="6"
           Md="4">
         <TopSearch></TopSearch>
     </MCol>

@@ -7,35 +7,61 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
 
-<MList Style="margin: 5px">
+<MList Style="margin: 5px;background-color: #f9f9f9">
     @if (ArticlesDto != null)
     {
         @foreach (var item in ArticlesDto.Items)
         {
-            <MListItem Class="article" Style="margin: 5px;height: 100px">
-                <MListItemAvatar Height="50" Width="50">
-                    <MAvatar>
-                        <MImage Src="@item.UserInfo.Avatar" Alt="Jack"></MImage>
-                    </MAvatar>
-                </MListItemAvatar>
-                <MListItemContent Style="text-align: left">
-                    <span @onclick="() => OpenArticle(item)">
-                        <MListItemTitle Class="article-title">
-                            @item.Title
-                        </MListItemTitle>
-                        <MListItemSubtitle>@item.Description</MListItemSubtitle>
-                    </span>
-                    <MListItemContent>
-                        <span class="article-name" @onclick="() => GoTo(item.UserInfo.GiteeUrl)">
-                            @item.UserInfo.Name
+            <MCard
+                Shaped
+                Elevation="2">
+                <MListItem Class="article" Style="margin: 5px;height: 100px">
+                    <MListItemAvatar Height="50" Width="50">
+                        <MAvatar>
+                            <MImage Src="@item.UserInfo.Avatar" Alt="Jack"></MImage>
+                        </MAvatar>
+                    </MListItemAvatar>
+                    <MListItemContent Style="text-align: left">
+                        <span @onclick="() => OpenArticle(item)">
+                            <MListItemTitle Class="article-title">
+                                @item.Title
+                            </MListItemTitle>
+                            <MListItemSubtitle>@item.Description</MListItemSubtitle>
                         </span>
-                        
+                        <MListItemContent Class="article-name">
+                            @item.CreationTime.ToString("yyyy-MM-dd HH:mm:ss")
+                        </MListItemContent>
                     </MListItemContent>
-                </MListItemContent>
-            </MListItem>
+
+                    <MListItemAction Style="text-align: right">
+                        <MButton
+                            Width="10"
+                            Height="10"
+                            Text
+                            Disabled
+                            Depressed>
+                            <MIcon Small>
+                                mdi-hand-heart
+                            </MIcon>
+                            @item.Praise
+                        </MButton>
+                        <MButton
+                            Disabled
+                            Width="10"
+                            Height="10"
+                            Text
+                            Depressed>
+                            <MIcon Small>
+                                mdi-eye-outline
+                            </MIcon>
+                            @item.Flow
+                        </MButton>
+                    </MListItemAction>
+                </MListItem>
+            </MCard>
         }
         <MPagination Value="_input.Page"
-                     ValueChanged="async (v) => {_input.Page=v;await GetListAsync(); }"
+                     ValueChanged="async (v) => {_input.Page = v;await GetListAsync(); }"
                      Length="(int)ArticlesDto.TotalCount / _input.PageSize + (ArticlesDto.TotalCount % _input.PageSize == 0 ? 0 : 1)"
                      TotalVisible="7">
         </MPagination>
@@ -57,10 +83,11 @@
         }
         .article-name{
             transition: 0.8s;
+            float: left;
             color: #0396FF;
         }
         .article-name:hover{
             transition: 0.8s;
-            transform: scale(0.97);
+            color: #b32121;
         }
 </style>

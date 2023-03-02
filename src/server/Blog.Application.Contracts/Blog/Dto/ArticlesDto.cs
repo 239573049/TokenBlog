@@ -4,7 +4,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Blog.Blog.Dto;
 
-public class ArticlesDto : EntityDto<Guid>
+public class ArticlesDto : AuditedEntityDto<Guid>
 {
     /// <summary>
     /// 标题

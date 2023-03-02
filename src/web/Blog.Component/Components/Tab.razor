@@ -3,7 +3,7 @@
 @namespace Blog.Component
 
 <CascadingValue Value="TagId" Name="@nameof(TagId)">
-    <MTabs BackgroundColor="indigo" CenterActive Dark>
+    <MTabs  Style="background-color: #f9f9f9">
         @if (_tagDtos != null)
         {
             foreach (var tag in _tagDtos.OrderBy(x => x.Rank))
