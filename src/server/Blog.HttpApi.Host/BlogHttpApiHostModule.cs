@@ -52,7 +52,7 @@ public class BlogHttpApiHostModule : AbpModule
 
         context.Services.Configure<JWTOptions>(configuration.GetSection(nameof(JWTOptions)));
         context.Services.Configure<ChatGPTOptions>(configuration.GetSection(nameof(ChatGPTOptions)));
-
+        context.Services.AddHttpClient();
         var jwt = configuration.GetSection(nameof(JWTOptions)).Get<JWTOptions>();
         context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

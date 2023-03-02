@@ -92,12 +92,16 @@ public partial class ChatGPT
         await HelperJsInterop.ScrollHeight(Id);
         try
         {
-            Message = string.Empty;
-            await Task.Delay(10);
+            string? v = Message;
             
+            Message = string.Empty;
+            await Task.Delay(20);
+            
+            StateHasChanged();
+
             var message = await ChatGPTService.PostResponse(new PostResponseInput()
             {
-                Message = Message
+                Message = v
             });
 
             chatDtos.Add(new ChatGptDto()
