@@ -66,19 +66,34 @@ public class ChatGptService : ApplicationService, IChatGptService
 
         await _localEventBus.PublishAsync(new ChatGptEto(false, input.Message, CurrentUser.GetId()));
 
+        var Iqueryable = await _chatGptRepository.GetQueryableAsync();
+
+        // 获取最新的10条数据
+        var list = Iqueryable.Where(x => x.UserId == CurrentUser.GetId()).OrderByDescending(x => x.CreationTime).Take(5).ToList();
+        var message = list.Select(x=>x.ChatGPT? new
+        {
+            role="user",
+            content=x.Content
+        }:new
+            {
+                role = "assistant",
+                content = x.Content
+            })
+            .ToList();
+        
+        message.Add(new
+        {
+            role= "user",
+            content = input.Message
+        });
+        
         var responseMessage = await _httpClientFactory.PostAsJsonAsync("https://api.openai.com/v1/chat/completions", new
         {
             model = "gpt-3.5-turbo",
             temperature = 0,
             max_tokens = 2560,
             user = CurrentUser.Id.Value.ToString("N"),
-            messages = new object[]
-            {
-                new
-                {
-                    role = "user", content =input.Message
-                }
-            }
+            messages = message
         });
 
         var response = await responseMessage.Content.ReadFromJsonAsync<GetChatGPTDto>();
