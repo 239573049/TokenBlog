@@ -1,8 +1,11 @@
+using Blog.Options;
 using Blog.Shared;
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
+
+builder.Services.Configure<GiteeAuthOptions>(builder.Configuration.GetSection(nameof(GiteeAuthOptions)));
 
 builder.Services.AddServerSideBlazor()
     .AddHubOptions(options =>
