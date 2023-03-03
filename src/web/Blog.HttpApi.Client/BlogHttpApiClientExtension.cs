@@ -13,7 +13,7 @@ public static class BlogHttpApiClientExtension
         // Server 会共享同一个token所以使用Scoped
         services.AddScoped(services => new HttpClient
         {
-            BaseAddress = new Uri(StorageService.BaseAddress)
+            BaseAddress = new Uri("http://8.219.204.224:2000")
         });
 
         services.AddScoped<IUserInfoService, UserInfoService>();
