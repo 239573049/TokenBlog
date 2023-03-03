@@ -14,7 +14,7 @@ public class AuthService
     public async Task GitHub()
     {
         var authorize_uri = "https://gitee.com/oauth/authorize";
-#if !DEBUG
+#if DEBUG
         var client_id = "9f850a9918d425f7fa5c0cb75957ae6b61282f6c7a36a28960f05b16dc697f09";
         var redirect_url = "http://server.tokengo.top:11000/login";
 #else
