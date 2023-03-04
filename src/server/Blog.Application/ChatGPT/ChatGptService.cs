@@ -69,7 +69,11 @@ public class ChatGptService : ApplicationService, IChatGptService
         var Iqueryable = await _chatGptRepository.GetQueryableAsync();
 
         // 获取最新的10条数据
-        var list = Iqueryable.Where(x => x.UserId == CurrentUser.GetId()).OrderByDescending(x => x.CreationTime).Take(5).ToList();
+        var list = Iqueryable.Where(x => x.UserId == CurrentUser.GetId())
+            .OrderByDescending(x => x.CreationTime)
+            .Take(3)
+            .ToList();
+        
         var message = list.Select(x=>x.ChatGPT? new
         {
             role="user",
