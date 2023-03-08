@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "BD5jVB794pCJOXDOOeR6lSHwR6b1xkDg3o6FqNHL1CIehwUNYW//LphfNlKzxJtN1J/Dff5xOYQHvDk/bOiQ+Q==",
+  "success": true,
+  "projectFilePath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\ApiGateways\\Caller\\TokenBlog.Caller\\TokenBlog.Caller.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\google.protobuf\\3.19.1\\google.protobuf.3.19.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\masa.buildingblocks.data\\1.0.0-preview.15\\masa.buildingblocks.data.1.0.0-preview.15.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\masa.buildingblocks.data.contracts\\1.0.0-preview.15\\masa.buildingblocks.data.contracts.1.0.0-preview.15.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\masa.buildingblocks.exceptions\\1.0.0-preview.15\\masa.buildingblocks.exceptions.1.0.0-preview.15.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\masa.buildingblocks.globalization.i18n\\1.0.0-preview.15\\masa.buildingblocks.globalization.i18n.1.0.0-preview.15.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\masa.buildingblocks.service.caller\\1.0.0-preview.15\\masa.buildingblocks.service.caller.1.0.0-preview.15.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\masa.contrib.service.caller.httpclient\\1.0.0-preview.15\\masa.contrib.service.caller.httpclient.1.0.0-preview.15.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\masa.utils.extensions.dotnet\\1.0.0-preview.15\\masa.utils.extensions.dotnet.1.0.0-preview.15.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\masa.utils.models.config\\1.0.0-preview.15\\masa.utils.models.config.1.0.0-preview.15.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.http\\6.0.0\\microsoft.extensions.http.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

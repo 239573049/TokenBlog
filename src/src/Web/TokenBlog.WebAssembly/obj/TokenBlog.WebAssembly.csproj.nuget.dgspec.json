@@ -1,0 +1,275 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\TokenBlog.WebAssembly.csproj": {}
+  },
+  "projects": {
+    "D:\\code\\token-blog\\src\\TokenBlog\\src\\ApiGateways\\Caller\\TokenBlog.Caller\\TokenBlog.Caller.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\code\\token-blog\\src\\TokenBlog\\src\\ApiGateways\\Caller\\TokenBlog.Caller\\TokenBlog.Caller.csproj",
+        "projectName": "TokenBlog.Caller",
+        "projectPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\ApiGateways\\Caller\\TokenBlog.Caller\\TokenBlog.Caller.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\ApiGateways\\Caller\\TokenBlog.Caller\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\code\\token-blog\\src\\TokenBlog\\src\\Contracts\\TokenBlog.Contracts.Order\\TokenBlog.Contracts.Order.csproj": {
+                "projectPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Contracts\\TokenBlog.Contracts.Order\\TokenBlog.Contracts.Order.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Masa.Contrib.Service.Caller.HttpClient": {
+              "target": "Package",
+              "version": "[1.0.0-preview.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\code\\token-blog\\src\\TokenBlog\\src\\Contracts\\TokenBlog.Contracts.Order\\TokenBlog.Contracts.Order.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Contracts\\TokenBlog.Contracts.Order\\TokenBlog.Contracts.Order.csproj",
+        "projectName": "TokenBlog.Contracts.Order",
+        "projectPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Contracts\\TokenBlog.Contracts.Order\\TokenBlog.Contracts.Order.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Contracts\\TokenBlog.Contracts.Order\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\TokenBlog.WebAssembly.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\TokenBlog.WebAssembly.csproj",
+        "projectName": "TokenBlog.WebAssembly",
+        "projectPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\TokenBlog.WebAssembly.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\code\\token-blog\\src\\TokenBlog\\src\\ApiGateways\\Caller\\TokenBlog.Caller\\TokenBlog.Caller.csproj": {
+                "projectPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\ApiGateways\\Caller\\TokenBlog.Caller\\TokenBlog.Caller.csproj"
+              },
+              "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog\\TokenBlog.csproj": {
+                "projectPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog\\TokenBlog.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.AspNetCore.StaticFiles": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog\\TokenBlog.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog\\TokenBlog.csproj",
+        "projectName": "TokenBlog",
+        "projectPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog\\TokenBlog.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Masa.Blazor": {
+              "target": "Package",
+              "version": "[0.6.0, )"
+            },
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "UJl5Kjzjsjuzt3yPzks3ADFVrwmTrhYNZV/DdrSFIKk=",
+  "Source": "TokenBlog.Service.Order",
+  "BasePath": "_content/TokenBlog.Service.Order",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

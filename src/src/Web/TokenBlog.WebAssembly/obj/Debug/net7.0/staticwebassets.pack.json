@@ -1,0 +1,205 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\obj\\Debug\\net7.0\\build-gz\\hJL2D71d.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\css\\masa-blazor-pro.css",
+      "PackagePath": "staticwebassets\\css\\masa-blazor-pro.css"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\css\\spinkit.min.css",
+      "PackagePath": "staticwebassets\\css\\spinkit.min.css"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\decode.min.js",
+      "PackagePath": "staticwebassets\\decode.min.js"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\i18n\\en-US.json",
+      "PackagePath": "staticwebassets\\i18n\\en-US.json"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\i18n\\supportedCultures.json",
+      "PackagePath": "staticwebassets\\i18n\\supportedCultures.json"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\i18n\\zh-CN.json",
+      "PackagePath": "staticwebassets\\i18n\\zh-CN.json"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\analytics\\json.png",
+      "PackagePath": "staticwebassets\\img\\analytics\\json.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\analytics\\left.png",
+      "PackagePath": "staticwebassets\\img\\analytics\\left.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\analytics\\right.png",
+      "PackagePath": "staticwebassets\\img\\analytics\\right.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\apps-eCommerce\\1.png",
+      "PackagePath": "staticwebassets\\img\\apps-eCommerce\\1.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\apps-eCommerce\\2.png",
+      "PackagePath": "staticwebassets\\img\\apps-eCommerce\\2.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\apps-eCommerce\\3.png",
+      "PackagePath": "staticwebassets\\img\\apps-eCommerce\\3.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\apps-eCommerce\\5.png",
+      "PackagePath": "staticwebassets\\img\\apps-eCommerce\\5.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\apps-eCommerce\\6.png",
+      "PackagePath": "staticwebassets\\img\\apps-eCommerce\\6.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\apps-eCommerce\\7.png",
+      "PackagePath": "staticwebassets\\img\\apps-eCommerce\\7.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\auth\\forgot-password-v2.9faba3c1.svg",
+      "PackagePath": "staticwebassets\\img\\auth\\forgot-password-v2.9faba3c1.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\auth\\register-v2.0a9e487c.svg",
+      "PackagePath": "staticwebassets\\img\\auth\\register-v2.0a9e487c.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\1.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\1.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\10.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\10.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\11.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\11.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\12.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\12.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\13.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\13.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\14.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\14.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\2.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\2.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\3.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\3.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\4.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\4.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\7.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\7.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\8.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\8.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\avatar\\9.svg",
+      "PackagePath": "staticwebassets\\img\\avatar\\9.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\eCommerce\\rectangle.png",
+      "PackagePath": "staticwebassets\\img\\eCommerce\\rectangle.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\eCommerce\\trophy.png",
+      "PackagePath": "staticwebassets\\img\\eCommerce\\trophy.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\login\\2873.png",
+      "PackagePath": "staticwebassets\\img\\login\\2873.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\login\\Gxwd.png",
+      "PackagePath": "staticwebassets\\img\\login\\Gxwd.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\login\\left.svg",
+      "PackagePath": "staticwebassets\\img\\login\\left.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\mainLayout\\logo-en.svg",
+      "PackagePath": "staticwebassets\\img\\mainLayout\\logo-en.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\mainLayout\\logo.svg",
+      "PackagePath": "staticwebassets\\img\\mainLayout\\logo.svg"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\status\\401.png",
+      "PackagePath": "staticwebassets\\img\\status\\401.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\status\\404.png",
+      "PackagePath": "staticwebassets\\img\\status\\404.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\img\\status\\500.png",
+      "PackagePath": "staticwebassets\\img\\status\\500.png"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\wwwroot\\nav\\nav.json",
+      "PackagePath": "staticwebassets\\nav\\nav.json"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.TokenBlog.WebAssembly.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.TokenBlog.WebAssembly.props",
+      "PackagePath": "build\\TokenBlog.WebAssembly.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.TokenBlog.WebAssembly.props",
+      "PackagePath": "buildMultiTargeting\\TokenBlog.WebAssembly.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.TokenBlog.WebAssembly.props",
+      "PackagePath": "buildTransitive\\TokenBlog.WebAssembly.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

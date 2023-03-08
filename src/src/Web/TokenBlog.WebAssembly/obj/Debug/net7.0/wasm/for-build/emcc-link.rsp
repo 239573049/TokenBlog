@@ -1,0 +1,34 @@
+-O0
+-s ASSERTIONS=0
+-s EXPORT_ES6=1
+-g
+-v
+-s DISABLE_EXCEPTION_CATCHING=0
+-Wl,--allow-undefined
+-s INITIAL_MEMORY=536870912
+-s ERROR_ON_UNDEFINED_SYMBOLS=0
+--js-library "C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\src\pal_random.lib.js"
+--extern-pre-js "C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\src\es6\runtime.es6.iffe.js"
+--pre-js "C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\src\es6\dotnet.es6.pre.js"
+--js-library "C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\src\es6\dotnet.es6.lib.js"
+--post-js "C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\src\es6\dotnet.es6.post.js"
+--extern-post-js "C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\src\es6\dotnet.es6.extpost.js"
+"C:\Users\Administrator\.nuget\packages\skiasharp.nativeassets.webassembly\2.88.0-preview.256\buildTransitive\netstandard1.0\..\..\build\netstandard1.0\libSkiaSharp.a\2.0.23\libSkiaSharp.a"
+"D:\code\token-blog\src\TokenBlog\src\Web\TokenBlog.WebAssembly\obj\Debug\net7.0\wasm\for-build\pinvoke.o"
+"D:\code\token-blog\src\TokenBlog\src\Web\TokenBlog.WebAssembly\obj\Debug\net7.0\wasm\for-build\driver.o"
+"D:\code\token-blog\src\TokenBlog\src\Web\TokenBlog.WebAssembly\obj\Debug\net7.0\wasm\for-build\corebindings.o"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libicudata.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libicui18n.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libicuuc.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmono-component-debugger-static.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmono-component-diagnostics_tracing-stub-static.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmono-component-hot_reload-static.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmono-ee-interp.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmono-icall-table.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmono-ilgen.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmono-profiler-aot.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmono-wasm-eh-js.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libmonosgen-2.0.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libSystem.IO.Compression.Native.a"
+"C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\7.0.3\runtimes\browser-wasm\native\libSystem.Native.a"
+-o "D:\code\token-blog\src\TokenBlog\src\Web\TokenBlog.WebAssembly\obj\Debug\net7.0\wasm\for-build\dotnet.js"
