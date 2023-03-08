@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\TokenBlog.props" />
-</Project>
