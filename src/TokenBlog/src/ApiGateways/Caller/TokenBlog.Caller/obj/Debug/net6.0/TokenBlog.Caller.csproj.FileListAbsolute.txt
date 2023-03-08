@@ -1,0 +1,15 @@
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\bin\Debug\net6.0\TokenBlog.Caller.deps.json
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\bin\Debug\net6.0\TokenBlog.Caller.dll
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\bin\Debug\net6.0\TokenBlog.Caller.pdb
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\bin\Debug\net6.0\TokenBlog.Contracts.Order.dll
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\bin\Debug\net6.0\TokenBlog.Contracts.Order.pdb
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\TokenBlog.Caller.csproj.AssemblyReference.cache
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\TokenBlog.Caller.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\TokenBlog.Caller.AssemblyInfoInputs.cache
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\TokenBlog.Caller.AssemblyInfo.cs
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\TokenBlog.Caller.csproj.CoreCompileInputs.cache
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\TokenBlog.Caller.csproj.CopyComplete
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\TokenBlog.Caller.dll
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\refint\TokenBlog.Caller.dll
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\TokenBlog.Caller.pdb
+D:\code\token-blog\src\TokenBlog\src\ApiGateways\Caller\TokenBlog.Caller\obj\Debug\net6.0\ref\TokenBlog.Caller.dll
