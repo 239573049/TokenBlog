@@ -351,8 +351,7 @@ OpenCover/
 
 # Azure Stream Analytics local run output
 ASALocalRun/
-bin/
-obj/
+
 # MSBuild Binary and Structured Log
 *.binlog
 
@@ -476,4 +475,14 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-*/bin
+bin
+obj
+/src/src/Contracts/TokenBlog.Contracts.Order/obj
+/src/src/Contracts/TokenBlog.Contracts.Order/bin
+/src/src/Services/TokenBlog.Service/bin
+/src/src/Services/TokenBlog.Service/obj
+/src/src/Web/TokenBlog/obj
+/src/src/Web/TokenBlog.Server/bin
+/src/src/Web/TokenBlog.Server/obj
+/src/src/Web/TokenBlog.WebAssembly/bin
+/src/src/Web/TokenBlog.WebAssembly/obj
