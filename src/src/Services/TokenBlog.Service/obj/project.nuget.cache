@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dYaxUIPwpVfBuR0V91Nqo4OGOErhf/sV9p2NCOEROvVjIiFQ8q4BKpXkXT1nRo3VGR9gjDZrExeEEUbyZEsrrw==",
+  "dgSpecHash": "VfJLNgSLigAijf4x0Khkddv+baBP6LhAf3u7mJZdEvBKklaRX9Nie7v7fAs0pfXhPWu09zZL4cR9ltZQw/FqYg==",
   "success": true,
-  "projectFilePath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Services\\TokenBlog.Service\\TokenBlog.Service.Order.csproj",
+  "projectFilePath": "D:\\code\\token-blog\\src\\src\\Services\\TokenBlog.Service\\TokenBlog.Service.Order.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\dapr.aspnetcore\\1.5.0\\dapr.aspnetcore.1.5.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\dapr.client\\1.5.0\\dapr.client.1.5.0.nupkg.sha512",

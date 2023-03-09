@@ -9,13 +9,13 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = TokenBlog.WebAssembly
 build_property.RootNamespace = TokenBlog.WebAssembly
-build_property.ProjectDir = D:\code\token-blog\src\TokenBlog\src\Web\TokenBlog.WebAssembly\
+build_property.ProjectDir = d:\code\token-blog\src\src\Web\TokenBlog.WebAssembly\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\code\token-blog\src\TokenBlog\src\Web\TokenBlog.WebAssembly
+build_property.MSBuildProjectDirectory = d:\code\token-blog\src\src\Web\TokenBlog.WebAssembly
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/code/token-blog/src/TokenBlog/src/Web/TokenBlog.WebAssembly/_Imports.razor]
+[d:/code/token-blog/src/src/Web/TokenBlog.WebAssembly/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

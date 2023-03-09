@@ -1,0 +1,49 @@
+﻿<MAppBar App>
+
+    <MAvatar Class="profile pc" Color="grey" Tile>
+        <MImage Src="_content/TokenBlog/logo.png"></MImage>
+    </MAvatar>
+    <MToolbarTitle Class="pc">Token 博客</MToolbarTitle>
+    <span class="pc" style="margin-left:50px"></span>
+    <MTabs>
+        <MTab>首页</MTab>
+        <MTab>聊天</MTab>
+        <MTab>其他</MTab>
+    </MTabs>
+    <MSpacer></MSpacer>
+    <div class="pc" style="margin:10px">
+        <MTextField TValue="string"
+                    HideDetails="true"
+                    AppendOuterIcon="mdi-magnify"
+                    Label="搜索"
+                        SingleLine></MTextField>
+
+    </div>
+    @if (IsLogin)
+    {
+
+    }
+    else
+    {
+        <MButton Text>注册</MButton>
+        <MButton Text>登录</MButton>
+    }
+</MAppBar>
+
+@code {
+    private bool IsLogin = false;
+
+}
+
+<style>
+    pc{
+        transition:.8s;
+    }
+
+    @@media only screen and (max-width: 800px) {
+        .pc {
+            transition: .8s;
+            display: none;
+        }
+    }
+</style>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lyQ84tlSV4sDFHjELbgTk+9z6ejBcYl1WSvG21tiQbH/xecV2HyaSgkRmAsRYwmspbFwLce/di/iN7sXsvu3gA==",
+  "dgSpecHash": "tYzw3iOMCkSepqzk2d8vXtCJYnWyarJ3NlkUVadgT8TTdUPof873Hah6Wd88um9M6C80hM0dbaETJAKcR6g6HQ==",
   "success": true,
-  "projectFilePath": "D:\\code\\token-blog\\src\\TokenBlog\\src\\Web\\TokenBlog.WebAssembly\\TokenBlog.WebAssembly.csproj",
+  "projectFilePath": "D:\\code\\token-blog\\src\\src\\Web\\TokenBlog.WebAssembly\\TokenBlog.WebAssembly.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\blazorcomponent\\0.6.0\\blazorcomponent.0.6.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\deepcloner\\0.10.4\\deepcloner.0.10.4.nupkg.sha512",
