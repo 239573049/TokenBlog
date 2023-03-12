@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\TokenBlog.Service.Order.props" />
-</Project>
