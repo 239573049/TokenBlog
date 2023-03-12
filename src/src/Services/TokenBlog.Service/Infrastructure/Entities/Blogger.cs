@@ -2,7 +2,7 @@
 
 namespace TokenBlog.Service.Order.Infrastructure.Entities;
 
-public class Blogger : FullAggregateRoot<int, int>
+public class Blogger : FullAggregateRoot<Guid, Guid>
 {
     /// <summary>
     /// 博客标题
@@ -17,7 +17,7 @@ public class Blogger : FullAggregateRoot<int, int>
     /// <summary>
     /// 用户id
     /// </summary>
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
 
     /// <summary>
     /// 流量

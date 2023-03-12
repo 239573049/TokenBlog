@@ -2,7 +2,7 @@
 
 namespace TokenBlog.Service.Order.Infrastructure.Entities;
 
-public class TabItem : Entity<int>
+public class TabItem : Entity<Guid>
 {
     public int TabId { get; set; }
 

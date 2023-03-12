@@ -2,7 +2,7 @@
 
 namespace TokenBlog.Service.Order.Infrastructure.Entities;
 
-public class UserInfo : FullAggregateRoot<int, int>
+public class UserInfo : FullAggregateRoot<Guid, Guid>
 {
     /// <summary>
     /// 昵称

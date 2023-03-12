@@ -1,3 +1,5 @@
+using TokenBlog.Service.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDaprClient();
 builder.Services.AddControllers();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen();
@@ -15,6 +16,12 @@ builder.Services
     {
         options.RegisterValidatorsFromAssemblyContaining<Program>();
     });
+
+builder.Services.AddMasaDbContext<BlogDbContext>(optionsBuilder =>
+{
+    optionsBuilder.UseFilter();//启用数据过滤，由`Masa.Contrib.Data.Contracts`提供
+    optionsBuilder.UseSqlServer();//使用SqlServer数据库，也可自行选择其它实现
+});
 
 builder.Services.AddEventBus(eventBusBuilder =>
 {

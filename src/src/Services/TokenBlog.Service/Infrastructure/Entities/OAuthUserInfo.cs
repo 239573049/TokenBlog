@@ -3,7 +3,7 @@ using TokenBlog.Contracts.Order.Enum;
 
 namespace TokenBlog.Service.Order.Infrastructure.Entities;
 
-public class OAuthUserInfo :Entity<int>
+public class OAuthUserInfo :Entity<Guid>
 {
     /// <summary>
     /// 授权类型
@@ -13,12 +13,12 @@ public class OAuthUserInfo :Entity<int>
     /// <summary>
     /// 平台唯一id
     /// </summary>
-    public string Id { get; set; }
+    public int OAuthId { get; set; }
 
     /// <summary>
     /// 绑定id
     /// </summary>
-    public int UserInfoId { get; set; }
+    public Guid UserInfoId { get; set; }
 
     public virtual UserInfo UserInfo { get; set; }
 }
