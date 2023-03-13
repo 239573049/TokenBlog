@@ -1,0 +1,123 @@
+﻿@page "/"
+@using TokenBlog.Contracts.Order.Model
+@using Microsoft.JSInterop
+@inherits LayoutComponentBase
+@inject NavigationManager Nav
+@inject EventProxyModule EventProxy
+
+<div class="wisdom">
+    <h2>南岛鹋</h2>
+    <h4 style="color: #a0a0a0;">我们登上并非我们所选择的舞台，演出并非我们所选择的剧本</h4>
+</div>
+
+<MCard Id="demo" Style="margin: 20px;" Class="card-misc-reveal" MaxHeight="200" Outlined>
+    <MCardText Style="padding:0px !important;">
+        <MImage MaxHeight="200" Style="display: block;" Src="https://tokenblog.oss-cn-hangzhou.aliyuncs.com/img/ba.jpg">
+        </MImage>
+        <MOverlay Absolute
+                  Value="_reveal">
+            <span>标题</span>
+        </MOverlay>
+    </MCardText>
+
+</MCard>
+
+@code{
+
+    private bool _reveal = false;
+
+    private DotNetObjectReference<Index> _reference;
+
+    private List<BloggerModel> _bloggerList = new List<BloggerModel>()
+    {
+        new BloggerModel()
+        {
+            Content = "",
+            Title = "南岛鹋",
+            Flow = 1,
+            Id = Guid.NewGuid(),
+        }
+    };
+
+    [JSInvokable]
+    public async Task AddOnmouseenter()
+    {
+        _reveal = true;
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public async Task addOnmouseleave()
+    {
+        _reveal = false;
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _reference = DotNetObjectReference.Create(this);
+            await EventProxy.AddOnmouseenter("demo", _reference, nameof(AddOnmouseenter));
+            await EventProxy.AddOnmouseleave("demo", _reference, nameof(addOnmouseleave));
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private void Callback(MouseEventArgs obj)
+    {
+        _reveal = true;
+    }
+
+}
+
+<style>
+
+    .card-misc-reveal .m-card--reveal {
+        bottom: 0;
+        opacity: 1 !important;
+        position: absolute;
+        width: 100%;
+    }
+    .wisdom{
+        background: #FFF;
+        color: rgba(0,0,0,.87);
+        -webkit-animation: wisdom-fwd 2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+        	        animation: wisdom-fwd 2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    }
+    @@-webkit-keyframes wisdom-fwd {
+      0% {
+        -webkit-transform: rotateX(-100deg);
+                transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+                transform-origin: top;
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+                transform-origin: top;
+        opacity: 1;
+      }
+    }
+    @@keyframes wisdom-fwd {
+      0% {
+        -webkit-transform: rotateX(-100deg);
+                transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+                transform-origin: top;
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+                transform-origin: top;
+        opacity: 1;
+      }
+    }
+    .list{
+        margin: 20px;
+    }
+</style>

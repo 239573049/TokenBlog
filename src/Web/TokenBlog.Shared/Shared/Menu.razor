@@ -1,0 +1,138 @@
+﻿@using TokenBlog.Contracts.Order.Model
+@namespace TokenBlog.Shared
+
+<MCol Style="height: 100%;padding:0px !important;" Cols="2" Class="menu">
+    <MSheet Style="height: 100%" Rounded="@("lg")">
+        <MList Style="height: 100%" Dense Nav>
+            @foreach (var item in Menus)
+            {
+                <MListItem Href="@item.Href">
+                    <MListItemContent>
+                        <MListItemTitle> 
+                            <MIcon Left>
+                                @item.Icon
+                            </MIcon>
+                            @item.Title
+                        </MListItemTitle>
+                    </MListItemContent>
+                </MListItem>
+            }
+            <MDivider Class="my-2"></MDivider>
+
+            <MListItem Link>
+                <MListItemContent>
+                    <MListItemTitle>
+                        Refresh
+                    </MListItemTitle>
+                </MListItemContent>
+            </MListItem>
+            <div class="footer wrapper-xs text-center nav-xs lt">
+                <MButton Class="ma-2"
+                         Color="indigo"
+                         Text
+                         Dark>
+                    <MIcon Dark>
+                        mdi-cog
+                    </MIcon>
+                </MButton>
+                <MButton Class="ma-2"
+                         Color="indigo"
+                         Text
+                         Dark>
+                    <MIcon Dark>
+                        mdi-github
+                    </MIcon>
+                </MButton>
+            </div>
+        </MList>
+    </MSheet>
+</MCol>
+
+@code{
+
+    public List<MenuModel> Menus { get; set; } = new()
+    {
+        new MenuModel()
+        {
+            Href = "/",
+            Icon = "home",
+            Id = Guid.NewGuid(),
+            Title = "首页",
+        },
+        new MenuModel()
+        {
+            Href = "/links",
+            Icon = "mdi-all-inclusive",
+            Id = Guid.NewGuid(),
+            Title = "友情链接",
+        },
+        new MenuModel()
+        {
+            Href = "/about",
+            Icon = "mdi-information-outline",
+            Id = Guid.NewGuid(),
+            Title = "关于",
+        }
+    };
+
+
+}
+
+<style>
+    .footer{
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
+        display: block;
+        transform: translateZ(0);
+        height: auto;
+    }
+    .footer button{
+        float: left;
+    }
+
+    .menu {
+    	-webkit-animation: menu 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    	        animation: menu 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    
+    .aside{
+            position: fixed;
+            height: 100%;
+            overflow: hidden;
+    }
+
+    @@-webkit-keyframes menu {
+      0% {
+        -webkit-transform: translateX(-800px) rotateY(30deg) scale(0);
+                transform: translateX(-800px) rotateY(30deg) scale(0);
+        -webkit-transform-origin: -100% 50%;
+                transform-origin: -100% 50%;
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) rotateY(0) scale(1);
+                transform: translateX(0) rotateY(0) scale(1);
+        -webkit-transform-origin: 1800px 50%;
+                transform-origin: 1800px 50%;
+        opacity: 1;
+      }
+    }
+    @@keyframes menu {
+      0% {
+        -webkit-transform: translateX(-800px) rotateY(30deg) scale(0);
+                transform: translateX(-800px) rotateY(30deg) scale(0);
+        -webkit-transform-origin: -100% 50%;
+                transform-origin: -100% 50%;
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) rotateY(0) scale(1);
+                transform: translateX(0) rotateY(0) scale(1);
+        -webkit-transform-origin: 1800px 50%;
+                transform-origin: 1800px 50%;
+        opacity: 1;
+      }
+    }
+
+</style>

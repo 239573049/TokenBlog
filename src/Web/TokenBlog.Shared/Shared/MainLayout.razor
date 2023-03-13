@@ -1,0 +1,28 @@
+﻿@namespace TokenBlog.Shared
+@inherits LayoutComponentBase
+@inject I18n I18n
+
+
+<MApp Id="inspire">
+    <Header/>
+    <MMain Class="grey lighten-3">
+        <MContainer>
+            <MRow Class="content-row">
+                <Menu/>
+
+                <MCol Style="padding:0px!important;">
+                    @Body
+                </MCol>
+            </MRow>
+        </MContainer>
+    </MMain>
+</MApp>
+
+<style>
+    .container{
+        height: 100%;
+    }
+    .content-row{
+        height: 100%;
+    }
+</style>

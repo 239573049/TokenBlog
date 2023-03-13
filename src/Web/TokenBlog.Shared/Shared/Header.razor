@@ -1,0 +1,101 @@
+﻿@namespace TokenBlog.Shared
+
+<MAppBar App
+         Color="white link"
+         Flat>
+    <MContainer Class="py-0 fill-height">
+
+        @foreach (var link in _links)
+        {
+            <MButton Text>
+                @link
+            </MButton>
+        }
+
+        <MSpacer></MSpacer>
+
+        <MResponsive MaxWidth="260">
+            <MTextField Dense
+                        Flat
+                        HideDetails="true"
+                        Rounded
+                        SoloInverted
+                        Value="@("")">
+            </MTextField>
+        </MResponsive>
+    </MContainer>
+    <MMenu Bottom MinWidth="200" Rounded="@true" OffsetY>
+        <ActivatorContent>
+            <MButton Icon XLarge @attributes="@context.Attrs">
+                <MAvatar >
+                    <MImage Src="https://cdn.masastack.com/stack/images/website/masa-blazor/jack.png" Alt="Jack"></MImage>
+                </MAvatar>
+            </MButton>
+        </ActivatorContent>
+        <ChildContent>
+            <MCard>
+                <MListItemContent Class="justify-center">
+                    <div class="mx-auto text-center">
+                        <MAvatar Color="brown">
+                            <MImage Src="https://cdn.masastack.com/stack/images/website/masa-blazor/jack.png" Alt="Jack"></MImage>
+                        </MAvatar>
+                        <h3>token</h3>
+                        <p class="text-caption mt-1">239573049@qq.com</p>
+                        <MDivider class="my-3"></MDivider>
+                        <MButton Depressed Rounded Text>编辑信息</MButton>
+                        <MDivider class="my-3"></MDivider>
+                        <MButton Depressed Rounded Text>注销</MButton>
+                    </div>
+                </MListItemContent>
+            </MCard>
+        </ChildContent>
+    </MMenu>
+</MAppBar>
+
+@code {
+
+    List<string> _links = new()
+    {
+        "首页",
+        "Blazor编辑器",
+        "c#编辑器",
+        "关于"
+    };
+
+}
+
+<style>
+    .link {
+        -webkit-animation: link 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: link 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @@-webkit-keyframes link {
+        0% {
+            -webkit-transform: translateZ(700px) translateY(-300px);
+            transform: translateZ(700px) translateY(-300px);
+            opacity: 0;
+        }
+
+        100% {
+            -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes link {
+        0% {
+            -webkit-transform: translateZ(700px) translateY(-300px);
+            transform: translateZ(700px) translateY(-300px);
+            opacity: 0;
+        }
+
+        100% {
+            -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+            opacity: 1;
+        }
+    }
+
+</style>

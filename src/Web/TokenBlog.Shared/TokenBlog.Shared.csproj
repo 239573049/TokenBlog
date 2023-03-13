@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Masa.Blazor" Version="0.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\App\Todo\Todo.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\Todo\TodoDetail.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\Todo\TodoNav.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\Todo\TodoNavItem.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\User\Add.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\User\Edit.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\User\List.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\User\View.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\ECommerce\Order\Address.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\ECommerce\Order\Cart.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\ECommerce\Order\Order.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\ECommerce\Order\Payment.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\ECommerce\Shop\Details.razor" />
+    <_ContentIncludedByDefault Remove="Pages\App\ECommerce\Shop\Shop.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\Components\ForgotPassword.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\Components\Login.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\Components\Register.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\Components\ResetPassword.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\ForgotPassword-v1.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\ForgotPassword-v2.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\Login-v1.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\Login-v2.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\Register-v1.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\Register-v2.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\ResetPassword-v1.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Authentication\ResetPassword-v2.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Others\AccountSettings\AccountSettings.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Others\Error.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Others\NotAuthorized.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Others\NotFound.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Dashboard\Analytics.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApiGateways\Caller\TokenBlog.Caller\TokenBlog.Caller.csproj" />
+  </ItemGroup>
+
+</Project>
