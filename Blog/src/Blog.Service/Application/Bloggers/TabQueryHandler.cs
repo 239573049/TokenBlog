@@ -14,6 +14,7 @@ public class TabQueryHandler
     {
         query.Result = (await _tabRepository.GetListAsync()).Select(x => new TabDto()
         {
+            Id = x.Id,
             Name = x.Name
         }).ToList();
     }

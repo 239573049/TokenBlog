@@ -1,6 +1,8 @@
-﻿namespace Blog.Service.Domain.Bloggers.Aggregates;
+﻿using Masa.BuildingBlocks.Ddd.Domain.Entities.Full;
 
-public class Article : AggregateRoot<Guid>
+namespace Blog.Service.Domain.Bloggers.Aggregates;
+
+public class Article : FullAggregateRoot<Guid, Guid?>
 {
     /// <summary>
     /// 标题
@@ -101,6 +103,4 @@ public class Article : AggregateRoot<Guid>
     }
 
     public virtual Category Category { get; set; }
-    
-    
 }

@@ -1,0 +1,113 @@
+.blog-article {
+    height: 200px;
+    width: 800px;
+    border-radius: 10px;
+    transition: all 0.5s;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.blog-img {
+    height: 200px;
+    border-radius: 10px;
+    position: absolute;
+    width: 800px;
+    background-image: url(https://www.ndmiao.cn/usr/themes/handsome/assets/img/sj/2.jpg);
+}
+
+.blog-article:hover {
+    transition: 0.3s;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.blog-article:hover .blog-article-title {
+    transition: 0.3s;
+    padding-top: 30px;
+}
+
+.blog-article-content {
+    -webkit-animation: slide-out-bottom 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: slide-out-bottom 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    padding-top: 30px;
+    color: #fff;
+}
+
+.blog-article-content-select {
+    opacity: 0.3;
+    visibility: visible;
+    -webkit-animation: slide-in-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+.blog-article-title {
+    transition: 0.3s;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    margin: 20px;
+    text-align: center;
+    width: 100%;
+    padding-top: 60px;
+    cursor: pointer;
+}
+
+.article {
+    margin: 20px;
+}
+
+@-webkit-keyframes slide-in-top {
+    0% {
+        -webkit-transform: translateY(-1000px);
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-top {
+    0% {
+        -webkit-transform: translateY(-1000px);
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slide-out-bottom {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateY(1000px);
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-out-bottom {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateY(1000px);
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+}

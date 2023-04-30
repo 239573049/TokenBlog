@@ -1,16 +1,16 @@
 import { Input, Nav } from '@douyinfe/semi-ui'
 import { Component } from 'react'
 import { IconSemiLogo, IconSearch } from '@douyinfe/semi-icons';
-
+import './index.css'
 
 export default class BlogHeader extends Component {
 
   state = {
-    width: '150px'
+    select: false
   }
 
   render() {
-    var { width } = this.state;
+    var { select } = this.state;
     return (
       <div>
         <Nav mode="horizontal" defaultSelectedKeys={['Home']}>
@@ -20,13 +20,13 @@ export default class BlogHeader extends Component {
           <Nav.Footer>
             <Input onFocus={() => {
               this.setState({
-                width: '180px'
+                select: true
               })
             }} onBlur={() => {
               this.setState({
-                width: '150px'
+                select: false
               })
-            }} style={{ width: width }} suffix={<IconSearch />} showClear></Input>
+            }} className={'search ' + (select ? "search-select" : "")} suffix={<IconSearch />} showClear></Input>
           </Nav.Footer>
         </Nav>
       </div>

@@ -1,13 +1,15 @@
-import React, { Component, useEffect } from 'react'
+import { Component } from 'react'
 import PathEvent from '../../componses/events/pathEvent';
-
+import './index.css'
+import { IconUser } from '@douyinfe/semi-icons';
 
 interface IProps {
 
 }
 
 interface IState {
-  type: string | null
+  type: string | null;
+  show: boolean;
 }
 
 var type = new URLSearchParams(window.location.search).get("type");
@@ -15,7 +17,8 @@ var type = new URLSearchParams(window.location.search).get("type");
 export default class Home extends Component<IProps, IState> {
 
   state: Readonly<IState> = {
-    type: type
+    type: type,
+    show: false
   }
 
   componentDidMount(): void {
@@ -34,10 +37,33 @@ export default class Home extends Component<IProps, IState> {
   }
 
   render() {
-    var { type } = this.state;
+    var { type, show } = this.state;
     return (
-      <div>{type}
-        1</div>
+      <div className='article'>
+        <div>
+          <div className='blog-img'>
+          </div>
+          <div className='blog-article' onMouseOver={() => {
+            this.setState({
+              show: true
+            })
+          }} onMouseOut={() => {
+            this.setState({
+              show: false
+            })
+          }}>
+            <div className='blog-article-title'>
+              来自Token的技术分享
+            </div>
+            <div className={"blog-article-content " + (show ? "blog-article-content-select" : "")}>
+              <div style={{ margin: '10px' }}>
+                <span><IconUser />Youself Zhang </span> <span>发布于：2021-01-01</span> <span>阅读：100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     )
   }
 }

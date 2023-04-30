@@ -4,10 +4,14 @@ import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe
 import { IconHome, IconAppCenter, IconGithubLogo, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
 import PathEvent from '../events/pathEvent';
+import { TabService } from '../../services/tabService';
+import { TabDto } from '../../models/blogger';
+import { TagColor } from '@douyinfe/semi-ui/lib/es/tag';
 
 export default class BlogContent extends Component {
 
     state = {
+        tab: [] as TabDto[],
         category: [
             {
                 "name": ".NET",
@@ -20,9 +24,27 @@ export default class BlogContent extends Component {
         ]
     }
 
+    getTabs() {
+        TabService.getTabs()
+            .then(res => {
+                this.setState({
+                    tab: res
+                })
+            })
+    }
+
+    componentDidMount(): void {
+        this.getTabs();
+    }
+
     render() {
         var pathname = window.location.pathname;
-        var { category } = this.state;
+        var { category, tab } = this.state;
+
+        var colors = ['amber', 'blue', 'cyan', 'green', 'grey', 'indigo',
+            'light-blue', 'light-green', 'lime', 'orange', 'pink',
+            'purple', 'red', 'teal', 'violet', 'yellow', 'white'
+        ] as TagColor[];
         return (
             <div className='blog-content'>
                 <Row style={{ height: '100%' }}>
@@ -80,20 +102,25 @@ export default class BlogContent extends Component {
                         </Card>
                     </Col>
                     <Col span={16}>
-                        <div className="col-content">
+                        <div style={{ marginLeft: '5px', marginRight: '5px' }}>
+                            <Card style={{ height: '95px', width: '100%' }}>
+                                <h2>南岛鹋</h2>
+                                <span>我们没有永恒的朋友，也没有永恒的敌人，只有永恒的利益。</span>
+                            </Card>
+                        </div>
+                        <div style={{ margin:'5px'}}>
                             <Outlet />
                         </div>
+
                     </Col>
                     <Col span={4} style={{ height: '100%' }}>
                         <Card style={{ height: '100%' }}>
                             <span>标签</span>
-
                             <Space wrap>
                                 {
-                                    ['amber', 'blue', 'cyan', 'green', 'grey', 'indigo',
-                                        'light-blue', 'light-green', 'lime', 'orange', 'pink',
-                                        'purple', 'red', 'teal', 'violet', 'yellow', 'white'
-                                    ].map((item: any) => (<Tag color={item} key={item}> {item} tag </Tag>))
+                                    tab.map(x => {
+                                        return (<Tag color={colors[Math.floor(Math.random() * colors.length)]} key={x.id}>{x.name} </Tag>)
+                                    })
                                 }
                             </Space>
                         </Card>
