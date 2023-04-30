@@ -37,6 +37,7 @@ public class Category : Entity<Guid>
         get => createdTime; 
         set => createdTime = ArgumentExceptionExtensions.ThrowIfDefault(value, nameof(CreatedTime)); 
     }
+
     public string Path
     {
         get => path;

@@ -1,8 +1,9 @@
 import { Component } from 'react'
 import './index.css'
-import { Row, Col, Card, Avatar, Divider, Collapse } from '@douyinfe/semi-ui'
-import { IconHome, IconAppCenter,IconGithubLogo,IconBranch } from '@douyinfe/semi-icons';
+import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe/semi-ui'
+import { IconHome, IconAppCenter, IconGithubLogo, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
+import PathEvent from '../events/pathEvent';
 
 export default class BlogContent extends Component {
 
@@ -25,6 +26,7 @@ export default class BlogContent extends Component {
         return (
             <div className='blog-content'>
                 <Row style={{ height: '100%' }}>
+
                     <Col span={4} style={{ height: '100%' }}>
                         <Card style={{ height: '100%' }}>
                             <div style={{ height: '100px' }}>
@@ -46,7 +48,7 @@ export default class BlogContent extends Component {
                                         pathname: '/links'
                                     })
                                 }} to={'/links'}>
-                                    <IconBranch  style={{ margin: '3px' }} />
+                                    <IconBranch style={{ margin: '3px' }} />
                                     <span>友链</span>
                                 </Link >
                                 <Link to='/repository' className={"menu " + (pathname === "/repository" ? "menu-select" : "")} onClick={() => {
@@ -63,10 +65,11 @@ export default class BlogContent extends Component {
                                 <Collapse.Panel header={<><IconAppCenter />分类</>} itemKey="1">
                                     {category.map(x => {
                                         return (
-                                            <Link to={x.path} className={"menu " + (pathname === x.path ? "menu-select" : "")} onClick={() => {
+                                            <Link to={"/?type=" + x.name} className={"menu " + (pathname === x.path ? "menu-select" : "")} onClick={() => {
                                                 this.setState({
                                                     pathname: x.path
                                                 })
+                                                PathEvent.emit('blog-path', 1)
                                             }}>
                                                 <span>{x.name}</span>
                                             </Link>
@@ -81,7 +84,20 @@ export default class BlogContent extends Component {
                             <Outlet />
                         </div>
                     </Col>
-                    <Col span={4}><div className="col-content">col-8</div></Col>
+                    <Col span={4} style={{ height: '100%' }}>
+                        <Card style={{ height: '100%' }}>
+                            <span>标签</span>
+
+                            <Space wrap>
+                                {
+                                    ['amber', 'blue', 'cyan', 'green', 'grey', 'indigo',
+                                        'light-blue', 'light-green', 'lime', 'orange', 'pink',
+                                        'purple', 'red', 'teal', 'violet', 'yellow', 'white'
+                                    ].map((item: any) => (<Tag color={item} key={item}> {item} tag </Tag>))
+                                }
+                            </Space>
+                        </Card>
+                    </Col>
                 </Row>
             </div>
         )
