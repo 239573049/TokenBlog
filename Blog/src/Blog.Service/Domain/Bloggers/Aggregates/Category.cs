@@ -5,6 +5,8 @@ public class Category : Entity<Guid>
 {
     private string name;
 
+    private string path;
+
     private string description;
 
     private DateTime createdTime;
@@ -34,6 +36,11 @@ public class Category : Entity<Guid>
     { 
         get => createdTime; 
         set => createdTime = ArgumentExceptionExtensions.ThrowIfDefault(value, nameof(CreatedTime)); 
+    }
+    public string Path
+    {
+        get => path;
+        set => path = ArgumentExceptionExtensions.ThrowIfDefault(value, nameof(path));
     }
 
     protected Category(Guid id, string name, string description, DateTime createdTime)
