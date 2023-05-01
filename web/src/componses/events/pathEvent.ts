@@ -2,5 +2,9 @@ import { EventEmitter } from 'events'
 
 const PathEvent = new EventEmitter()
 
+const BlogEvent = new EventEmitter()
 
-export default PathEvent
+export {
+    PathEvent, 
+    BlogEvent
+}

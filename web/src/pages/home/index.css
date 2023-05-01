@@ -1,16 +1,18 @@
 .blog-article {
     height: 200px;
-    width: 800px;
     border-radius: 10px;
-    transition: all 0.5s;
-    position: absolute;
-    background-color: rgba(0, 0, 0, .3);
+    width: 800px;
+    position: relative;
+    margin-top: -219px;
+    padding-bottom: 0!important;
+    background-color: rgba(0,0,0,.3);
+    color: #fff!important;
+    transition: all .3s;
 }
 
 .blog-img {
     height: 200px;
     border-radius: 10px;
-    position: absolute;
     width: 800px;
     background-image: url(https://www.ndmiao.cn/usr/themes/handsome/assets/img/sj/2.jpg);
 }
@@ -47,7 +49,7 @@
     color: #fff;
     margin: 20px;
     text-align: center;
-    width: 100%;
+    width: 95%;
     padding-top: 60px;
     cursor: pointer;
 }

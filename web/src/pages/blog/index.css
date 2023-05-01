@@ -1,0 +1,52 @@
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    margin: 0px !important;
+}
+#root{
+    height: 100%;
+}
+
+.copy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 25px;
+    width: 25px;
+  }
+
+  .hljs {
+    background: #1E1E1E !important;
+    border: #1E1E1E !important;
+  }
+  .hljs-meta .hljs-string,
+  .hljs-regexp,
+  .hljs-string {
+    color: #3f8ee9 !important;
+  }
+  
+  .header-item{
+    transition: 0.3s;
+    height: 100%;
+    width: 70px;
+    cursor: pointer;
+    display: table-cell;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    text-decoration: none;
+    text-align: center;
+    color: #000;
+  }
+  .header-item:hover{
+    transition: 0.3s;
+    color: #066ef7;
+  }

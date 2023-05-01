@@ -7,6 +7,7 @@ import BlogLayout from './layouts';
 import Link from './pages/link';
 import Home from './pages/home';
 import Repository from './pages/repository';
+import Blog from './pages/blog';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,9 @@ const router = createBrowserRouter([
         element: <Repository/>,
       },
     ]
+  },{
+    path: "/blog",
+    element: <Blog />,
   }
 ]);
 

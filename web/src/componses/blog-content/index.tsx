@@ -3,7 +3,7 @@ import './index.css'
 import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe/semi-ui'
 import { IconHome, IconAppCenter, IconGithubLogo, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
-import PathEvent from '../events/pathEvent';
+import {PathEvent} from '../events/pathEvent';
 import { TabService } from '../../services/tabService';
 import { TabDto } from '../../models/blogger';
 import { TagColor } from '@douyinfe/semi-ui/lib/es/tag';

@@ -26,7 +26,10 @@ export default class BlogLayout extends Component {
                         <BlogContent />
                     </div>
                 </Content>
-                <Footer>Footer</Footer>
+                <Footer>
+                    <span>
+                    </span>
+                </Footer>
             </Layout>
         )
     }
