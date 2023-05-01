@@ -1,6 +1,8 @@
-﻿using Blog.Service.Domain.Bloggers.Repositories;
+﻿using Blog.Service.Domain.Bloggers.Aggregates;
+using Blog.Service.Domain.Bloggers.Repositories;
 using Masa.BuildingBlocks.Data.UoW;
 using Masa.Contrib.Ddd.Domain.Repository.EFCore;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace Blog.Service.Infrastructure.Repositories;
 
@@ -15,7 +17,8 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
         var query = CreateQuery(keyword, categoryId);
 
         return await query
-            .Skip((page - 1) * pageSize).Take(pageSize)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
     }
 
@@ -31,6 +34,22 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
         return Context.Articles.Where(x =>
                 string.IsNullOrEmpty(keyword) || x.Title.Contains(keyword) || x.Content.Contains(keyword))
             .Where(x => categoryId == null || x.CategoryId == categoryId)
-            .Include(x => x.Category);
+        .Include(x => x.Category);
+    }
+
+    public Task<Article?> GetAsync(Guid id)
+    {
+        return Context.Articles.Where(x => x.Id == id)
+            .Include(x => x.Category).FirstOrDefaultAsync();
+    }
+
+    public Task<List<Article>> GetRankingAsync()
+    {
+        return Context.Articles
+            .OrderByDescending(x => x.ReadCount)
+            .OrderByDescending(x => x.Like)
+            .Skip(0)
+            .Take(10)
+            .ToListAsync();
     }
 }

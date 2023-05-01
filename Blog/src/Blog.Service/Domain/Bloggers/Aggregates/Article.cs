@@ -39,7 +39,7 @@ public class Article : FullAggregateRoot<Guid, Guid?>
     /// </summary>
     private Guid categoryId;
 
-    public string tabs { get; set; }
+    private string tabs;
 
     public string Title
     {
@@ -102,5 +102,5 @@ public class Article : FullAggregateRoot<Guid, Guid?>
         this.tabs = tabs;
     }
 
-    public virtual Category Category { get; set; }
+    public virtual Category? Category { get; set; }
 }
