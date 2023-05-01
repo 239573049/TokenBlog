@@ -3,9 +3,9 @@ import './index.css'
 import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe/semi-ui'
 import { IconHome, IconAppCenter, IconGithubLogo, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
-import {PathEvent} from '../events/pathEvent';
+import { PathEvent } from '../events/pathEvent';
 import { TabService } from '../../services/tabService';
-import { TabDto } from '../../models/blogger';
+import { CategoryDto, TabDto } from '../../models/blogger';
 import { TagColor } from '@douyinfe/semi-ui/lib/es/tag';
 
 export default class BlogContent extends Component {
@@ -21,7 +21,7 @@ export default class BlogContent extends Component {
                 "name": "React",
                 "path": '/react'
             }
-        ]
+        ] as CategoryDto[]
     }
 
     getTabs() {
@@ -87,11 +87,11 @@ export default class BlogContent extends Component {
                                 <Collapse.Panel header={<><IconAppCenter />分类</>} itemKey="1">
                                     {category.map(x => {
                                         return (
-                                            <Link to={"/?type=" + x.name} className={"menu " + (pathname === x.path ? "menu-select" : "")} onClick={() => {
+                                            <Link to={"/?type=" + x.id} className={"menu " + (pathname === x.id ? "menu-select" : "")} onClick={() => {
                                                 this.setState({
-                                                    pathname: x.path
+                                                    pathname: x.id
                                                 })
-                                                PathEvent.emit('blog-path', 1)
+                                                PathEvent.emit('blog-path', x)
                                             }}>
                                                 <span>{x.name}</span>
                                             </Link>
@@ -108,7 +108,7 @@ export default class BlogContent extends Component {
                                 <span>我们没有永恒的朋友，也没有永恒的敌人，只有永恒的利益。</span>
                             </Card>
                         </div>
-                        <div style={{ margin:'5px'}}>
+                        <div style={{ margin: '5px' }}>
                             <Outlet />
                         </div>
 

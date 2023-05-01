@@ -31,3 +31,11 @@ export interface TabDto {
     id: string;
     name: string;
 }
+
+export interface CategoryDto {
+    id: string;
+    name: string;
+    path: string;
+    description: string;
+    createdTime: string;
+}
