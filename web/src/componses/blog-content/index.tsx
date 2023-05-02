@@ -1,12 +1,13 @@
 import { Component } from 'react'
 import './index.css'
-import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe/semi-ui'
+import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space, Pagination } from '@douyinfe/semi-ui'
 import { IconHome, IconAppCenter, IconGithubLogo, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
 import { PathEvent } from '../events/pathEvent';
 import { TabService } from '../../services/tabService';
 import { CategoryDto, TabDto } from '../../models/blogger';
 import { TagColor } from '@douyinfe/semi-ui/lib/es/tag';
+import { CategoryService } from '../../services/categoryService';
 
 export default class BlogContent extends Component {
 
@@ -33,8 +34,18 @@ export default class BlogContent extends Component {
             })
     }
 
+    getCategory() {
+        CategoryService.getList()
+            .then(res => {
+                this.setState({
+                    category: res
+                })
+            })
+    }
+
     componentDidMount(): void {
         this.getTabs();
+        this.getCategory();
     }
 
     render() {
@@ -60,6 +71,9 @@ export default class BlogContent extends Component {
                                 <Link className={"menu " + (pathname === "/" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
                                         pathname: '/'
+                                    })
+                                    PathEvent.emit('blog-path', {
+                                        id: '',
                                     })
                                 }} to={'/'}>
                                     <IconHome style={{ margin: '3px' }} />
@@ -91,9 +105,12 @@ export default class BlogContent extends Component {
                                                 this.setState({
                                                     pathname: x.id
                                                 })
-                                                PathEvent.emit('blog-path', x)
+                                                PathEvent.emit('blog-path', {
+                                                    id: x.id,
+                                                })
                                             }}>
                                                 <span>{x.name}</span>
+                                                <span style={{ float: 'right' }}>({x.count})</span>
                                             </Link>
                                         )
                                     })}
@@ -108,10 +125,9 @@ export default class BlogContent extends Component {
                                 <span>我们没有永恒的朋友，也没有永恒的敌人，只有永恒的利益。</span>
                             </Card>
                         </div>
-                        <div style={{ margin: '5px' }}>
+                        <div style={{ margin: '5px'}}>
                             <Outlet />
                         </div>
-
                     </Col>
                     <Col span={4} style={{ height: '100%' }}>
                         <Card style={{ height: '100%' }}>
@@ -119,9 +135,17 @@ export default class BlogContent extends Component {
                             <Space wrap>
                                 {
                                     tab.map(x => {
-                                        return (<Tag color={colors[Math.floor(Math.random() * colors.length)]} key={x.id}>{x.name} </Tag>)
+                                        return (<Tag onClick={() => {
+                                            PathEvent.emit('blog-path', {
+                                                tabId: x.name,
+                                            })
+                                        }} color={colors[Math.floor(Math.random() * colors.length)]} key={x.id}>{x.name} </Tag>)
                                     })
-                                }
+                                }<Tag onClick={() => {
+                                    PathEvent.emit('blog-path', {
+                                        deleteTabId: '1',
+                                    })
+                                }} color={colors[Math.floor(Math.random() * colors.length)]} key={99999999}>全部</Tag>
                             </Space>
                         </Card>
                     </Col>

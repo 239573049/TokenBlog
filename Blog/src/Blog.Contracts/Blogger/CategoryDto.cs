@@ -12,9 +12,12 @@ public class CategoryDto
 
     public DateTime createdTime { get; set; }
 
-    public CategoryDto(Guid id, string name, string path, string description, DateTime createdTime)
+    public int count { get; set; }
+
+    public CategoryDto(Guid id, string name, string path, string description, DateTime createdTime, int count)
     {
         Id = id;
+        this.count = count;
         this.name = name;
         this.path = path;
         this.description = description;

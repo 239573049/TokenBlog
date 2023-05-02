@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './index.css'
 import BlogHeader from '../componses/blog-header';
 import BlogContent from '../componses/blog-content';
+import BlogFooter from '../componses/blog-footer';
 
 const { Header, Footer, Content } = Layout;
 
@@ -26,9 +27,8 @@ export default class BlogLayout extends Component {
                         <BlogContent />
                     </div>
                 </Content>
-                <Footer>
-                    <span>
-                    </span>
+                <Footer >
+                    <BlogFooter/>
                 </Footer>
             </Layout>
         )

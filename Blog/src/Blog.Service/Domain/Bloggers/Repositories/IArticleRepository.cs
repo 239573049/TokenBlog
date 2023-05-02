@@ -2,9 +2,10 @@
 
 public interface IArticleRepository : IRepository<Article>
 {
-    Task<List<Article>> GetListAsync(string? keyword, Guid? categoryId, int page = 1, int pageSize = 20);
+    Task<List<Article>> GetListAsync(string? keyword, Guid? categoryId, string? queryTabIds, int page = 1,
+        int pageSize = 20);
 
-    Task<int> GetCountAsync(string? keyword, Guid? categoryId);
+    Task<int> GetCountAsync(string? keyword, Guid? categoryId, string? queryTabIds);
 
     Task<Article?> GetAsync(Guid id);
 
@@ -13,4 +14,11 @@ public interface IArticleRepository : IRepository<Article>
     /// </summary>
     /// <returns></returns>
     Task<List<Article>> GetRankingAsync();
+    
+    /// <summary>
+    /// 更新阅读数
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task UpdateReadCountAsync(Guid id);
 }

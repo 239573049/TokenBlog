@@ -38,4 +38,5 @@ export interface CategoryDto {
     path: string;
     description: string;
     createdTime: string;
+    count: number;
 }

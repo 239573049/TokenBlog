@@ -3,16 +3,15 @@ import { PathEvent } from '../../componses/events/pathEvent';
 import './index.css'
 import { IconUser } from '@douyinfe/semi-icons';
 import { ArticleService } from '../../services/articleService';
-import { GetArticleListDto } from '../../models/blogger';
+import { CategoryDto, GetArticleListDto } from '../../models/blogger';
 import { formatDate } from '../../utils/utils';
+import { Pagination } from '@douyinfe/semi-ui';
 
 interface IProps {
 
 }
 
 interface IState {
-  type: string | null;
-  show: boolean;
   data: {
     total: number,
     result: GetArticleListDto[]
@@ -21,6 +20,7 @@ interface IState {
     keyword: string;
     categoryId: string | null;
     page: number;
+    tabIds: string | null;
     pageSize: number;
   }
 }
@@ -30,13 +30,12 @@ var type = new URLSearchParams(window.location.search).get("type");
 export default class Home extends Component<IProps, IState> {
 
   state: Readonly<IState> = {
-    type: type,
-    show: false,
     input: {
       keyword: '',
-      categoryId: '',
+      categoryId: type ?? '',
+      tabIds: null,
       page: 1,
-      pageSize: 20
+      pageSize: 10
     },
     data: {
       total: 0,
@@ -51,15 +50,33 @@ export default class Home extends Component<IProps, IState> {
   }
 
   handleCustomEvent = (event: any) => {
-    console.log('====================================');
-    console.log(this);
-    console.log('====================================');
+    var { input } = this.state;
+    if (event.id) {
+      input.categoryId = event.id;
+      this.setState({ input }, () => {
+        this.LoadList();
+      })
+    } else if (event.tabId) {
+      input.tabIds = event.tabId;
+      this.setState({ input }, () => {
+        this.LoadList();
+      })
+    } else if (event.deleteTabId) {
+      input.tabIds = '';
+      this.setState({ input }, () => {
+        this.LoadList();
+      })
+    }
+    else {
+      input.keyword = event.value;
+      this.setState({ input }, () => this.LoadList())
+    }
   }
 
   LoadList() {
     var { input } = this.state;
     ArticleService
-      .getList(input.keyword, input.categoryId, input.page, input.pageSize)
+      .getList(input.keyword, input.categoryId, input.tabIds, input.page, input.pageSize)
       .then(res => {
         this.setState({
           data: res
@@ -72,47 +89,57 @@ export default class Home extends Component<IProps, IState> {
   }
 
   render() {
-    var { type, show, data } = this.state;
-    return (
-      <div className='article'>
-        {data.result.map(x => {
-          return (
-            <div onClick={() => {
-              window.location.href = `/blog?id=${x.id}`
-            }} style={{ margin: '5px' }}>
-              <div className='blog-img'>
-              </div>
-              <div className='blog-article' onMouseOver={() => {
-                x.show = true;
-                this.setState({
-                  data: {
-                    total: data.total,
-                    result: data.result
-                  }
-                })
-              }} onMouseOut={() => {
-                x.show = false;
-                this.setState({
-                  data: {
-                    total: data.total,
-                    result: data.result
-                  }
-                })
-              }}>
-                <div className='blog-article-title'>
-                  {x.title}
+    var { input, data } = this.state;
+    return (<>
+
+      <div style={{ maxHeight: 'calc(100vh - 240px)', overflow: 'auto' }}>
+        <div className='article'>
+          {data.result.map(x => {
+            return (
+              <div onClick={() => {
+                window.location.href = `/blog?id=${x.id}`
+              }} style={{ margin: '5px' }}>
+                <div className='blog-img'>
                 </div>
-                <div className={"blog-article-content " + (x.show ? "blog-article-content-select" : "")}>
-                  <div style={{ margin: '10px' }}>
-                    <span><IconUser />Token</span> <span>发布于：{formatDate(x.creationTime)}</span> <span>阅读：{x.readCount}</span>
+                <div className='blog-article' onMouseOver={() => {
+                  x.show = true;
+                  this.setState({
+                    data: {
+                      total: data.total,
+                      result: data.result
+                    }
+                  })
+                }} onMouseOut={() => {
+                  x.show = false;
+                  this.setState({
+                    data: {
+                      total: data.total,
+                      result: data.result
+                    }
+                  })
+                }}>
+                  <div className='blog-article-title'>
+                    {x.title}
+                  </div>
+                  <div className={"blog-article-content " + (x.show ? "blog-article-content-select" : "")}>
+                    <div style={{ margin: '10px' }}>
+                      <span><IconUser />Token</span> <span>发布于：{formatDate(x.creationTime)}</span> <span>阅读：{x.readCount}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
 
+        </div>
       </div>
+      <Pagination total={data.total} showTotal onChange={(e) => {
+        input.page = e;
+        this.setState({ input }, () => {
+          this.LoadList();
+        })
+      }} defaultCurrentPage={input.page}></Pagination>
+    </>
     )
   }
 }

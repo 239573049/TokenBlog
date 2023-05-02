@@ -13,7 +13,7 @@ public class ArticleQueryHandler
     public async Task GetList(GetArticleListQuery query)
     {
         var result =
-            (await _articleRepository.GetListAsync(query.keyword, query.categoryId, query.page, query.pageSize))
+            (await _articleRepository.GetListAsync(query.keyword, query.categoryId,query.tabIds, query.page, query.pageSize))
             .Select(x => new GetArticleListDto()
             {
                 Id = x.Id,
@@ -28,7 +28,7 @@ public class ArticleQueryHandler
                 // UserName = x.UserName,
             }).ToList();
 
-        var count = await _articleRepository.GetCountAsync(query.keyword, query.categoryId);
+        var count = await _articleRepository.GetCountAsync(query.keyword, query.categoryId,query.tabIds);
 
 
         query.Result = new PaginatedListBase<GetArticleListDto>()
@@ -38,7 +38,7 @@ public class ArticleQueryHandler
         };
     }
 
-    [EventHandler]
+    [EventHandler(1)]
     public async Task GetArticleAsync(GetArticleQuery query)
     {
         var result = await _articleRepository.GetAsync(query.id);
@@ -63,6 +63,13 @@ public class ArticleQueryHandler
             ReadCount = result.ReadCount,
         };
     }
+    
+    [EventHandler(2)]
+    public async Task GetArticleUpdateReadCount(GetArticleQuery query)
+    {
+        await _articleRepository.UpdateReadCountAsync(query.id);
+    }
+
 
     [EventHandler]
     public async Task GetRankingAsync(GetRankingQuery query)

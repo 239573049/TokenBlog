@@ -12,9 +12,10 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
     {
     }
 
-    public async Task<List<Article>> GetListAsync(string? keyword, Guid? categoryId, int page = 1, int pageSize = 20)
+    public async Task<List<Article>> GetListAsync(string? keyword, Guid? categoryId, string? tabIds, int page = 1,
+        int pageSize = 20)
     {
-        var query = CreateQuery(keyword, categoryId);
+        var query = CreateQuery(keyword, categoryId, tabIds);
 
         return await query
             .Skip((page - 1) * pageSize)
@@ -22,19 +23,20 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
             .ToListAsync();
     }
 
-    public Task<int> GetCountAsync(string? keyword, Guid? categoryId)
+    public Task<int> GetCountAsync(string? keyword, Guid? categoryId, string? queryTabIds)
     {
-        var query = CreateQuery(keyword, categoryId);
+        var query = CreateQuery(keyword, categoryId, queryTabIds);
 
         return query.CountAsync();
     }
 
-    private IQueryable<Article> CreateQuery(string? keyword, Guid? categoryId)
+    private IQueryable<Article> CreateQuery(string? keyword, Guid? categoryId, string? tabIds)
     {
         return Context.Articles.Where(x =>
-                string.IsNullOrEmpty(keyword) || x.Title.Contains(keyword) || x.Content.Contains(keyword))
-            .Where(x => categoryId == null || x.CategoryId == categoryId)
-        .Include(x => x.Category);
+                (string.IsNullOrEmpty(keyword) || x.Title.Contains(keyword) || x.Content.Contains(keyword)) &&
+                (categoryId == null || x.CategoryId == categoryId) && (string.IsNullOrEmpty(tabIds) ||
+                                                                       x.Tabs.Contains(tabIds)))
+            .Include(x => x.Category);
     }
 
     public Task<Article?> GetAsync(Guid id)
@@ -47,9 +49,14 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
     {
         return Context.Articles
             .OrderByDescending(x => x.ReadCount)
-            .OrderByDescending(x => x.Like)
             .Skip(0)
             .Take(10)
             .ToListAsync();
+    }
+
+    public Task UpdateReadCountAsync(Guid id)
+    {
+        return Context.Database.ExecuteSqlRawAsync(
+            $"update \"Articles\" set \"ReadCount\" = \"ReadCount\"+1 where \"Id\" = '{id}'");
     }
 }
