@@ -11,6 +11,7 @@ export interface GetArticleListDto {
     creationTime: string;
     categoryName: string;
     show: boolean;
+    background: string;
 }
 export interface ArticleDto {
     id: string;
@@ -30,6 +31,7 @@ export interface ArticleDto {
 export interface TabDto {
     id: string;
     name: string;
+    selected: boolean;
 }
 
 export interface CategoryDto {

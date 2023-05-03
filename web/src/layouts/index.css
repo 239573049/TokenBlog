@@ -9,3 +9,7 @@ body {
 #root{
     height: 100%;
 }
+a{
+    color: #000;
+    text-decoration: none;
+}

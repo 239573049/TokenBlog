@@ -8,6 +8,7 @@ import Link from './pages/link';
 import Home from './pages/home';
 import Repository from './pages/repository';
 import Blog from './pages/blog';
+import About from './pages/about';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/repository",
         element: <Repository/>,
+      },
+      {
+        path: "/about",
+        element: <About/>,
       },
     ]
   },{

@@ -1,8 +1,9 @@
-import { Input, Nav } from '@douyinfe/semi-ui'
+import { Avatar, Input, Nav } from '@douyinfe/semi-ui'
 import { Component } from 'react'
 import { IconSemiLogo, IconSearch } from '@douyinfe/semi-icons';
 import './index.css'
 import { PathEvent } from '../events/pathEvent';
+import { Link } from 'react-router-dom';
 
 export default class BlogHeader extends Component {
 
@@ -24,8 +25,20 @@ export default class BlogHeader extends Component {
       <div>
         <Nav mode="horizontal" defaultSelectedKeys={['Home']}>
           <Nav.Header>
-            <IconSemiLogo style={{ fontSize: 36 }} />
+            <Avatar src='/AI.png'></Avatar>
+            Token Blog
           </Nav.Header>
+          <Nav.Item>
+            <Link to={'/'}>
+              主页
+            </Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Link to={'/about'}>
+              关于
+            </Link>
+
+          </Nav.Item>
           <Nav.Footer>
             <Input onFocus={() => {
               this.setState({

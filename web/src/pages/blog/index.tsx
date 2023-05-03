@@ -98,7 +98,6 @@ export default class Blog extends Component {
                                             <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} alt='Token'>T</Avatar>
                                             <span >Token</span>
                                         </div>
-                                        <span style={{ fontSize: '12px', color: '#98a6ad!important' }}>热榜</span>
                                         <div style={{ margin: '5px' }}>
                                             <Ranking />
                                         </div>

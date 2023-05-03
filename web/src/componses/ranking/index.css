@@ -1,6 +1,6 @@
 .list-data {
     transition: 0.3s;
-    margin: 5px;
+    margin: 10px 0 5px 0;
     cursor: pointer;
     font-size: 16px;
     -webkit-user-select: none;
@@ -17,4 +17,8 @@
 .list-data:hover {
     transition: 0.3s;
     color: cornflowerblue;
+}
+
+.list-serial{
+    color: #297cfa;
 }

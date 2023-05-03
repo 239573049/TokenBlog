@@ -8,20 +8,13 @@ import { TabService } from '../../services/tabService';
 import { CategoryDto, TabDto } from '../../models/blogger';
 import { TagColor } from '@douyinfe/semi-ui/lib/es/tag';
 import { CategoryService } from '../../services/categoryService';
+import Ranking from '../ranking';
 
 export default class BlogContent extends Component {
 
     state = {
         tab: [] as TabDto[],
         category: [
-            {
-                "name": ".NET",
-                "path": '/dotnet'
-            },
-            {
-                "name": "React",
-                "path": '/react'
-            }
         ] as CategoryDto[]
     }
 
@@ -51,7 +44,10 @@ export default class BlogContent extends Component {
     render() {
         var pathname = window.location.pathname;
         var { category, tab } = this.state;
-
+        let count = 0;
+        category.forEach(x => {
+            count += x.count;
+        })
         var colors = ['amber', 'blue', 'cyan', 'green', 'grey', 'indigo',
             'light-blue', 'light-green', 'lime', 'orange', 'pink',
             'purple', 'red', 'teal', 'violet', 'yellow', 'white'
@@ -62,9 +58,17 @@ export default class BlogContent extends Component {
 
                     <Col span={4} style={{ height: '100%' }}>
                         <Card style={{ height: '100%' }}>
-                            <div style={{ height: '100px' }}>
-                                <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} alt='Youself Zhang'>YZ</Avatar>
-                                <span >Token AI</span>
+                            <div onClick={() => window.open('https://github.com/239573049')} style={{ height: '100px' }}>
+                                <Card
+                                    shadows='hover'
+                                    bodyStyle={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between'
+                                    }}>
+                                    <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} src='/AI.png'></Avatar>
+                                    <span >Token</span>
+                                </Card>
                             </div>
                             <span style={{ fontSize: '12px', color: '#98a6ad!important' }}>导航</span>
                             <div style={{ margin: '5px' }}>
@@ -73,11 +77,11 @@ export default class BlogContent extends Component {
                                         pathname: '/'
                                     })
                                     PathEvent.emit('blog-path', {
-                                        id: '',
+                                        deleteid: 'true',
                                     })
                                 }} to={'/'}>
                                     <IconHome style={{ margin: '3px' }} />
-                                    <span>首页</span>
+                                    <span>首页({count})</span>
                                 </Link>
                                 <Link className={"menu " + (pathname === "/links" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
@@ -125,27 +129,41 @@ export default class BlogContent extends Component {
                                 <span>我们没有永恒的朋友，也没有永恒的敌人，只有永恒的利益。</span>
                             </Card>
                         </div>
-                        <div style={{ margin: '5px'}}>
+                        <div style={{ margin: '5px' }}>
                             <Outlet />
                         </div>
                     </Col>
                     <Col span={4} style={{ height: '100%' }}>
                         <Card style={{ height: '100%' }}>
+                            <Ranking />
+                            <Divider margin='12px' />
                             <span>标签</span>
+                            <Divider margin='12px' />
                             <Space wrap>
                                 {
                                     tab.map(x => {
                                         return (<Tag onClick={() => {
-                                            PathEvent.emit('blog-path', {
-                                                tabId: x.name,
+                                            x.selected = !x.selected;
+                                            if (x.selected) {
+                                                PathEvent.emit('blog-path', {
+                                                    tabId: x.name,
+                                                })
+                                            } else {
+                                                PathEvent.emit('blog-path', {
+                                                    deleteTabId: true,
+                                                })
+                                            }
+                                            this.setState({
+                                                tab: tab
                                             })
-                                        }} color={colors[Math.floor(Math.random() * colors.length)]} key={x.id}>{x.name} </Tag>)
+                                        }} color={colors[Math.floor(Math.random() * colors.length)]} key={x.id}>{(x.selected ? "*" : "") + x.name} </Tag>)
                                     })
-                                }<Tag onClick={() => {
+                                }
+                                <Tag onClick={() => {
                                     PathEvent.emit('blog-path', {
-                                        deleteTabId: '1',
+                                        deleteTabId: true,
                                     })
-                                }} color={colors[Math.floor(Math.random() * colors.length)]} key={99999999}>全部</Tag>
+                                }} color={colors[Math.floor(Math.random() * colors.length)]} key={99999999}>清空标签</Tag>
                             </Space>
                         </Card>
                     </Col>
