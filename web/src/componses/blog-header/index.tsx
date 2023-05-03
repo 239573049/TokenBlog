@@ -33,11 +33,11 @@ export default class BlogHeader extends Component {
               主页
             </Link>
           </Nav.Item>
-          <Nav.Item>
+          {/* <Nav.Item>
             <Link to={'/web-ide'}>
               c#在线编辑器
             </Link>
-          </Nav.Item>
+          </Nav.Item> */}
           <Nav.Item>
             <Link to={'/about'}>
               关于
