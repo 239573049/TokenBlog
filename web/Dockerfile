@@ -13,4 +13,4 @@ RUN npm run build
 FROM base AS docs-web
 WORKDIR /wwwroot
 COPY --from=build /src/build /wwwroot/
-COPY nginx/os.conf /etc/nginx/conf.d/default.conf
+COPY nginx/web.conf /etc/nginx/conf.d/default.conf
