@@ -12,6 +12,9 @@ import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { IconCopy, IconDelete, IconEdit } from "@douyinfe/semi-icons";
 import './index.css'
 import Ranking from '../../componses/ranking';
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import remarkGfm from 'remark-gfm'
 
 var id = new URLSearchParams(window.location.search).get("id");
 
@@ -74,7 +77,7 @@ export default class Blog extends Component {
                 <Header>
                     <Card>
                         <Link to={'/'} className='header-item'>首页</Link>
-                        <a onClick={()=>window.open('https://github.com/239573049/TokenBlog')} className='header-item'>GitHub</a>
+                        <a onClick={() => window.open('https://github.com/239573049/TokenBlog')} className='header-item'>GitHub</a>
                         <Link to={'/'} className='header-item'>关于</Link>
                     </Card>
                 </Header>
@@ -113,6 +116,9 @@ export default class Blog extends Component {
                                     <div style={{ margin: '10px', overflow: 'auto', maxHeight: 'calc(100vh - 150px)' }}>
                                         <ReactMarkdown
                                             children={data.content}
+                                            remarkPlugins={[remarkMath]}
+                                            rehypePlugins={[rehypeKatex,remarkGfm]}
+                                            className='blog-markdown'
                                             components={{
                                                 code({ node, inline, className, children, ...props }) {
                                                     const match = /language-(\w+)/.exec(className || '')
