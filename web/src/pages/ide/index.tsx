@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import MonacoEditor from 'react-monaco-editor';
 import './index.css';
 import { Button, Card } from '@douyinfe/semi-ui';
+import { request } from 'http';
 
 declare var DotNet: any;
 
@@ -55,7 +56,7 @@ export default class Ide extends Component {
                 <div className="container">
                     <div className="editor">
                         <MonacoEditor
-                            language="csharp"
+                            language="json"
                             theme="vs-dark"
                             value={code}
                             options={options}
