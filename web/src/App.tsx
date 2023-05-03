@@ -9,6 +9,7 @@ import Home from './pages/home';
 import Repository from './pages/repository';
 import Blog from './pages/blog';
 import About from './pages/about';
+import Ide from './pages/ide';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,9 @@ const router = createBrowserRouter([
   },{
     path: "/blog",
     element: <Blog />,
+  },{
+    path: "/web-ide",
+    element: <Ide />,
   }
 ]);
 

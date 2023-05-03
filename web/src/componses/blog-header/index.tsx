@@ -34,10 +34,14 @@ export default class BlogHeader extends Component {
             </Link>
           </Nav.Item>
           <Nav.Item>
+            <Link to={'/web-ide'}>
+              c#在线编辑器
+            </Link>
+          </Nav.Item>
+          <Nav.Item>
             <Link to={'/about'}>
               关于
             </Link>
-
           </Nav.Item>
           <Nav.Footer>
             <Input onFocus={() => {
