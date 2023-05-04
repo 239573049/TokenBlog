@@ -59,7 +59,7 @@ export default class Ide extends Component {
                     // 注意：这里使用localhost的时候不会启动压缩
                     if (type !== 'dotnetjs') {
                         return (async function () {
-                            const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
+                            const response = await fetch('https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/' + defaultUri + '.br', { cache: 'no-cache' });
                             if (!response.ok) {
                                 throw new Error(response.statusText);
                             }
