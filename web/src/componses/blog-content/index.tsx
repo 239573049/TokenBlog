@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import './index.css'
-import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space, Pagination } from '@douyinfe/semi-ui'
+import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe/semi-ui'
 import { IconHome, IconAppCenter, IconGithubLogo, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
 import { PathEvent } from '../events/pathEvent';

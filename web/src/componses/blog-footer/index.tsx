@@ -1,5 +1,5 @@
-import { Card } from '@douyinfe/semi-ui'
-import React, { Component } from 'react'
+
+import  { Component } from 'react'
 
 export default class BlogFooter extends Component {
   render() {

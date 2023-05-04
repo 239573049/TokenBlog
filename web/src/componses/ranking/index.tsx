@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import  { Component } from 'react'
 import { ArticleService } from '../../services/articleService'
 import { GetArticleListDto } from '../../models/blogger'
 import './index.css'
-import { Divider, List, Tooltip } from '@douyinfe/semi-ui'
+import { Divider, Tooltip } from '@douyinfe/semi-ui'
 
 export default class Ranking extends Component {
 

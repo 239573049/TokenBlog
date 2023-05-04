@@ -1,6 +1,6 @@
 import { Avatar, Input, Nav } from '@douyinfe/semi-ui'
 import { Component } from 'react'
-import { IconSemiLogo, IconSearch } from '@douyinfe/semi-icons';
+import {  IconSearch } from '@douyinfe/semi-icons';
 import './index.css'
 import { PathEvent } from '../events/pathEvent';
 import { Link } from 'react-router-dom';
@@ -33,11 +33,11 @@ export default class BlogHeader extends Component {
               主页
             </Link>
           </Nav.Item>
-          {/* <Nav.Item>
+          <Nav.Item>
             <Link to={'/web-ide'}>
               c#在线编辑器
             </Link>
-          </Nav.Item> */}
+          </Nav.Item>
           <Nav.Item>
             <Link to={'/about'}>
               关于

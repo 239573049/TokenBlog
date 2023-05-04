@@ -1,15 +1,13 @@
-import { Avatar, Button, Card, Col, Notification, Divider, Layout, Row, Space, Tag, Nav } from '@douyinfe/semi-ui'
-import { tab } from '@testing-library/user-event/dist/tab';
-import React, { Component } from 'react'
-import { Link, Outlet } from 'react-router-dom';
-import { PathEvent } from '../../componses/events/pathEvent';
+import { Avatar, Button, Card, Col, Notification, Divider, Layout, Row, Space, Tag } from '@douyinfe/semi-ui'
+import  { Component } from 'react'
+import { Link } from 'react-router-dom';
 import { ArticleDto } from '../../models/blogger';
 import { ArticleService } from '../../services/articleService';
 import { TagColor } from '@douyinfe/semi-ui/lib/es/tag';
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { IconCopy, IconDelete, IconEdit } from "@douyinfe/semi-icons";
+import { IconCopy} from "@douyinfe/semi-icons";
 import './index.css'
 import Ranking from '../../componses/ranking';
 import remarkMath from 'remark-math'
