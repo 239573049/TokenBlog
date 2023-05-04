@@ -55,7 +55,7 @@ export default class Ide extends Component {
 
         if (first) {
             Blazor.start({
-                loadBootResource: async function (type: string, name: any, defaultUri: string, integrity: any) {
+                loadBootResource: function (type: string, name: any, defaultUri: string, integrity: any) {
                     if (type !== 'dotnetjs') {
                         return (async function () {
                             const response = await fetch('https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/' + defaultUri + '.br', { cache: 'no-cache' });
@@ -70,13 +70,7 @@ export default class Ide extends Component {
                             return new Response(decompressedResponseArray,
                                 { headers: { 'content-type': contentType } });
                         })();
-                    } else {
-                        const response = await fetch('https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/' + defaultUri, { cache: 'no-cache' });
-                        if (!response.ok) {
-                            throw new Error(response.statusText);
-                        }
-                        return response;
-                    }
+                    } 
                 },
             }).then(async () => {
                 // 首次初始化
