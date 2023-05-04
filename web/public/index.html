@@ -23,26 +23,6 @@
   <script type="module">
     import { BrotliDecode } from '/decode.min.js'
     window.BrotliDecode = BrotliDecode
-    // Blazor.start({
-    //   loadBootResource: function (type, name, defaultUri, integrity) {
-    //   // 注意：这里使用localhost的时候不会启动压缩
-    //     if (type !== 'dotnetjs' ) {
-    //       return (async function () {
-    //         const response = await fetch('https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/'+defaultUri + '.br', { cache: 'no-cache' });
-    //         if (!response.ok) {
-    //           throw new Error(response.statusText);
-    //         }
-    //         const originalResponseBuffer = await response.arrayBuffer();
-    //         const originalResponseArray = new Int8Array(originalResponseBuffer);
-    //         const decompressedResponseArray = BrotliDecode(originalResponseArray);
-    //         const contentType = type === 
-    //           'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
-    //         return new Response(decompressedResponseArray, 
-    //           { headers: { 'content-type': contentType } });
-    //       })();
-    //     }
-    //   }
-    // });
   </script>
 </body>
 
