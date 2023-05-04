@@ -3,6 +3,7 @@ import MonacoEditor from 'react-monaco-editor';
 import './index.css';
 import { Button, Card } from '@douyinfe/semi-ui';
 import { request } from 'http';
+import { DotentUtil } from '../../utils/dotnetUtil';
 
 declare let BrotliDecode: any;
 declare let DotNet: any;
@@ -13,7 +14,20 @@ export default class Ide extends Component {
     state = {
         code: 'Console.WriteLine("你好，世界！");',
         first: true,
-        result: ''
+        result: '',
+        assemblys: [
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Buffers.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Collections.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Core.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Linq.Expressions.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Linq.Parallel.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/mscorlib.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Linq.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Console.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Runtime.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Net.Http.dll",
+            "https://token-web-ide.oss-cn-shenzhen.aliyuncs.com/assembly/System.Console.dll"]
     }
 
     constructor(props: any) {
@@ -37,7 +51,7 @@ export default class Ide extends Component {
     }
 
     async execute(code: any) {
-        var { result, first } = this.state;
+        var { result, first, assemblys } = this.state;
 
         if (first) {
             Blazor.start({
@@ -60,9 +74,14 @@ export default class Ide extends Component {
                     }
                 },
             }).then(async () => {
-                await DotNet.invokeMethodAsync('WebEditor', 'Init', 'https://token-web-ide.oss-cn-shenzhen.aliyuncs.com');
+                // 首次初始化
+                await DotentUtil.Init('https://token-web-ide.oss-cn-shenzhen.aliyuncs.com');
+
+                // 首次加载程序集
+                await DotentUtil.LoadAssembly(assemblys);
+
                 // 使用js互操调用WebEditor程序集下的Execute静态方法，并且发送参数
-                result = await DotNet.invokeMethodAsync('WebEditor', 'Execute', code);
+                result = await DotentUtil.Execute(code);
                 this.setState({
                     result
                 })
@@ -72,7 +91,7 @@ export default class Ide extends Component {
             })
         } else {
             // 使用js互操调用WebEditor程序集下的Execute静态方法，并且发送参数
-            result = await DotNet.invokeMethodAsync('WebEditor', 'Execute', code);
+            result = await DotentUtil.Execute(code);
             this.setState({
                 result
             })
