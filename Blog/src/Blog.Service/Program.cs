@@ -1,5 +1,6 @@
 using Blog.Service.Infrastructure;
 using Blog.Service.Infrastructure.Middleware;
+using FreeRedis;
 using Masa.BuildingBlocks.Data.UoW;
 using Masa.BuildingBlocks.Dispatcher.IntegrationEvents;
 using Masa.BuildingBlocks.Dispatcher.IntegrationEvents.Logs;
@@ -8,6 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddAuthentication();
+
+builder.Services.AddSingleton<RedisClient>((service) =>
+{
+    return new RedisClient(builder.Configuration["ConnectionStrings:Redis"]);
+});
 
 var app = builder.Services
     .AddAuthorization()

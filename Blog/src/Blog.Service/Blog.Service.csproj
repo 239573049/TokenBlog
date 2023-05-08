@@ -10,6 +10,7 @@
   
   <ItemGroup>
   	<PackageReference Include="FluentValidation" Version="11.5.2" />
+  	<PackageReference Include="FreeRedis" Version="1.0.10" />
   	<PackageReference Include="Masa.Contrib.Authentication.Identity" Version="1.0.0-rc.1" />
   	<PackageReference Include="Masa.Contrib.Data.EFCore.PostgreSql" Version="$(MASAFrameworkVersion)" />
   	<PackageReference Include="Masa.Contrib.Data.Mapping.Mapster" Version="$(MASAFrameworkVersion)" />

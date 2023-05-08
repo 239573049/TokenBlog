@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import './index.css'
-import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe/semi-ui'
-import { IconHome, IconAppCenter, IconGithubLogo, IconBranch } from '@douyinfe/semi-icons';
+import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space, Button } from '@douyinfe/semi-ui'
+import { IconHome, IconAppCenter, IconGithubLogo,IconSetting, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
 import { PathEvent } from '../events/pathEvent';
 import { TabService } from '../../services/tabService';
@@ -120,6 +120,16 @@ export default class BlogContent extends Component {
                                     })}
                                 </Collapse.Panel>
                             </Collapse>
+                            <div>
+                                <Link to='/manage' className={"menu " + (pathname === "/manage" ? "menu-select" : "")} onClick={() => {
+                                    this.setState({
+                                        pathname: '/manage'
+                                    })
+                                }}>
+                                    <IconSetting style={{ margin: '3px' }} />
+                                    <span>设置</span>
+                                </Link>
+                            </div>
                         </Card>
                     </Col>
                     <Col span={16}>

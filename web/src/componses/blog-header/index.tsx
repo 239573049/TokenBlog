@@ -18,7 +18,6 @@ export default class BlogHeader extends Component {
       value: value,
     })
   }
-
   render() {
     var { select, value } = this.state;
     return (
