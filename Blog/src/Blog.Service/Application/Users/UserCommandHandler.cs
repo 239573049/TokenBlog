@@ -29,7 +29,7 @@ public class UserCommandHandler
     [EventHandler(2)]
     public async Task CreateUserInfo(CreateUserInfoCommand command)
     {
-        var user = new UserInfo(Guid.NewGuid(), command.dto.Account, command.dto.Password, command.dto.Email, command.dto.Account, Constant.Role.User);
+        var user = new UserInfo(Guid.NewGuid(), command.dto.Name, command.dto.Account, command.dto.Password, command.dto.Email, command.dto.Account, Constant.Role.User);
 
         await _userInfoRepository.AddAsync(user);
         await _unitOfWork.SaveChangesAsync();

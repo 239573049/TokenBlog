@@ -13,7 +13,7 @@ public class CategoryQueryHandler
     public async Task GetCategoryAsync(GetCategoryQuery query)
     {
         query.Result = (await _categoryRepository.GetListAsync())
-            .Select(x => new CategoryDto(x.Id, x.name, x.path, x.description, x.createdTime, x.Count))
+            .Select(x => new CategoryDto(x.Id, x.name, x.description, x.createdTime, x.Count))
             .OrderBy(x => x.createdTime)
             .ToList();
     }

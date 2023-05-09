@@ -5,14 +5,17 @@ namespace Blog.Service.Domain.Users.Aggregates;
 
 public class UserInfo : FullAggregateRoot<Guid, Guid?>
 {
-    public UserInfo(Guid id, string account, string password, string email, string? avatar, string role) : base(id)
+    public UserInfo(Guid id,string name, string account, string password, string email, string? avatar, string role) : base(id)
     {
+        Name = name;
         Avatar = avatar;
         Role = role;
         UpdateAccoun(account);
         UpdatePassword(password);
         UpdateEmail(email);
     }
+
+    public string Name { get; private set; }
 
     public string Account { get; private set; }
 

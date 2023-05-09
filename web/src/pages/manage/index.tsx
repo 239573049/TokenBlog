@@ -1,5 +1,5 @@
 import { Layout, Nav, Button,Skeleton, Avatar } from '@douyinfe/semi-ui';
-import { IconBell, IconHelpCircle, IconHome, IconHistogram, IconArticle, IconSetting } from '@douyinfe/semi-icons';
+import { IconBell, IconHelpCircle, IconHome, IconHash, IconArticle, IconSend } from '@douyinfe/semi-icons';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 
@@ -19,7 +19,9 @@ export default function Manage() {
                     style={{ maxWidth: 220, height: '100%' }}
                     items={[
                         { itemKey: '/manage', text: '首页', icon: <IconHome size="large" /> },
-                        { itemKey: '/manage/blog', text: '博客管理', icon: <IconArticle size="large" /> }
+                        { itemKey: '/manage/blog', text: '博客管理', icon: <IconArticle size="large" /> },
+                        { itemKey: '/manage/push-blog', text: '发布博客', icon: <IconSend size="large" /> },
+                        { itemKey: '/manage/classify', text: '分类管理', icon: <IconHash size="large" /> }
                     ]}
                     onClick={(key) => {
                         navigate(key.itemKey as string);

@@ -54,7 +54,7 @@ public class BlogDbContext : MasaDbContext
 
         });
 
-        var admin = new UserInfo(Guid.NewGuid(), "admin", "dd666666", "239573049@qq.com", "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg", Constant.Role.Admin);
+        var admin = new UserInfo(Guid.NewGuid(),"Token","admin", "dd666666", "239573049@qq.com", "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg", Constant.Role.Admin);
 
         builder.Entity<UserInfo>().HasData(admin);
     }

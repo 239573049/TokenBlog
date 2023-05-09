@@ -36,6 +36,7 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
                 (string.IsNullOrEmpty(keyword) || x.Title.Contains(keyword) || x.Content.Contains(keyword)) &&
                 (categoryId == null || x.CategoryId == categoryId) && (string.IsNullOrEmpty(tabIds) ||
                                                                        x.Tabs.Contains(tabIds)))
+            .OrderByDescending(x=>x.CreationTime)
             .Include(x => x.Category);
     }
 

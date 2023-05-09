@@ -1,4 +1,4 @@
-import { Button, Form } from '@douyinfe/semi-ui'
+import { Button, Form , Notification} from '@douyinfe/semi-ui'
 import React, { Component } from 'react'
 import UserInfoService from '../../services/userInfoService'
 
@@ -7,9 +7,18 @@ export default class Login extends Component {
         UserInfoService.Login(values.account, values.password)
             .then(res => {
                 if (res) {
+                    Notification.success({
+                        title: '登录成功',
+                        content: '欢迎回来'
+                    })
                     localStorage.setItem('token', res as string)
                     window.location.href = '/manage'
                 }
+            }).catch(error=>{
+                Notification.error({
+                    title: '登录失败',
+                    content: error.response.data.message
+                })
             })
     }
     render() {

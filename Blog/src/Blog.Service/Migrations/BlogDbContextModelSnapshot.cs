@@ -110,10 +110,6 @@ namespace Blog.Service.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Path")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
@@ -166,6 +162,10 @@ namespace Blog.Service.Migrations
                     b.Property<Guid?>("Modifier")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
@@ -186,13 +186,14 @@ namespace Blog.Service.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("dfcb4d6e-5123-4dce-80b5-4be3b0d56432"),
+                            Id = new Guid("648ce51f-0881-4b9d-bd28-7904a0a89e62"),
                             Account = "admin",
                             Avatar = "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg",
-                            CreationTime = new DateTime(2023, 5, 8, 16, 6, 36, 818, DateTimeKind.Utc).AddTicks(2050),
+                            CreationTime = new DateTime(2023, 5, 9, 15, 54, 24, 333, DateTimeKind.Utc).AddTicks(6887),
                             Email = "239573049@qq.com",
                             IsDeleted = false,
-                            ModificationTime = new DateTime(2023, 5, 8, 16, 6, 36, 818, DateTimeKind.Utc).AddTicks(2052),
+                            ModificationTime = new DateTime(2023, 5, 9, 15, 54, 24, 333, DateTimeKind.Utc).AddTicks(6890),
+                            Name = "Token",
                             Password = "dd666666",
                             Role = "Admin"
                         });

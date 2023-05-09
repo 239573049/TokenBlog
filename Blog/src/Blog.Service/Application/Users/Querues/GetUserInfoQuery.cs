@@ -2,7 +2,7 @@
 
 namespace Blog.Service.Application.Users.Querues;
 
-public record GetUserInfoQuery(string account, string password) : Query<UserInfo>()
+public record GetUserInfoQuery(string account, string password) : Query<string>()
 {
-    public override UserInfo Result { get; set; }
+    public override string Result { get; set; }
 }

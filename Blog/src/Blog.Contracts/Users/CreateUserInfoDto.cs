@@ -4,8 +4,9 @@ namespace Blog.Contracts.Users;
 
 public class CreateUserInfoDto
 {
-    public CreateUserInfoDto(string account, string password, string email, string? avatar, string role)
+    public CreateUserInfoDto(string name, string account, string password, string email, string? avatar, string role)
     {
+        Name = name;
         Account = account;
         Password = password;
         Email = email;
@@ -15,6 +16,8 @@ public class CreateUserInfoDto
         VerifyEmail();
         VerifyPassword();
     }
+
+    public string Name { get; set; }
 
     public string Account { get;  set; }
 

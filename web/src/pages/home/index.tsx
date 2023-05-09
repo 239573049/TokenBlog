@@ -3,7 +3,7 @@ import { PathEvent } from '../../componses/events/pathEvent';
 import './index.css'
 import { IconUser } from '@douyinfe/semi-icons';
 import { ArticleService } from '../../services/articleService';
-import { CategoryDto, GetArticleListDto } from '../../models/blogger';
+import {  GetArticleListDto } from '../../models/blogger';
 import { formatDate } from '../../utils/utils';
 import { Pagination } from '@douyinfe/semi-ui';
 

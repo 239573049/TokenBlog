@@ -1,3 +1,4 @@
+import { CreateArticleDto } from "../models/blogger";
 import request from "../utils/request";
 
 class ArticleService {
@@ -27,6 +28,14 @@ class ArticleService {
 
     public static getRanking() {
         return request.get("/api/v1/Articles/Ranking");
+    }
+
+    public static Create(dto:CreateArticleDto): Promise<any> {
+        return request.post("/api/v1/Articles", dto);
+    }
+
+    public static delete(id:string){
+        return request.delete(`/api/v1/Articles/${id}`);
     }
 }
 

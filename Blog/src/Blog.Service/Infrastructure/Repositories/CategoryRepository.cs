@@ -18,7 +18,6 @@ public class CategoryRepository : Repository<BlogDbContext, Category>, ICategory
             {
                 Id = x.Id,
                 name = x.Name,
-                path = x.Path,
                 description = x.Description,
                 createdTime = x.CreatedTime
             })

@@ -5,8 +5,6 @@ public class Category : Entity<Guid>
 {
     private string name;
 
-    private string path;
-
     private string description;
 
     private DateTime createdTime;
@@ -38,12 +36,6 @@ public class Category : Entity<Guid>
         set => createdTime = ArgumentExceptionExtensions.ThrowIfDefault(value, nameof(CreatedTime)); 
     }
 
-    public string Path
-    {
-        get => path;
-        set => path = ArgumentExceptionExtensions.ThrowIfDefault(value, nameof(path));
-    }
-
     protected Category(Guid id, string name, string description, DateTime createdTime)
     {
         Id = id;
@@ -54,8 +46,9 @@ public class Category : Entity<Guid>
 
     public Category(string name, string description)
     {
+        Id = Guid.NewGuid();
         Name = name;
         Description = description;
-        CreatedTime = DateTime.Now;
+        CreatedTime = DateTime.UtcNow;
     }
 }

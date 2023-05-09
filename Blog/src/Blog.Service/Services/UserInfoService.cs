@@ -14,12 +14,10 @@ public class UserInfoService : BaseService<UserInfoService>
         await eventBus.PublishAsync(commonad);
     }
 
-    public async Task<string> Login(string account,string password)
+    public async Task<string> Login(string account, string password)
     {
         var query = new GetUserInfoQuery(account, password);
         await eventBus.PublishAsync(query);
-        var token = Guid.NewGuid().ToString("N");
-        await redis.SetAsync(token, query.Result);
-        return token;
+        return query.Result;
     }
 }

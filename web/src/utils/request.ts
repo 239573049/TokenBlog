@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { Notification } from "@douyinfe/semi-ui";
 
 const baseURL = process.env.NODE_ENV === "development" ? "http://localhost:5119" : "";
@@ -43,6 +43,11 @@ class Http {
 
   public async get<T>(url: string, params?: any): Promise<T> {
     const response = await this.axiosInstance.get(url, { params });
+    return response.data;
+  }
+
+  public async postForm<T>(url: string, data: FormData, headers: AxiosRequestConfig<any>): Promise<T> {
+    const response = await this.axiosInstance.post(url, data, headers);
     return response.data;
   }
 

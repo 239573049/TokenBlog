@@ -1,16 +1,28 @@
+using Blog.Contracts.Auth;
 using Blog.Service.Infrastructure;
+using Blog.Service.Infrastructure.Expressions;
 using Blog.Service.Infrastructure.Middleware;
 using FreeRedis;
 using Masa.BuildingBlocks.Data.UoW;
 using Masa.BuildingBlocks.Dispatcher.IntegrationEvents;
 using Masa.BuildingBlocks.Dispatcher.IntegrationEvents.Logs;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddAuthentication();
 
-builder.Services.AddSingleton<RedisClient>((service) =>
+#region Jwt
+
+var jwtSection = builder.Configuration.GetSection("Jwt");
+builder.Services.Configure<JwtOptions>(jwtSection);
+var jwtOptions = jwtSection.Get<JwtOptions>();
+builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+
+#endregion
+
+builder.Services.AddSingleton((service) =>
 {
     return new RedisClient(builder.Configuration["ConnectionStrings:Redis"]);
 });
@@ -18,6 +30,8 @@ builder.Services.AddSingleton<RedisClient>((service) =>
 var app = builder.Services
     .AddAuthorization()
     .AddMasaIdentity()
+    .AddTransient<AnomalyMiddleware>()
+    .AddJwtBearerAuthentication(jwtOptions)
     .AddCors(options =>
     {
         options.AddPolicy("CorsPolicy", corsBuilder =>
@@ -61,8 +75,12 @@ var app = builder.Services
     .AddAutoInject()
     .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
 
+app.UseMiddleware<AnomalyMiddleware>();
+
 app.UseMasaExceptionHandler();
 app.UseCors("CorsPolicy");
+
+app.UseStaticFiles();
 
 if (app.Environment.IsDevelopment())
 {

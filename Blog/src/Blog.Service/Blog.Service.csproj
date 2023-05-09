@@ -1,41 +1,46 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-  <PropertyGroup>
-  	<TargetFramework>net7.0</TargetFramework>
-  	<Nullable>enable</Nullable>
-  	<ImplicitUsings>enable</ImplicitUsings>
-  	<UserSecretsId>af568b56-cc0e-46bf-bb64-9d1a125d8a15</UserSecretsId>
-  	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-  	<DockerfileContext>..\..</DockerfileContext>
-  </PropertyGroup>
-  
-  <ItemGroup>
-  	<PackageReference Include="FluentValidation" Version="11.5.2" />
-  	<PackageReference Include="FreeRedis" Version="1.0.10" />
-  	<PackageReference Include="Masa.Contrib.Authentication.Identity" Version="1.0.0-rc.1" />
-  	<PackageReference Include="Masa.Contrib.Data.EFCore.PostgreSql" Version="$(MASAFrameworkVersion)" />
-  	<PackageReference Include="Masa.Contrib.Data.Mapping.Mapster" Version="$(MASAFrameworkVersion)" />
-  	<PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="1.0.0-rc.1" />
-  	<PackageReference Include="Masa.Contrib.Ddd.Domain" Version="1.0.0-rc.1" />
-  	<PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="1.0.0-rc.1" />
-  	<PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MASAFrameworkVersion)" />
-  	<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents" Version="1.0.0-rc.1" />
-  	<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="1.0.0-rc.1" />
-  	<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="1.0.0-rc.1" />
-  	<PackageReference Include="Masa.Contrib.Exceptions" Version="$(MASAFrameworkVersion)" />
-  	<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="$(MASAFrameworkVersion)" />
-  	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.16">
-  	  <PrivateAssets>all</PrivateAssets>
-  	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-  	</PackageReference>
-  	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
-  	  <PrivateAssets>all</PrivateAssets>
-  	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-  	</PackageReference>
-  	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
-  	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
-  
-  <ItemGroup>
-  	<ProjectReference Include="..\Blog.Contracts\Blog.Contracts.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>af568b56-cc0e-46bf-bb64-9d1a125d8a15</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="11.5.2" />
+		<PackageReference Include="FreeRedis" Version="1.0.10" />
+		<PackageReference Include="Masa.Contrib.Authentication.Identity" Version="1.0.0-rc.1" />
+		<PackageReference Include="Masa.Contrib.Data.EFCore.PostgreSql" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Data.Mapping.Mapster" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="1.0.0-rc.1" />
+		<PackageReference Include="Masa.Contrib.Ddd.Domain" Version="1.0.0-rc.1" />
+		<PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="1.0.0-rc.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents" Version="1.0.0-rc.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="1.0.0-rc.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="1.0.0-rc.1" />
+		<PackageReference Include="Masa.Contrib.Exceptions" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.16">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Blog.Contracts\Blog.Contracts.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
 </Project>

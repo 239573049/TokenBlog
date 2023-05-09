@@ -1,4 +1,7 @@
-﻿namespace Blog.Service.Services;
+﻿using Blog.Service.Application.Bloggers.Commands;
+using Microsoft.AspNetCore.Authorization;
+
+namespace Blog.Service.Services;
 
 public class ArticleService : BaseService<ArticleService>
 {
@@ -23,5 +26,19 @@ public class ArticleService : BaseService<ArticleService>
         var query = new GetRankingQuery();
         await eventBus.PublishAsync(query);
         return query.Result;
+    }
+
+    [Authorize]
+    public async Task CreateAsync(CreateArticleDto dto)
+    {
+        var command = new CreateArticleCommand(dto);
+        await eventBus.PublishAsync(command);
+    }
+
+    [Authorize]
+    public async Task DeleteAsync(Guid id)
+    {
+        var command = new DeleteArticleCommand(id);
+        await eventBus.PublishAsync(command);
     }
 }

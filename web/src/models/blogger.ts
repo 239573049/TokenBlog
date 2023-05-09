@@ -42,3 +42,10 @@ export interface CategoryDto {
     createdTime: string;
     count: number;
 }
+
+export interface CreateArticleDto {
+    title: string;
+    content: string;
+    categoryId: string;
+    tabs: string;
+}

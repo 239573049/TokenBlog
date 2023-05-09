@@ -14,6 +14,8 @@ import Manage from './pages/manage';
 import Login from './pages/login';
 import ManageHome from './pages/manage/home';
 import ManageBlog from './pages/manage/blog';
+import PushBlog from './pages/manage/push-blog';
+import Classify from './pages/manage/classify';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,12 @@ const router = createBrowserRouter([
       },{
         path: "/manage/blog",
         element: <ManageBlog />,
+      },{
+        path: "/manage/push-blog",
+        element: <PushBlog />,
+      },{
+        path: "/manage/classify",
+        element: <Classify />,
       }
     ]
   }, {
