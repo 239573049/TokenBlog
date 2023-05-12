@@ -55,8 +55,7 @@ export default class BlogContent extends Component {
         return (
             <div className='blog-content'>
                 <Row style={{ height: '100%' }}>
-
-                    <Col span={4} style={{ height: '100%' }}>
+                    <Col span={4} style={{ height: '100%' }}  className='blog-info'>
                         <Card style={{ height: '100%' }}>
                             <div onClick={() => window.open('https://github.com/239573049')} style={{ height: '100px' }}>
                                 <Card
@@ -132,7 +131,7 @@ export default class BlogContent extends Component {
                             </div>
                         </Card>
                     </Col>
-                    <Col span={16}>
+                    <Col span={16}  className='blog-render'>
                         <div style={{ marginLeft: '5px', marginRight: '5px' }}>
                             <Card style={{ height: '95px', width: '100%' }}>
                                 <h2>南岛鹋</h2>
@@ -143,7 +142,7 @@ export default class BlogContent extends Component {
                             <Outlet />
                         </div>
                     </Col>
-                    <Col span={4} style={{ height: '100%' }}>
+                    <Col span={4} style={{ height: '100%' }} className='blog-ranking'>
                         <Card style={{ height: '100%' }}>
                             <Ranking />
                             <Divider margin='12px' />

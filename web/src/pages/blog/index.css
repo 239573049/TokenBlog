@@ -104,3 +104,40 @@ p code{
   width: 100%;
   margin: 5px;
 }
+
+@media screen and (max-width: 800px) {
+
+  .blog-content{
+    width: 100% !important;
+  }
+
+  .blog-render{
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .blog-ranking{
+    transition: 0.3s;
+    display: none;
+    width: 0px;
+  }
+  .blog-content{
+    width: 1200px;
+  }
+  
+  .blog-content{
+    width: 100% !important;
+  }
+
+  .blog-render{
+    width: 100% !important;
+  }
+  
+  .blog-info{
+    transition: 0.3s;
+    width: 0px;
+    display: none;
+    
+  }
+}

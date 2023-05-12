@@ -10,7 +10,7 @@ const { Header, Footer, Content } = Layout;
 export default class BlogLayout extends Component {
     render() {
         return (
-            <Layout style={{ height: "100%" }}>
+            <Layout style={{ height: "100%" }} >
                 <Header>
                     <BlogHeader />
                 </Header>

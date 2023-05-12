@@ -72,7 +72,7 @@ export default class Blog extends Component {
         let This = this;
         return (
             <Layout style={{ height: "100%" }}>
-                <Header>
+                <Header className='blog-header'>
                     <Card>
                         <Link to={'/'} className='header-item'>首页</Link>
                         <a onClick={() => window.open('https://github.com/239573049/TokenBlog')} className='header-item'>GitHub</a>
@@ -93,7 +93,7 @@ export default class Blog extends Component {
                         <div className='blog-content'>
                             <Row style={{ height: '100%' }}>
 
-                                <Col span={4} style={{ height: '100%' }}>
+                                <Col span={4} style={{ height: '100%' }} className='blog-info'>
                                     <Card style={{ height: '100%' }}>
                                         <div style={{ height: '100px' }}>
                                             <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} alt='Token'>T</Avatar>
@@ -102,13 +102,13 @@ export default class Blog extends Component {
                                         <Divider margin='12px' />
                                     </Card>
                                 </Col>
-                                <Col span={16}>
+                                <Col span={16} className='blog-render'>
                                     <div style={{ marginLeft: '5px', marginRight: '5px' }}>
                                         <Card style={{ height: '95px', width: '100%' }}>
                                             <h2>{data.title}</h2>
                                         </Card>
                                     </div>
-                                    <div style={{ margin: '10px', overflow: 'auto', maxHeight: 'calc(100vh - 150px)' }}>
+                                    <div style={{ margin: '10px', overflow: 'auto', maxHeight: 'calc(100vh - 150px)', width: "100%" }}>
                                         <ReactMarkdown
                                             children={data.content}
                                             remarkPlugins={[remarkMath]}
@@ -146,7 +146,7 @@ export default class Blog extends Component {
                                     </div>
 
                                 </Col>
-                                <Col span={4} style={{ height: '100%' }}>
+                                <Col span={4} style={{ height: '100%' }} className='blog-ranking'>
                                     <Card style={{ height: '100%' }}>
                                         <div style={{ margin: '5px' }}>
                                             <Ranking />
