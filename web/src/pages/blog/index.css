@@ -99,3 +99,8 @@ p code{
   margin: 2px !important;
   border-radius: 4px;
 }
+
+.blog-markdown img{
+  width: 100%;
+  margin: 5px;
+}

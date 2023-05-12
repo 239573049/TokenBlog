@@ -1,5 +1,5 @@
 import { Avatar, Button, Card, Col, Notification, Divider, Layout, Row, Space, Tag } from '@douyinfe/semi-ui'
-import  { Component } from 'react'
+import { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { ArticleDto } from '../../models/blogger';
 import { ArticleService } from '../../services/articleService';
@@ -7,7 +7,7 @@ import { TagColor } from '@douyinfe/semi-ui/lib/es/tag';
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { IconCopy} from "@douyinfe/semi-icons";
+import { IconCopy } from "@douyinfe/semi-icons";
 import './index.css'
 import Ranking from '../../componses/ranking';
 import remarkMath from 'remark-math'
@@ -99,9 +99,6 @@ export default class Blog extends Component {
                                             <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} alt='Token'>T</Avatar>
                                             <span >Token</span>
                                         </div>
-                                        <div style={{ margin: '5px' }}>
-                                            <Ranking />
-                                        </div>
                                         <Divider margin='12px' />
                                     </Card>
                                 </Col>
@@ -115,7 +112,7 @@ export default class Blog extends Component {
                                         <ReactMarkdown
                                             children={data.content}
                                             remarkPlugins={[remarkMath]}
-                                            rehypePlugins={[rehypeKatex,remarkGfm]}
+                                            rehypePlugins={[rehypeKatex, remarkGfm]}
                                             className='blog-markdown'
                                             components={{
                                                 code({ node, inline, className, children, ...props }) {
@@ -151,6 +148,10 @@ export default class Blog extends Component {
                                 </Col>
                                 <Col span={4} style={{ height: '100%' }}>
                                     <Card style={{ height: '100%' }}>
+                                        <div style={{ margin: '5px' }}>
+                                            <Ranking />
+                                        </div>
+                                        <Divider margin='12px' />
                                         <span>标签</span>
                                         <Divider margin='12px' />
                                         <Space wrap>
