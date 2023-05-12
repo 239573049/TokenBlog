@@ -6,10 +6,12 @@ body {
     height: 100%;
     margin: 0px !important;
 }
-#root{
+
+#root {
     height: 100%;
 }
-a{
+
+a {
     color: #000;
     text-decoration: none;
 }
