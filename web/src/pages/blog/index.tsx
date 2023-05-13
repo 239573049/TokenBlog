@@ -96,9 +96,9 @@ export default class Blog extends Component {
 
                                 <Col span={4} style={{ height: '100%' }} className='blog-info'>
                                     <Card style={{ height: '100%' }}>
-                                        <div style={{ height: '100px' }}>
-                                            <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} alt='Token'>T</Avatar>
-                                            <span >Token</span>
+                                        <div style={{ height: '60px' }}>
+                                            <Avatar src='https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg' style={{ backgroundColor: '#87d068', margin: 4 }} alt='Token'>T</Avatar>
+                                            <span>Token</span>
                                         </div>
                                         <Divider margin='12px' />
                                     </Card>

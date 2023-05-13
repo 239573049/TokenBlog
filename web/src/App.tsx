@@ -17,6 +17,10 @@ import ManageBlog from './pages/manage/blog';
 import PushBlog from './pages/manage/push-blog';
 import Classify from './pages/manage/classify';
 
+const body = document.body;
+
+body.setAttribute('theme-mode', 'dark');
+
 const router = createBrowserRouter([
   {
     path: "/",

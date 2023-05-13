@@ -54,6 +54,10 @@ body {
   color: #066ef7;
 }
 
+.blog-markdown{
+  color: #ddd;
+}
+
 .blog-markdown table {
   border-collapse: collapse;
   width: 100%;
