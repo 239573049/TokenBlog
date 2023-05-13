@@ -30,8 +30,8 @@ export default class Ranking extends Component {
             <div>
                 <div  style={{
                     textAlign: 'center', 
-                    fontSize: '12px',background: 'linear-gradient(to bottom, #ff9d00, #ff4e00, #ff0000, #c80000, #960000)'
-                }}><span style={{color:"antiquewhite"}}>热榜</span></div>
+                    fontSize: '16px'
+                }}><span>热榜</span></div>
                 <Divider margin='12px'/>
                 <div className="list">
                     {data.map((x, i) => {

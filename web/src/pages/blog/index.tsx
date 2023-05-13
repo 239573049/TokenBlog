@@ -70,6 +70,7 @@ export default class Blog extends Component {
         }
 
         let This = this;
+
         return (
             <Layout style={{ height: "100%" }}>
                 <Header className='blog-header'>
@@ -112,6 +113,12 @@ export default class Blog extends Component {
                                         <ReactMarkdown
                                             children={data.content}
                                             remarkPlugins={[remarkMath]}
+                                            transformLinkUri={(href, children, title) => {
+                                                if(href==='#'){
+                                                    return href+(children.find(x=>true) as any).value;
+                                                }
+                                                return href;
+                                            }}
                                             rehypePlugins={[rehypeKatex, remarkGfm]}
                                             className='blog-markdown'
                                             components={{
