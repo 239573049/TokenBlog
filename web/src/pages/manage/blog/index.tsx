@@ -147,7 +147,7 @@ export default class ManageBlog extends Component {
                                     })}
                                     <Select.Option value={''}>全部</Select.Option>
                                 </Form.Select>
-                                <Form.Select field='tabIds' label={{ text: '标签', optional: true }} style={{ width: '320px' }} >
+                                <Form.Select field='tabIds'  label={{ text: '标签', optional: true }} style={{ width: '320px' }} >
                                     {tabs.map(x => {
                                         return (<Select.Option value={x.name}>{x.name}</Select.Option>)
                                     })}
