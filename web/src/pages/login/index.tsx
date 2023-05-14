@@ -34,7 +34,7 @@ export default class Login extends Component {
                             <Form.Input field='account' label='账号' style={{ width: '100%' }} placeholder='请输入您的账号'></Form.Input>
                             <Form.Input field='password' label='密码' style={{ width: '100%' }} placeholder='请输入您的密码'></Form.Input>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Button disabled={!values.agree} block htmlType='submit' type="tertiary">登录</Button>
+                                <Button block htmlType='submit' type="tertiary">登录</Button>
                             </div>
                         </>
                     )}

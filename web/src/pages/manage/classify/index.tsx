@@ -25,25 +25,29 @@ export default class Classify extends Component {
 
     createCategory() {
         const { input } = this.state;
-        CategoryService.create(input.name, input.description)
-            .then(res => {
-                Notification.success({
-                    title: '创建成功'
-                })
-                this.loadCategorys()
-            })    
+        if(input.name){
+            CategoryService.create(input.name, input.description)
+                .then(res => {
+                    Notification.success({
+                        title: '创建成功'
+                    })
+                    this.loadCategorys()
+                })    
+        }
 
     }
 
     createTab() {
         const { input } = this.state;
-        TabService.create(input.tabName)
-            .then(res => {
-                Notification.success({
-                    title: '创建成功'
+        if(input.tabName){
+            TabService.create(input.tabName)
+                .then(res => {
+                    Notification.success({
+                        title: '创建成功'
+                    })
+                    this.loadTabs()
                 })
-                this.loadTabs()
-            })
+        }
     }
 
     loadCategorys() {
@@ -91,8 +95,8 @@ export default class Classify extends Component {
                                 description: e
                             }
                         })} field='description' label='描述' style={{ width: 150 }} />
-                        <Button type="primary" htmlType="submit" onClick={() => this.createCategory()} className="btn-margin-right">新增分类</Button>
-                        <Form.Input initValue={input.tabName} onChange={(e) => this.setState({
+                        <Button style={{marginRight:'5px'}} type="primary" htmlType="submit" onClick={() => this.createCategory()} className="btn-margin-right">新增分类</Button>
+                        <Form.Input  initValue={input.tabName} onChange={(e) => this.setState({
                             input: {
                                 ...input,
                                 tabName: e
