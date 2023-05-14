@@ -1,6 +1,7 @@
 import { Button, Form , Notification} from '@douyinfe/semi-ui'
 import React, { Component } from 'react'
 import UserInfoService from '../../services/userInfoService'
+import './index.css'
 
 export default class Login extends Component {
     handleSubmit(values: any) {
@@ -23,11 +24,11 @@ export default class Login extends Component {
     }
     render() {
         return (
-            <div>
+            <div style={{backgroundColor:'var( --semi-color-bg-0)' }}>
                 <div>
                     <h1 style={{ textAlign: 'center' }}>登录</h1>
                 </div>
-                <Form onSubmit={values => this.handleSubmit(values)} style={{ width: 400,margin:'auto' }}>
+                <Form onSubmit={values => this.handleSubmit(values)} style={{ width: 400,margin:'auto',backgroundColor:'var( --semi-color-bg-0)' }}>
                     {({ formState, values, formApi }) => (
                         <>
                             <Form.Input field='account' label='账号' style={{ width: '100%' }} placeholder='请输入您的账号'></Form.Input>
