@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import './index.css'
-import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space, Button } from '@douyinfe/semi-ui'
-import { IconHome, IconAppCenter, IconGithubLogo,IconSetting, IconBranch } from '@douyinfe/semi-icons';
+import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe/semi-ui'
+import { IconHome, IconPaperclip,IconAppCenter,IconMenu, IconGithubLogo,IconSetting, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
 import { PathEvent } from '../events/pathEvent';
 import { TabService } from '../../services/tabService';
@@ -71,7 +71,7 @@ export default class BlogContent extends Component {
                             </div>
                             <span style={{ fontSize: '12px', color: '#98a6ad!important' }}>导航</span>
                             <div style={{ margin: '5px' }}>
-                                <Link className={"menu " + (pathname === "/" ? "menu-select" : "")} onClick={() => {
+                            <Link className={"menu " + (pathname === "/" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
                                         pathname: '/'
                                     })
@@ -81,6 +81,28 @@ export default class BlogContent extends Component {
                                 }} to={'/'}>
                                     <IconHome style={{ margin: '3px' }} />
                                     <span>首页({count})</span>
+                                </Link>
+                                <Link className={"menu " + (pathname === "/compilations" ? "menu-select" : "")} onClick={() => {
+                                    this.setState({
+                                        pathname: '/compilations'
+                                    })
+                                    PathEvent.emit('blog-path', {
+                                        deleteid: 'true',
+                                    })
+                                }} to={'/compilations'}>
+                                    <IconPaperclip style={{ margin: '3px' }} />
+                                    <span>合集</span>
+                                </Link>
+                                <Link className={"menu " + (pathname === "/resource-list" ? "menu-select" : "")} onClick={() => {
+                                    this.setState({
+                                        pathname: '/resource-list'
+                                    })
+                                    PathEvent.emit('blog-path', {
+                                        deleteid: 'true',
+                                    })
+                                }} to={'/resource-list'}>
+                                    <IconMenu style={{ margin: '3px' }} />
+                                    <span>资源列表</span>
                                 </Link>
                                 <Link className={"menu " + (pathname === "/links" ? "menu-select" : "")} onClick={() => {
                                     this.setState({

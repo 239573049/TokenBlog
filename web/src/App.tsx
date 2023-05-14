@@ -3,12 +3,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import BlogLayout from './layouts';
-import Link from './pages/link';
-import Home from './pages/home';
-import Repository from './pages/repository';
+import Link from './pages/home/link';
+import Repository from './pages/home/repository';
 import Blog from './pages/blog';
-import About from './pages/about';
+import About from './pages/home/about';
 import Ide from './pages/ide';
 import Manage from './pages/manage';
 import Login from './pages/login';
@@ -16,11 +14,15 @@ import ManageHome from './pages/manage/home';
 import ManageBlog from './pages/manage/blog';
 import PushBlog from './pages/manage/push-blog';
 import Classify from './pages/manage/classify';
+import Compilations from './pages/home/compilations';
+import Index from './pages/home';
+import Home from './pages/home/home';
+import ResourceList from './pages/home/resource-list';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <BlogLayout />,
+    element: <Index />,
     children: [
       {
         path: "/",
@@ -38,6 +40,13 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
+      {
+        path: '/compilations',
+        element: <Compilations />
+      }, {
+        path: "/resource-list",
+        element: <ResourceList />
+      }
     ]
   }, {
     path: "/blog",
@@ -48,17 +57,17 @@ const router = createBrowserRouter([
   }, {
     path: "/manage",
     element: <Manage />,
-    children:[
+    children: [
       {
         path: "/manage",
         element: <ManageHome />,
-      },{
+      }, {
         path: "/manage/blog",
         element: <ManageBlog />,
-      },{
+      }, {
         path: "/manage/push-blog",
         element: <PushBlog />,
-      },{
+      }, {
         path: "/manage/classify",
         element: <Classify />,
       }

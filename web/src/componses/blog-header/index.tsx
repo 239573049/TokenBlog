@@ -25,6 +25,8 @@ export default class BlogHeader extends Component {
   onDark() {
     var { dark } = this.state;
     dark = !dark;
+    console.log(dark);
+    
     if (body.hasAttribute('theme-mode')) {
       body.removeAttribute('theme-mode');
     } else {
@@ -77,7 +79,7 @@ export default class BlogHeader extends Component {
                 this.onSearch()
               }
             }} className={'search ' + (select ? "search-select" : "")} suffix={<IconSearch onClick={() => this.onSearch()} />} showClear></Input>
-            <Button style={{ marginLeft: '5px' }} icon={dark ? <IconSun onClick={() => this.onDark()} /> : <IconMoon onClick={() => this.onDark()} />}>
+            <Button onClick={() => this.onDark()} style={{ marginLeft: '5px' }} icon={dark ? <IconSun  /> : <IconMoon />}>
             </Button>
           </Nav.Footer>
         </Nav>
