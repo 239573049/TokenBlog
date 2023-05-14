@@ -1,15 +1,18 @@
-import { Avatar, Input, Nav } from '@douyinfe/semi-ui'
+import { Avatar, Button, Input, Nav } from '@douyinfe/semi-ui'
 import { Component } from 'react'
-import {  IconSearch } from '@douyinfe/semi-icons';
+import { IconSearch, IconMoon, IconSun } from '@douyinfe/semi-icons';
 import './index.css'
 import { PathEvent } from '../events/pathEvent';
 import { Link } from 'react-router-dom';
+
+const body = document.body;
 
 export default class BlogHeader extends Component {
 
   state = {
     select: false,
-    value: ''
+    value: '',
+    dark: body.hasAttribute('theme-mode')
   }
 
   onSearch() {
@@ -18,8 +21,22 @@ export default class BlogHeader extends Component {
       value: value,
     })
   }
+
+  onDark() {
+    var { dark } = this.state;
+    dark = !dark;
+    if (body.hasAttribute('theme-mode')) {
+      body.removeAttribute('theme-mode');
+    } else {
+      body.setAttribute('theme-mode', 'dark');
+    }
+
+    this.setState({ dark })
+
+  }
+
   render() {
-    var { select, value } = this.state;
+    var { select, value, dark } = this.state;
     return (
       <div>
         <Nav mode="horizontal" defaultSelectedKeys={['Home']}>
@@ -60,6 +77,8 @@ export default class BlogHeader extends Component {
                 this.onSearch()
               }
             }} className={'search ' + (select ? "search-select" : "")} suffix={<IconSearch onClick={() => this.onSearch()} />} showClear></Input>
+            <Button style={{ marginLeft: '5px' }} icon={dark ? <IconSun onClick={() => this.onDark()} /> : <IconMoon onClick={() => this.onDark()} />}>
+            </Button>
           </Nav.Footer>
         </Nav>
       </div>

@@ -26,14 +26,13 @@ export default class Login extends Component {
         return (
             <div style={{backgroundColor:'var( --semi-color-bg-0)' }}>
                 <div>
-                    <h1 style={{ textAlign: 'center' }}>登录</h1>
+                    <h1 style={{ textAlign: 'center' }}>博客后台登录</h1>
                 </div>
                 <Form onSubmit={values => this.handleSubmit(values)} style={{ width: 400,margin:'auto',backgroundColor:'var( --semi-color-bg-0)' }}>
                     {({ formState, values, formApi }) => (
                         <>
                             <Form.Input field='account' label='账号' style={{ width: '100%' }} placeholder='请输入您的账号'></Form.Input>
                             <Form.Input field='password' label='密码' style={{ width: '100%' }} placeholder='请输入您的密码'></Form.Input>
-                            <Form.Checkbox field='agree' noLabel>我已阅读并同意服务条款</Form.Checkbox>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Button disabled={!values.agree} block htmlType='submit' type="tertiary">登录</Button>
                             </div>

@@ -6,24 +6,25 @@
 		<UserSecretsId>af568b56-cc0e-46bf-bb64-9d1a125d8a15</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..</DockerfileContext>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="11.5.2" />
 		<PackageReference Include="FreeRedis" Version="1.0.10" />
-		<PackageReference Include="Masa.Contrib.Authentication.Identity" Version="1.0.0-rc.1" />
-		<PackageReference Include="Masa.Contrib.Data.EFCore.PostgreSql" Version="$(MASAFrameworkVersion)" />
-		<PackageReference Include="Masa.Contrib.Data.Mapping.Mapster" Version="$(MASAFrameworkVersion)" />
-		<PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="1.0.0-rc.1" />
-		<PackageReference Include="Masa.Contrib.Ddd.Domain" Version="1.0.0-rc.1" />
-		<PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="1.0.0-rc.1" />
+		<PackageReference Include="Masa.Contrib.Authentication.Identity" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Data.EFCore.PostgreSql" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Data.Mapping.Mapster" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Ddd.Domain" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="1.0.0-rc.1.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MASAFrameworkVersion)" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents" Version="1.0.0-rc.1" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="1.0.0-rc.1" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="1.0.0-rc.1" />
-		<PackageReference Include="Masa.Contrib.Exceptions" Version="$(MASAFrameworkVersion)" />
-		<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Exceptions" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="1.0.0-rc.1.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.16">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -42,5 +43,6 @@
 
 	<ItemGroup>
 		<Folder Include="wwwroot\" />
+		<Folder Include="wwwroot\images\" />
 	</ItemGroup>
 </Project>

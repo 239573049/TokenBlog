@@ -59,9 +59,7 @@ var app = builder.Services
             .UseIntegrationEventBus<IIntegrationEventLogService>(options =>
             {
                 options.UseDapr()
-                .UseEventLog<BlogDbContext>();
-
-                options.MaxRetryTimes = 3;
+                    .UseEventLog<BlogDbContext>();
             })
             .UseEventBus(eventBusBuilder =>
             {
