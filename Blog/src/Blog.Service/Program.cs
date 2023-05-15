@@ -30,6 +30,7 @@ builder.Services.AddSingleton((service) =>
 var app = builder.Services
     .AddAuthorization()
     .AddMasaIdentity()
+    .AddTransient<AuditMiddleware>()
     .AddTransient<AnomalyMiddleware>()
     .AddJwtBearerAuthentication(jwtOptions)
     .AddCors(options =>
@@ -73,6 +74,7 @@ var app = builder.Services
     .AddAutoInject()
     .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
 
+app.UseMiddleware<AuditMiddleware>();
 app.UseMiddleware<AnomalyMiddleware>();
 
 app.UseMasaExceptionHandler();

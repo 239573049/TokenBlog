@@ -1,0 +1,5 @@
+.resource-list {
+    background-color: var(--semi-color-fill-0);
+    height: 100%;
+    padding: 20px;
+}

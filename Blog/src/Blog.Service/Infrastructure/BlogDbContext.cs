@@ -1,4 +1,5 @@
 ﻿using Blog.Contracts.Shared;
+using Blog.Service.Domain.Resources.Aggregates;
 using Blog.Service.Domain.Users.Aggregates;
 
 namespace Blog.Service.Infrastructure;
@@ -12,6 +13,8 @@ public class BlogDbContext : MasaDbContext
     public DbSet<Tab> Tabs { get; set; } = null!;
 
     public DbSet<UserInfo> UserInfos { get; set; } = null!;
+
+    public DbSet<Resource> Resources { get; set; } = null!;
 
     public BlogDbContext(MasaDbContextOptions<BlogDbContext> options) : base(options)
     {
@@ -52,6 +55,16 @@ public class BlogDbContext : MasaDbContext
             options.HasIndex(x => x.Id).IsUnique();
             options.HasIndex(x => x.Account);
 
+        });
+
+        builder.Entity<Resource>(options =>
+        {
+            options.HasIndex(x => x.Id).IsUnique();
+
+            options.Property(x => x.Description).HasComment("描述");
+            options.Property(x => x.Title).HasComment("标题");
+            options.Property(x => x.DownloadCount).HasComment("下载次数");
+            options.Property(x => x.Referee).HasComment("推荐数量");
         });
 
         var admin = new UserInfo(Guid.NewGuid(),"Token","admin", "dd666666", "239573049@qq.com", "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg", Constant.Role.Admin);

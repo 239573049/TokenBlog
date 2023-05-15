@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import './index.css'
 import { Row, Col, Card, Avatar, Divider, Collapse, Tag, Space } from '@douyinfe/semi-ui'
-import { IconHome, IconPaperclip,IconAppCenter,IconMenu, IconGithubLogo,IconSetting, IconBranch } from '@douyinfe/semi-icons';
+import { IconHome, IconPaperclip, IconAppCenter, IconMenu, IconGithubLogo, IconSetting, IconBranch } from '@douyinfe/semi-icons';
 import { Outlet, Link } from "react-router-dom";
 import { PathEvent } from '../events/pathEvent';
 import { TabService } from '../../services/tabService';
@@ -55,7 +55,7 @@ export default class BlogContent extends Component {
         return (
             <div className='blog-content'>
                 <Row style={{ height: '100%' }}>
-                    <Col span={4} style={{ height: '100%' }}  className='blog-info'>
+                    <Col span={4} style={{ height: '100%' }} className='blog-info'>
                         <Card style={{ height: '100%' }}>
                             <div onClick={() => window.open('https://github.com/239573049')} style={{ height: '100px' }}>
                                 <Card
@@ -65,13 +65,16 @@ export default class BlogContent extends Component {
                                         alignItems: 'center',
                                         justifyContent: 'space-between'
                                     }}>
-                                    <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} src='/AI.png'></Avatar>
-                                    <span >Token</span>
+                                    <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} src='https://avatars.githubusercontent.com/u/61819790?v=4'></Avatar>
+                                    <div>
+                                        <div style={{ fontSize: '16px', color: '#0159f7', fontStyle: 'oblique', fontFamily: 'fantasy' }}>Token</div>
+                                        <div style={{ fontSize: '10px' , fontStyle: 'oblique'}}>一个热爱.NET的开发者！</div>
+                                    </div>
                                 </Card>
                             </div>
                             <span style={{ fontSize: '12px', color: '#98a6ad!important' }}>导航</span>
                             <div style={{ margin: '5px' }}>
-                            <Link className={"menu " + (pathname === "/" ? "menu-select" : "")} onClick={() => {
+                                <Link className={"menu " + (pathname === "/" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
                                         pathname: '/'
                                     })
@@ -153,7 +156,7 @@ export default class BlogContent extends Component {
                             </div>
                         </Card>
                     </Col>
-                    <Col span={16}  className='blog-render'>
+                    <Col span={16} className='blog-render'>
                         <div style={{ marginLeft: '5px', marginRight: '5px' }}>
                             <Card style={{ height: '95px', width: '100%' }}>
                                 <h2>南岛鹋</h2>

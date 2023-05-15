@@ -49,3 +49,22 @@ export interface CreateArticleDto {
     categoryId: string;
     tabs: string;
 }
+
+export interface ResourceDto {
+    id: string;
+    title: string;
+    description: string;
+    url: string;
+    downloadCount: number;
+    referee: number;
+    userName: string | null;
+    href: string | null;
+}
+
+export interface CreateResourceDto {
+    title: string;
+    description: string;
+    url: string;
+    userName: string | null;
+    href: string | null;
+}
