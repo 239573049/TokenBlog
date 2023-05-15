@@ -6,12 +6,18 @@ using FreeRedis;
 using Masa.BuildingBlocks.Data.UoW;
 using Masa.BuildingBlocks.Dispatcher.IntegrationEvents;
 using Masa.BuildingBlocks.Dispatcher.IntegrationEvents.Logs;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddAuthentication();
+
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 268435456;
+});
 
 #region Jwt
 
