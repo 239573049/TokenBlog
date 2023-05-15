@@ -14,7 +14,7 @@ public class ResourceService : BaseService<ResourceService>
         return query.Result;
     }
 
-    //[Authorize]
+    [Authorize]
     public async Task CreateAsync(CreateResourceDto dto)
     {
         var command = new CreateResourceCommand(dto);

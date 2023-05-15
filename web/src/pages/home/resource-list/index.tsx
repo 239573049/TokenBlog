@@ -62,7 +62,7 @@ export default class ResourceList extends Component {
   }
 
   render() {
-    const { data ,input} = this.state
+    const { data, input } = this.state
     return (
       <div
         className='resource-list'
@@ -72,13 +72,17 @@ export default class ResourceList extends Component {
           {data.result.map(x => {
             return (
               <Card
-                style={{ maxWidth: 340 }}
+                style={{ maxWidth: 300, minWidth: 300, height: '260px', margin: '5px', float: 'left' }}
                 title={
                   <Meta
                     title={x.title}
                   />
                 }
-                footerLine={true}
+                headerExtraContent={<span onClick={()=>{
+                  if(x.href){
+                    window.open(x.href)
+                  }
+                }} style={{ fontSize: '10px',fontFamily:"cursive",cursor: 'pointer', }}>作者：{x.userName}</span>}
                 footerStyle={{ display: 'flex', justifyContent: 'flex-end' }}
                 footer={
                   <Space style={{
@@ -91,17 +95,19 @@ export default class ResourceList extends Component {
                   </Space>
                 }
               >
-                {x.description}
+                <div style={{ minHeight: '110px' }}>
+                  {x.description}
+                </div>
               </Card>)
           })}
         </Row>
-        
-      <Pagination style={{marginTop:'20px'}} total={data.total} showTotal onChange={(e) => {
-        input.page = e;
-        this.setState({ input }, () => {
-          this.load();
-        })
-      }} defaultCurrentPage={input.page}></Pagination>
+
+        <Pagination style={{ marginTop: '20px' }} total={data.total} showTotal onChange={(e) => {
+          input.page = e;
+          this.setState({ input }, () => {
+            this.load();
+          })
+        }} defaultCurrentPage={input.page}></Pagination>
       </div>
     )
   }

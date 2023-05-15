@@ -18,6 +18,7 @@ import Compilations from './pages/home/compilations';
 import Index from './pages/home';
 import Home from './pages/home/home';
 import ResourceList from './pages/home/resource-list';
+import ResourceListManage from './pages/manage/resource-list';
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,9 @@ const router = createBrowserRouter([
       }, {
         path: "/manage/blog",
         element: <ManageBlog />,
+      },  {
+        path: "/manage/resource-list",
+        element: <ResourceListManage />,
       }, {
         path: "/manage/push-blog",
         element: <PushBlog />,

@@ -8,6 +8,13 @@ class FileService {
             }
         });
     }
+    public static UploadFile(form:FormData): Promise<any> {
+        return request.postForm('/api/v1/Files/UploadFile', form, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    }
 }
 
 export{

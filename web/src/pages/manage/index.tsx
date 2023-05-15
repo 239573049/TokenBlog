@@ -21,6 +21,7 @@ export default function Manage() {
                         { itemKey: '/manage', text: '首页', icon: <IconHome size="large" /> },
                         { itemKey: '/manage/blog', text: '博客管理', icon: <IconArticle size="large" /> },
                         { itemKey: '/manage/push-blog', text: '发布博客', icon: <IconSend size="large" /> },
+                        { itemKey: '/manage/resource-list', text: '资源列表', icon: <IconSend size="large" /> },
                         { itemKey: '/manage/classify', text: '分类管理', icon: <IconHash size="large" /> },
                         { itemKey: '/', text: '返回博客', icon: <IconArrowUpLeft size="large" /> }
                     ]}
