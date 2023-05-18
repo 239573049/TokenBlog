@@ -22,6 +22,11 @@ class ArticleService {
         }
     }
 
+    /**
+     * 得到详细
+     * @param id 
+     * @returns 
+     */
     public static get(id: string): Promise<any> {
         return request.get(`/api/v1/Articles/${id}`);
     }
