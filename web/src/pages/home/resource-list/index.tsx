@@ -68,11 +68,13 @@ export default class ResourceList extends Component {
         className='resource-list'
 
       >
-        <Row gutter={[16, 16]}>
+        <Row gutter={[16, 16]} style={{
+          maxHeight: 'calc(80vh - 100px)',
+        }}>
           {data.result.map(x => {
             return (
               <Card
-                style={{ maxWidth: 300, minWidth: 300, height: '260px', margin: '5px', float: 'left' }}
+                style={{ maxWidth: 385, minWidth: 385, height: '260px', margin: '5px', float: 'left' }}
                 title={
                   <Meta
                     title={x.title}
