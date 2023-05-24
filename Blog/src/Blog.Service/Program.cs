@@ -2,6 +2,7 @@ using Blog.Contracts.Auth;
 using Blog.Service.Infrastructure;
 using Blog.Service.Infrastructure.Expressions;
 using Blog.Service.Infrastructure.Middleware;
+using Blog.Service.Infrastructure.MinIO;
 using FreeRedis;
 using Masa.BuildingBlocks.Data.UoW;
 using Masa.BuildingBlocks.Dispatcher.IntegrationEvents;
@@ -36,6 +37,7 @@ builder.Services.AddSingleton((service) =>
 var app = builder.Services
     .AddAuthorization()
     .AddMasaIdentity()
+    .AddMinIO(builder.Configuration)
     .AddTransient<AuditMiddleware>()
     .AddTransient<AnomalyMiddleware>()
     .AddJwtBearerAuthentication(jwtOptions)
