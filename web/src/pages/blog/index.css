@@ -98,7 +98,7 @@ td {
 p code {
   background: #adabab !important;
   border: #1E1E1E !important;
-  color: #fd0505 !important;
+  color: #076ef5 !important;
   padding: 2px !important;
   margin: 2px !important;
   border-radius: 4px;
@@ -113,7 +113,6 @@ p code {
   overflow: auto;
   display: block;
   width: 98%;
-  background: #adabab !important;
   padding: 2px;
   color: #fd0505;
 }

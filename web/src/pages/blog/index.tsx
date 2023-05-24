@@ -12,6 +12,8 @@ import './index.css'
 import Ranking from '../../componses/ranking';
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
+import toc from '@jsdevtools/rehype-toc';
+import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
 var id = new URLSearchParams(window.location.search).get("id");
@@ -112,6 +114,7 @@ export default class Blog extends Component {
                                     <div style={{ margin: '10px', overflow: 'auto', maxHeight: 'calc(100vh - 150px)', width: "100%" }}>
                                         <ReactMarkdown
                                             children={data.content}
+
                                             remarkPlugins={[remarkMath]}
                                             transformLinkUri={(href, children, title) => {
                                                 if(href==='#'){
@@ -119,7 +122,7 @@ export default class Blog extends Component {
                                                 }
                                                 return href;
                                             }}
-                                            rehypePlugins={[rehypeKatex, remarkGfm]}
+                                            rehypePlugins={[rehypeKatex,rehypeSlug, remarkGfm,toc]}
                                             className='blog-markdown'
                                             components={{
                                                 code({ node, inline, className, children, ...props }) {
