@@ -70,6 +70,7 @@ export default class ResourceList extends Component {
       >
         <Row gutter={[16, 16]} style={{
           maxHeight: 'calc(80vh - 100px)',
+          overflow: "auto"
         }}>
           {data.result.map(x => {
             return (
