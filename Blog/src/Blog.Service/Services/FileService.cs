@@ -27,7 +27,7 @@ public class FileService : BaseService<FileService>
             throw new UserFriendlyException("请选择要上传的文件");
         }
 
-        var command = new UploadCommand(file.OpenReadStream(), file.FileName, "image");
+        var command = new UploadCommand(file.OpenReadStream(), file.FileName, "file");
 
         await eventBus.PublishAsync(command);
 
