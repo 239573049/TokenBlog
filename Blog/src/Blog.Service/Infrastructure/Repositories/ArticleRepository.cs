@@ -60,4 +60,10 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
         return Context.Database.ExecuteSqlRawAsync(
             $"update \"Articles\" set \"ReadCount\" = \"ReadCount\"+1 where \"Id\" = '{id}'");
     }
+
+    public Task UpdateLikeAsync(Guid id)
+    {
+        return Context.Database.ExecuteSqlRawAsync(
+            $"update \"Articles\" set \"Like\" = \"Like\"+1 where \"Id\" = '{id}'");
+    }
 }

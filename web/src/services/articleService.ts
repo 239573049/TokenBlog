@@ -42,6 +42,10 @@ class ArticleService {
     public static delete(id:string){
         return request.delete(`/api/v1/Articles/${id}`);
     }
+
+    public static like(id:string){
+        return request.post(`/api/v1/Articles/Like/${id}`);
+    }
 }
 
 export {

@@ -21,4 +21,11 @@ public interface IArticleRepository : IRepository<Article>
     /// <param name="id"></param>
     /// <returns></returns>
     Task UpdateReadCountAsync(Guid id);
+
+    /// <summary>
+    /// 推荐
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task UpdateLikeAsync(Guid id);
 }

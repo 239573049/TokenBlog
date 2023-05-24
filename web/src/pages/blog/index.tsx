@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, Col, Notification, Divider, Layout, Row, Space, Tag } from '@douyinfe/semi-ui'
+import { Avatar, Button, Card, Col, Notification, Divider, Layout, Row, Space, Tag, Icon } from '@douyinfe/semi-ui'
 import { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { ArticleDto } from '../../models/blogger';
@@ -15,6 +15,7 @@ import rehypeKatex from 'rehype-katex'
 import toc from '@jsdevtools/rehype-toc';
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
+import { Praise } from '../../utils/iconUtil';
 
 var id = new URLSearchParams(window.location.search).get("id");
 
@@ -54,6 +55,18 @@ export default class Blog extends Component {
         }
     }
 
+    onLike() {
+        const { data } = this.state;
+        ArticleService.like(data.id)
+            .then(res => {
+                Notification.success({ title: '点赞成功' })
+                data.like++;
+                this.setState({ data: data })
+            }).catch(error => {
+                Notification.error({ title: error.response.data.message })
+            })
+    }
+
     render() {
         var { data } = this.state;
 
@@ -79,7 +92,7 @@ export default class Blog extends Component {
                     <Card>
                         <Link to={'/'} className='header-item'>首页</Link>
                         <a onClick={() => window.open('https://github.com/239573049/TokenBlog')} className='header-item'>GitHub</a>
-                        <Link to={'/'} className='header-item'>关于</Link>
+                        <Link to={'/about'} className='header-item'>关于</Link>
                     </Card>
                 </Header>
                 <Content>
@@ -92,7 +105,6 @@ export default class Blog extends Component {
                             backgroundColor: "var(--semi-color-bg-0)",
                         }}
                     >
-
                         <div className='blog-content'>
                             <Row style={{ height: '100%' }}>
 
@@ -103,13 +115,14 @@ export default class Blog extends Component {
                                             <span>Token</span>
                                         </div>
                                         <Divider margin='12px' />
+                                        <span>
+                                            <Button theme='solid' type='primary' icon={<Icon svg={Praise()} />} onClick={() => this.onLike()}>{data.like} 点赞</Button>
+                                        </span>
                                     </Card>
                                 </Col>
                                 <Col span={16} className='blog-render'>
                                     <div style={{ marginLeft: '5px', marginRight: '5px' }}>
-                                        <Card style={{ height: '95px', width: '100%' }}>
-                                            <h2>{data.title}</h2>
-                                        </Card>
+                                        <h1>{data.title}</h1>
                                     </div>
                                     <div style={{ margin: '10px', overflow: 'auto', maxHeight: 'calc(100vh - 150px)', width: "100%" }}>
                                         <ReactMarkdown
@@ -117,12 +130,12 @@ export default class Blog extends Component {
 
                                             remarkPlugins={[remarkMath]}
                                             transformLinkUri={(href, children, title) => {
-                                                if(href==='#'){
-                                                    return href+(children.find(x=>true) as any).value;
+                                                if (href === '#') {
+                                                    return href + (children.find(x => true) as any).value;
                                                 }
                                                 return href;
                                             }}
-                                            rehypePlugins={[rehypeKatex,rehypeSlug, remarkGfm,toc]}
+                                            rehypePlugins={[rehypeKatex, rehypeSlug, remarkGfm, toc]}
                                             className='blog-markdown'
                                             components={{
                                                 code({ node, inline, className, children, ...props }) {

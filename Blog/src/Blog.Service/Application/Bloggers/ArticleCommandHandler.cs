@@ -1,6 +1,7 @@
 ﻿using Blog.Service.Application.Bloggers.Commands;
 using Masa.BuildingBlocks.Authentication.Identity;
 using Masa.BuildingBlocks.Data.UoW;
+using System.ComponentModel.Design;
 
 namespace Blog.Service.Application.Bloggers;
 
@@ -41,5 +42,11 @@ public class ArticleCommandHandler
         var data = await _articleRepository.FindAsync(x => x.Id == command.id);
         await _articleRepository.RemoveAsync(data);
         await _unitOfWork.SaveChangesAsync();
+    }
+
+    [EventHandler]
+    public async Task LikeAsync(LikeCommand command)
+    {
+        await _articleRepository.UpdateLikeAsync(command.id);
     }
 }

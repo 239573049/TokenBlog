@@ -41,4 +41,10 @@ public class ArticleService : BaseService<ArticleService>
         var command = new DeleteArticleCommand(id);
         await eventBus.PublishAsync(command);
     }
+
+    public async Task LikeAsync(Guid id)
+    {
+        var command = new LikeCommand(id);
+        await eventBus.PublishAsync(command);
+    }
 }
