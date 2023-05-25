@@ -31,6 +31,24 @@
     padding: 10px !important;
 }
 
+.box {
+    border-left: 2px solid #ccc;
+    transition: border-color 0.5s ease-in-out;
+  }
+  
+  .box:hover {
+    border-color: blue;
+  }
+  
+  .box.active {
+    border-color: blue;
+  }
+  
+  .box.previous {
+    border-color: #ccc;
+    transition: border-color 1s ease-in-out;
+  }
+  
 
 @media screen and (max-width: 800px) {
 

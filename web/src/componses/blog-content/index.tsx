@@ -39,9 +39,31 @@ export default class BlogContent extends Component {
     componentDidMount(): void {
         this.getTabs();
         this.getCategory();
+
+        const boxes = document.querySelectorAll('.box');
+
+        boxes.forEach((box, index) => {
+            box.addEventListener('mouseover', () => {
+                box.classList.add('active');
+                for (let i = 0; i < index; i++) {
+                    boxes[i].classList.add('previous');
+                }
+                for (let i = index + 1; i < boxes.length; i++) {
+                    boxes[i].classList.remove('previous');
+                }
+            });
+
+            box.addEventListener('mouseout', () => {
+                box.classList.remove('active');
+                for (let i = 0; i < index; i++) {
+                    boxes[i].classList.remove('previous');
+                }
+            });
+        });
+
     }
 
-    wisdom(){
+    wisdom() {
         const values = ["人生苦短，及时行乐。",
             "知识就是力量。",
             "时间就是金钱。",
@@ -64,8 +86,10 @@ export default class BlogContent extends Component {
             "我们没有永恒的朋友，也没有永恒的敌人，只有永恒的利益。",
             "人生最重要的是做自己。"]
         // 随机从 values 中取出一个元素
-        return  values[Math.floor(Math.random() * values.length)];
+        return values[Math.floor(Math.random() * values.length)];
     }
+
+
 
     render() {
         var pathname = window.location.pathname;
@@ -94,13 +118,13 @@ export default class BlogContent extends Component {
                                     <Avatar style={{ backgroundColor: '#87d068', margin: 4 }} src='https://avatars.githubusercontent.com/u/61819790?v=4'></Avatar>
                                     <div>
                                         <div style={{ fontSize: '16px', color: '#0159f7', fontStyle: 'oblique', fontFamily: 'fantasy' }}>Token</div>
-                                        <div style={{ fontSize: '10px' , fontStyle: 'oblique'}}>一个热爱.NET的开发者！</div>
+                                        <div style={{ fontSize: '10px', fontStyle: 'oblique' }}>一个热爱.NET的开发者！</div>
                                     </div>
                                 </Card>
                             </div>
                             <span style={{ fontSize: '12px', color: '#98a6ad!important' }}>导航</span>
                             <div style={{ margin: '5px' }}>
-                                <Link className={"menu " + (pathname === "/" ? "menu-select" : "")} onClick={() => {
+                                <Link  className={"menu box " + (pathname === "/" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
                                         pathname: '/'
                                     })
@@ -111,7 +135,7 @@ export default class BlogContent extends Component {
                                     <IconHome style={{ margin: '3px' }} />
                                     <span>首页({count})</span>
                                 </Link>
-                                <Link className={"menu " + (pathname === "/compilations" ? "menu-select" : "")} onClick={() => {
+                                <Link className={"menu box " + (pathname === "/compilations" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
                                         pathname: '/compilations'
                                     })
@@ -122,7 +146,7 @@ export default class BlogContent extends Component {
                                     <IconPaperclip style={{ margin: '3px' }} />
                                     <span>合集</span>
                                 </Link>
-                                <Link className={"menu " + (pathname === "/resource-list" ? "menu-select" : "")} onClick={() => {
+                                <Link className={"menu box " + (pathname === "/resource-list" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
                                         pathname: '/resource-list'
                                     })
@@ -133,7 +157,7 @@ export default class BlogContent extends Component {
                                     <IconMenu style={{ margin: '3px' }} />
                                     <span>资源列表</span>
                                 </Link>
-                                <Link className={"menu " + (pathname === "/links" ? "menu-select" : "")} onClick={() => {
+                                <Link className={"menu box " + (pathname === "/links" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
                                         pathname: '/links'
                                     })
@@ -141,7 +165,7 @@ export default class BlogContent extends Component {
                                     <IconBranch style={{ margin: '3px' }} />
                                     <span>友链</span>
                                 </Link >
-                                <Link to='/repository' className={"menu " + (pathname === "/repository" ? "menu-select" : "")} onClick={() => {
+                                <Link to='/repository' className={"menu box " + (pathname === "/repository" ? "menu-select" : "")} onClick={() => {
                                     this.setState({
                                         pathname: '/repository'
                                     })

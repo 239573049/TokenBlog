@@ -8777,7 +8777,7 @@ rehype-parse@^8.0.4:
 
 rehype-slug@^5.1.0:
   version "5.1.0"
-  resolved "https://registry.yarnpkg.com/rehype-slug/-/rehype-slug-5.1.0.tgz#1f7e69be7ea1a2067bcc4cfe58e74c881d5c047e"
+  resolved "https://registry.npmjs.org/rehype-slug/-/rehype-slug-5.1.0.tgz"
   integrity sha512-Gf91dJoXneiorNEnn+Phx97CO7oRMrpi+6r155tTxzGuLtm+QrI4cTwCa9e1rtePdL4i9tSO58PeSS6HWfgsiw==
   dependencies:
     "@types/hast" "^2.0.0"
@@ -8799,7 +8799,7 @@ rehype-stringify@^9.0.3:
 
 rehype-toc@^3.0.2:
   version "3.0.2"
-  resolved "https://registry.yarnpkg.com/rehype-toc/-/rehype-toc-3.0.2.tgz#0373e2abafddeb0606ee38229ff6714da6d86d68"
+  resolved "https://registry.npmjs.org/rehype-toc/-/rehype-toc-3.0.2.tgz"
   integrity sha512-DMt376+4i1KJGgHJL7Ezd65qKkJ7Eqp6JSB47BJ90ReBrohI9ufrornArM6f4oJjP2E2DVZZHufWucv/9t7GUQ==
   dependencies:
     "@jsdevtools/rehype-toc" "3.0.2"
