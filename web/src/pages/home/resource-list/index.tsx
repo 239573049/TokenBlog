@@ -75,17 +75,24 @@ export default class ResourceList extends Component {
           {data.result.map(x => {
             return (
               <Card
+                shadows='hover'
+                className='target'
+                bodyStyle={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}
                 style={{ maxWidth: 385, minWidth: 385, height: '260px', margin: '5px', float: 'left' }}
                 title={
                   <Meta
                     title={x.title}
                   />
                 }
-                headerExtraContent={<span onClick={()=>{
-                  if(x.href){
+                headerExtraContent={<span onClick={() => {
+                  if (x.href) {
                     window.open(x.href)
                   }
-                }} style={{ fontSize: '10px',fontFamily:"cursive",cursor: 'pointer', }}>作者：{x.userName}</span>}
+                }} style={{ fontSize: '10px', fontFamily: "cursive", cursor: 'pointer', }}>作者：{x.userName}</span>}
                 footerStyle={{ display: 'flex', justifyContent: 'flex-end' }}
                 footer={
                   <Space style={{
@@ -105,7 +112,7 @@ export default class ResourceList extends Component {
           })}
         </Row>
 
-        <Pagination style={{ marginTop: '20px' }} total={data.total} showTotal onChange={(e) => {
+        <Pagination style={{ marginTop: '20px' }} total={data.total} pageSize={input.pageSize} showTotal onChange={(e) => {
           input.page = e;
           this.setState({ input }, () => {
             this.load();

@@ -43,7 +43,7 @@ export default class Ranking extends Component {
                                     window.location.href = '/blog?id=' + x.id
                                 }} className='list-data' style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                     <span className='list-serial'>{i + 1}.</span>
-                                    <span >{x.title}</span>
+                                    <span className='target'>{x.title}</span>
                                 </div>
                             </Tooltip>)
                     })}

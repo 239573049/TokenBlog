@@ -3,3 +3,10 @@
     height: 100%;
     padding: 20px;
 }
+
+.resource-list-card {
+    height: '260px';
+    margin: '5px';
+    float: 'left';
+
+}

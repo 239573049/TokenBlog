@@ -34,6 +34,7 @@ export default class Link extends Component {
             return (<Col span={8}>
               <div onClick={() => window.open(x.url)}>
                 <Card
+                  className='target'
                   shadows='hover' title={x.title}
                   bodyStyle={{
                     display: 'flex',

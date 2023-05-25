@@ -43,21 +43,20 @@ export default class BlogHeader extends Component {
       <div>
         <Nav mode="horizontal" defaultSelectedKeys={['Home']}>
           <Nav.Header>
-            <Avatar src='/AI.png'></Avatar>
             Token Blog
           </Nav.Header>
           <Nav.Item>
-            <Link to={'/'}>
+            <Link className='target' to={'/'}>
               主页
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Link to={'/web-ide'}>
+            <Link className='target' to={'/web-ide'}>
               c#在线编辑器
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Link to={'/about'}>
+            <Link className='target' to={'/about'}>
               关于
             </Link>
           </Nav.Item>

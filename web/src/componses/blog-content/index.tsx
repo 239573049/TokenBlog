@@ -41,6 +41,32 @@ export default class BlogContent extends Component {
         this.getCategory();
     }
 
+    wisdom(){
+        const values = ["人生苦短，及时行乐。",
+            "知识就是力量。",
+            "时间就是金钱。",
+            "天下没有免费的午餐。",
+            "机会只留给有准备的人。",
+            "成功的秘诀在于坚持不懈。",
+            "失败是成功之母。",
+            "人生没有彩排，每一天都是现场直播。",
+            "生命不止，奋斗不息。",
+            "人生如戏，全靠演技。",
+            "天道酬勤，人道酬善。",
+            "行动胜于空谈。",
+            "不经历风雨，怎么见彩虹。",
+            "成功需要付出代价。",
+            "没有人能够让你觉得自卑，除非你自己同意。",
+            "人生就像一盒巧克力，你永远不知道下一颗是什么味道。",
+            "人生最大的敌人是自己。",
+            "人生就是一场修行。",
+            "人生没有绝对的公平，只有相对的公平。",
+            "我们没有永恒的朋友，也没有永恒的敌人，只有永恒的利益。",
+            "人生最重要的是做自己。"]
+        // 随机从 values 中取出一个元素
+        return  values[Math.floor(Math.random() * values.length)];
+    }
+
     render() {
         var pathname = window.location.pathname;
         var { category, tab } = this.state;
@@ -160,7 +186,7 @@ export default class BlogContent extends Component {
                         <div style={{ marginLeft: '5px', marginRight: '5px' }}>
                             <Card style={{ height: '95px', width: '100%' }}>
                                 <h2>南岛鹋</h2>
-                                <span>我们没有永恒的朋友，也没有永恒的敌人，只有永恒的利益。</span>
+                                <span>{this.wisdom()}</span>
                             </Card>
                         </div>
                         <div style={{ margin: '5px' }}>

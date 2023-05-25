@@ -47,6 +47,7 @@ export default class Repository extends Component {
             return (<Col span={8}>
               <div onClick={() => window.open(x.url)}>
                 <Card
+                  className='target'
                   shadows='hover'
                   title={<Meta
                     title={x.title}
