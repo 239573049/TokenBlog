@@ -9,8 +9,15 @@ using Masa.BuildingBlocks.Dispatcher.IntegrationEvents;
 using Masa.BuildingBlocks.Dispatcher.IntegrationEvents.Logs;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 builder.Services
     .AddAuthentication();
@@ -38,7 +45,6 @@ var app = builder.Services
     .AddAuthorization()
     .AddMasaIdentity()
     .AddMinIO(builder.Configuration)
-    .AddTransient<AuditMiddleware>()
     .AddTransient<AnomalyMiddleware>()
     .AddJwtBearerAuthentication(jwtOptions)
     .AddCors(options =>
@@ -53,7 +59,7 @@ var app = builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(options =>
     {
-        options.SwaggerDoc("v1", new OpenApiInfo { Title = "BlogApp", Version = "v1", Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "BlogApp", } });
+        options.SwaggerDoc("v1", new OpenApiInfo { Title = "BlogApp", Version = "v1", Contact = new OpenApiContact { Name = "BlogApp", } });
         foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.xml")) options.IncludeXmlComments(item, true);
         options.DocInclusionPredicate((docName, action) => true);
     })
@@ -62,6 +68,7 @@ var app = builder.Services
     {
         opt.UseNpgsql(builder.Configuration["ConnectionStrings:DefaultConnection"]);
     })
+
     .AddDomainEventBus(dispatcherOptions =>
     {
         dispatcherOptions
@@ -75,17 +82,16 @@ var app = builder.Services
                 eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
                 eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
             })
-            .UseUoW<BlogDbContext>()
-            .UseRepository<BlogDbContext>();
+            .UseRepository<BlogDbContext>()
+            .UseUoW<BlogDbContext>();
         ;
     })
     .AddAutoInject()
     .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
 
-app.UseMiddleware<AuditMiddleware>();
 app.UseMiddleware<AnomalyMiddleware>();
 
-app.UseMasaExceptionHandler();
+//app.UseMasaExceptionHandler();
 app.UseCors("CorsPolicy");
 
 app.UseStaticFiles();
@@ -110,5 +116,5 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseCloudEvents();
+//app.UseCloudEvents();
 await app.RunAsync();

@@ -16,6 +16,10 @@ public class BlogDbContext : MasaDbContext
 
     public DbSet<Resource> Resources { get; set; } = null!;
 
+    public DbSet<Failarmy> Failarmies { get; set; } = null!;
+
+    public DbSet<FailarmyItem> FailarmyItems { get; set; } = null!;
+
     public BlogDbContext(MasaDbContextOptions<BlogDbContext> options) : base(options)
     {
     }
@@ -67,7 +71,21 @@ public class BlogDbContext : MasaDbContext
             options.Property(x => x.Referee).HasComment("推荐数量");
         });
 
-        var admin = new UserInfo(Guid.NewGuid(),"Token","admin", "dd666666", "239573049@qq.com", "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg", Constant.Role.Admin);
+        builder.Entity<Failarmy>(options =>
+        {
+            options.HasIndex(x => x.Id).IsUnique();
+
+            options.HasIndex(x => x.Name);
+        });
+
+        builder.Entity<FailarmyItem>(options =>
+        {
+            options.HasIndex(x => x.Id).IsUnique();
+            options.HasIndex(x => x.FailarmyId);
+            options.HasIndex(x => x.ActicleId);
+        });
+
+        var admin = new UserInfo(Guid.NewGuid(), "Token", "admin", "dd666666", "239573049@qq.com", "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg", Constant.Role.Admin);
 
         builder.Entity<UserInfo>().HasData(admin);
     }

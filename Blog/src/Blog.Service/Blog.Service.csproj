@@ -12,19 +12,19 @@
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="11.5.2" />
 		<PackageReference Include="FreeRedis" Version="1.0.10" />
-		<PackageReference Include="Masa.Contrib.Authentication.Identity" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Data.EFCore.PostgreSql" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Data.Mapping.Mapster" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Ddd.Domain" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Authentication.Identity" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Data.EFCore.PostgreSql" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Data.Mapping.Mapster" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Ddd.Domain" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="1.0.0-rc.2.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Exceptions" Version="1.0.0-rc.1.1" />
-		<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="1.0.0-rc.1.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Exceptions" Version="1.0.0-rc.2.1" />
+		<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="1.0.0-rc.2.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.16">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -35,6 +35,11 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
 		<PackageReference Include="Minio" Version="5.0.0" />
+		<PackageReference Include="Serilog" Version="2.12.0" />
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="7.0.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="7.0.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	</ItemGroup>
 
