@@ -68,7 +68,6 @@ var app = builder.Services
     {
         opt.UseNpgsql(builder.Configuration["ConnectionStrings:DefaultConnection"]);
     })
-
     .AddDomainEventBus(dispatcherOptions =>
     {
         dispatcherOptions
@@ -82,9 +81,8 @@ var app = builder.Services
                 eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
                 eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
             })
-            .UseRepository<BlogDbContext>()
-            .UseUoW<BlogDbContext>();
-        ;
+            .UseUoW<BlogDbContext>()
+            .UseRepository<BlogDbContext>();
     })
     .AddAutoInject()
     .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
