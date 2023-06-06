@@ -29,7 +29,7 @@ export default class Blog extends Component {
     }
 
     load() {
-        ArticleService.get(id!)
+        ArticleService.get((id as unknown as number)!)
             .then(x => {
                 this.setState({
                     data: x

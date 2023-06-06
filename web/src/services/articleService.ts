@@ -27,7 +27,7 @@ class ArticleService {
      * @param id 
      * @returns 
      */
-    public static get(id: string): Promise<any> {
+    public static get(id: number): Promise<any> {
         return request.get(`/api/v1/Articles/${id}`);
     }
 
@@ -39,11 +39,11 @@ class ArticleService {
         return request.post("/api/v1/Articles", dto);
     }
 
-    public static delete(id:string){
+    public static delete(id:number){
         return request.delete(`/api/v1/Articles/${id}`);
     }
 
-    public static like(id:string){
+    public static like(id:number){
         return request.post(`/api/v1/Articles/Like/${id}`);
     }
 }

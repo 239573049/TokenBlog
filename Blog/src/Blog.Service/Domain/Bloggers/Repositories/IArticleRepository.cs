@@ -7,7 +7,7 @@ public interface IArticleRepository : IRepository<Article>
 
     Task<int> GetCountAsync(string? keyword, Guid? categoryId, string? queryTabIds);
 
-    Task<Article?> GetAsync(Guid id);
+    Task<Article?> GetAsync(int id);
 
     /// <summary>
     /// 热榜排名
@@ -20,12 +20,12 @@ public interface IArticleRepository : IRepository<Article>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task UpdateReadCountAsync(Guid id);
+    Task UpdateReadCountAsync(int id);
 
     /// <summary>
     /// 推荐
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task UpdateLikeAsync(Guid id);
+    Task UpdateLikeAsync(int id);
 }

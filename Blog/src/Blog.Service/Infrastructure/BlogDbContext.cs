@@ -1,6 +1,7 @@
 ﻿using Blog.Contracts.Shared;
 using Blog.Service.Domain.Resources.Aggregates;
 using Blog.Service.Domain.Users.Aggregates;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Service.Infrastructure;
 
@@ -34,6 +35,11 @@ public class BlogDbContext : MasaDbContext
     {
         builder.Entity<Article>(options =>
         {
+            options.HasKey(a => a.Id);
+            options.Property(x => x.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
+
             options.HasIndex(x => x.Id).IsUnique();
 
             options.HasIndex(x => x.Title);

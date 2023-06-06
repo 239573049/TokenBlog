@@ -1,12 +1,9 @@
-﻿using Blog.Service.Domain.Bloggers.Aggregates;
-using Blog.Service.Domain.Bloggers.Repositories;
-using Masa.BuildingBlocks.Data.UoW;
+﻿using Masa.BuildingBlocks.Data.UoW;
 using Masa.Contrib.Ddd.Domain.Repository.EFCore;
-using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace Blog.Service.Infrastructure.Repositories;
 
-public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArticleRepository
+public class ArticleRepository : Repository<BlogDbContext, Article, int>, IArticleRepository
 {
     public ArticleRepository(BlogDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
     {
@@ -40,7 +37,7 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
             .Include(x => x.Category);
     }
 
-    public Task<Article?> GetAsync(Guid id)
+    public Task<Article?> GetAsync(int id)
     {
         return Context.Articles.Where(x => x.Id == id)
             .Include(x => x.Category).FirstOrDefaultAsync();
@@ -55,13 +52,13 @@ public class ArticleRepository : Repository<BlogDbContext, Article, Guid>, IArti
             .ToListAsync();
     }
 
-    public Task UpdateReadCountAsync(Guid id)
+    public Task UpdateReadCountAsync(int id)
     {
         return Context.Database.ExecuteSqlRawAsync(
             $"update \"Articles\" set \"ReadCount\" = \"ReadCount\"+1 where \"Id\" = '{id}'");
     }
 
-    public Task UpdateLikeAsync(Guid id)
+    public Task UpdateLikeAsync(int id)
     {
         return Context.Database.ExecuteSqlRawAsync(
             $"update \"Articles\" set \"Like\" = \"Like\"+1 where \"Id\" = '{id}'");

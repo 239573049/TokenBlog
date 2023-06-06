@@ -23,8 +23,7 @@ public class ArticleCommandHandler
     {
         var data = command.Dto;
 
-        await _articleRepository.AddAsync(new Article(Guid.NewGuid(),
-            data.Title,
+        await _articleRepository.AddAsync(new Article(data.Title,
             data.Content,
             DateTime.UtcNow,
             Guid.Parse(_userContext.UserId),

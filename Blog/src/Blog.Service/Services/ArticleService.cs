@@ -14,7 +14,7 @@ public class ArticleService : BaseService<ArticleService>
         return query.Result;
     }
 
-    public async Task<ArticleDto> GetAsync(Guid id)
+    public async Task<ArticleDto> GetAsync(int id)
     {
         var query = new GetArticleQuery(id);
         await eventBus.PublishAsync(query);
@@ -36,13 +36,13 @@ public class ArticleService : BaseService<ArticleService>
     }
 
     [Authorize]
-    public async Task DeleteAsync(Guid id)
+    public async Task DeleteAsync(int id)
     {
         var command = new DeleteArticleCommand(id);
         await eventBus.PublishAsync(command);
     }
 
-    public async Task LikeAsync(Guid id)
+    public async Task LikeAsync(int id)
     {
         var command = new LikeCommand(id);
         await eventBus.PublishAsync(command);

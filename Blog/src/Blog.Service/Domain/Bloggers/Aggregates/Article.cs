@@ -2,7 +2,7 @@
 
 namespace Blog.Service.Domain.Bloggers.Aggregates;
 
-public class Article : FullAggregateRoot<Guid, Guid?>
+public class Article : FullAggregateRoot<int, Guid?>
 {
     /// <summary>
     /// 标题
@@ -89,8 +89,8 @@ public class Article : FullAggregateRoot<Guid, Guid?>
         set => tabs = value;
     }
 
-    public Article(Guid id, string title, string content, DateTime publishTime, Guid userId, int readCount, int like,
-        Guid categoryId, string tabs) : base(id)
+    public Article(string title, string content, DateTime publishTime, Guid userId, int readCount, int like,
+        Guid categoryId, string tabs) 
     {
         this.title = title;
         this.content = content;

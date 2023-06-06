@@ -14,7 +14,7 @@ export interface GetArticleListDto {
     background: string;
 }
 export interface ArticleDto {
-    id: string;
+    id: number;
     title: string;
     content: string;
     publishTime: string;

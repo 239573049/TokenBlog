@@ -24,9 +24,11 @@ namespace Blog.Service.Migrations
 
             modelBuilder.Entity("Blog.Service.Domain.Bloggers.Aggregates.Article", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid")
@@ -298,13 +300,13 @@ namespace Blog.Service.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e63f14e2-bb6c-4ef5-9ff7-068b2f1e2992"),
+                            Id = new Guid("4666a985-1808-45df-b661-c71daff0de6f"),
                             Account = "admin",
                             Avatar = "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg",
-                            CreationTime = new DateTime(2023, 6, 6, 16, 27, 43, 569, DateTimeKind.Utc).AddTicks(559),
+                            CreationTime = new DateTime(2023, 6, 6, 17, 5, 48, 638, DateTimeKind.Utc).AddTicks(2687),
                             Email = "239573049@qq.com",
                             IsDeleted = false,
-                            ModificationTime = new DateTime(2023, 6, 6, 16, 27, 43, 569, DateTimeKind.Utc).AddTicks(560),
+                            ModificationTime = new DateTime(2023, 6, 6, 17, 5, 48, 638, DateTimeKind.Utc).AddTicks(2690),
                             Name = "Token",
                             Password = "dd666666",
                             Role = "Admin"

@@ -2,7 +2,7 @@
 
 public class GetArticleListDto
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// 标题

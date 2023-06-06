@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Blog.Service.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20230501153123_ArticleContent")]
-    partial class ArticleContent
+    [Migration("20230606170548_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,11 @@ namespace Blog.Service.Migrations
 
             modelBuilder.Entity("Blog.Service.Domain.Bloggers.Aggregates.Article", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid")
@@ -36,8 +38,8 @@ namespace Blog.Service.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(10000)
-                        .HasColumnType("character varying(10000)")
+                        .HasMaxLength(50000)
+                        .HasColumnType("character varying(50000)")
                         .HasComment("文章内容");
 
                     b.Property<DateTime>("CreationTime")
@@ -81,10 +83,6 @@ namespace Blog.Service.Migrations
                         .HasColumnType("uuid")
                         .HasComment("用户id");
 
-                    b.Property<string>("tabs")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -116,13 +114,64 @@ namespace Blog.Service.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Path")
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Blog.Service.Domain.Bloggers.Aggregates.Failarmy", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.HasIndex("Name");
+
+                    b.ToTable("Failarmies");
+                });
+
+            modelBuilder.Entity("Blog.Service.Domain.Bloggers.Aggregates.FailarmyItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ActicleId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("FailarmyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActicleId");
+
+                    b.HasIndex("FailarmyId");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("FailarmyItems");
                 });
 
             modelBuilder.Entity("Blog.Service.Domain.Bloggers.Aggregates.Tab", b =>
@@ -138,6 +187,132 @@ namespace Blog.Service.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tabs");
+                });
+
+            modelBuilder.Entity("Blog.Service.Domain.Resources.Aggregates.Resource", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("Creator")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasComment("描述");
+
+                    b.Property<int>("DownloadCount")
+                        .HasColumnType("integer")
+                        .HasComment("下载次数");
+
+                    b.Property<string>("Href")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("ModificationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("Modifier")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Referee")
+                        .HasColumnType("integer")
+                        .HasComment("推荐数量");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasComment("标题");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("Resources");
+                });
+
+            modelBuilder.Entity("Blog.Service.Domain.Users.Aggregates.UserInfo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Account")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Avatar")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("Creator")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("ModificationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("Modifier")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Account");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("UserInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("4666a985-1808-45df-b661-c71daff0de6f"),
+                            Account = "admin",
+                            Avatar = "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg",
+                            CreationTime = new DateTime(2023, 6, 6, 17, 5, 48, 638, DateTimeKind.Utc).AddTicks(2687),
+                            Email = "239573049@qq.com",
+                            IsDeleted = false,
+                            ModificationTime = new DateTime(2023, 6, 6, 17, 5, 48, 638, DateTimeKind.Utc).AddTicks(2690),
+                            Name = "Token",
+                            Password = "dd666666",
+                            Role = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Masa.BuildingBlocks.Dispatcher.IntegrationEvents.Logs.IntegrationEventLog", b =>
@@ -157,6 +332,10 @@ namespace Blog.Service.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("EventTypeName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ExpandContent")
                         .IsRequired()
                         .HasColumnType("text");
 

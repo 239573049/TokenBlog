@@ -32,7 +32,6 @@ builder.Services.Configure<FormOptions>(options =>
 var jwtSection = builder.Configuration.GetSection("Jwt");
 builder.Services.Configure<JwtOptions>(jwtSection);
 var jwtOptions = jwtSection.Get<JwtOptions>();
-builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
 #endregion
 
@@ -42,6 +41,7 @@ builder.Services.AddSingleton((service) =>
 });
 
 var app = builder.Services
+    .AddSingleton<IActionContextAccessor, ActionContextAccessor>()
     .AddAuthorization()
     .AddMasaIdentity()
     .AddMinIO(builder.Configuration)
@@ -114,5 +114,4 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-//app.UseCloudEvents();
 await app.RunAsync();

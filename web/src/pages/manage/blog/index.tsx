@@ -69,7 +69,7 @@ export default class ManageBlog extends Component {
         }, () => this.loadBlogs())
     }
 
-    onDelete(value: string) {
+    onDelete(value: number) {
         ArticleService.delete(value)
             .then(res => {
                 Notification.success({
