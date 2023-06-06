@@ -38,4 +38,17 @@ public class ResourceService : BaseService<ResourceService>
 
         return command.Url;
     }
+
+    public async Task DeleteAsync(Guid id)
+    {
+        var command = new DeleteResourceCommand(id);
+
+        await eventBus.PublishAsync(command);
+    }
+
+    public async Task UpdateAsync(UpdateResourceDto dto)
+    {
+        var command = new UpdateResourceCommand(dto);
+        await eventBus.PublishAsync(command);
+    }
 }

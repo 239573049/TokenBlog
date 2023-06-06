@@ -28,7 +28,14 @@ public class Resource : FullAggregateRoot<Guid, Guid?>
         Href = href;
     }
 
-
+    public void Update(string title,string description,string url,string userName,string href)
+    {
+        Title = title;
+        Description = description;
+        Url = url;
+        UserName = userName;
+        Href = href;
+    }
 
     /// <summary>
     /// 标题
