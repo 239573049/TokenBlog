@@ -68,3 +68,12 @@ export interface CreateResourceDto {
     userName: string | null;
     href: string | null;
 }
+
+export interface UpdateResourceDto {
+    id: string;
+    title: string;
+    url: string;
+    description: string;
+    userName: string | null;
+    href: string | null;
+}

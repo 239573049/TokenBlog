@@ -1,3 +1,40 @@
-body{
-    background-color: var( --semi-color-bg-0);
-}
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  body {
+    background-size: 200% 200%;
+    background-image: linear-gradient(45deg, #3f87a6, #ebf8e1, #f69d3c);
+    animation: gradient 15s ease infinite;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .login-card {
+    width: 400px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  

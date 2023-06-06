@@ -1,4 +1,4 @@
-import { Button, Card, Form, Popover, Space, Table } from '@douyinfe/semi-ui';
+import { Button, Card, Form, Notification, Popover, Space, Table } from '@douyinfe/semi-ui';
 import { IconMore } from '@douyinfe/semi-icons';
 import  { Component } from 'react'
 import { ResourceDto } from '../../../models/blogger';
@@ -22,8 +22,21 @@ export default class ResourceListManage extends Component {
     }
   }
 
-  onDelete(id: number) {
-    console.log(id)
+  onDelete(id: string) {
+    ResourceService.Delete(id)
+      .then(res=>{
+        Notification.success({
+          title: '删除成功',
+        });
+        this.load();
+      })
+      .catch(error=>{
+        Notification.error({
+          title: '删除失败',
+          content: error.response.data.message,
+        });
+      })
+
   }
 
   onEdit(id: number) {

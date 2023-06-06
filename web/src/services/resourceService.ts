@@ -1,4 +1,4 @@
-import { CreateResourceDto } from "../models/blogger";
+import { CreateResourceDto, UpdateResourceDto } from "../models/blogger";
 import request from "../utils/request";
 
 class ResourceService {
@@ -20,6 +20,14 @@ class ResourceService {
 
     public static Download(id: string) {
         return request.post(`/api/v1/Resources/Download/${id}`);
+    }
+
+    public static Delete(id:string){
+        return request.delete('/api/v1/Resources/'+id)
+    }
+
+    public static Put(dto:UpdateResourceDto){
+        return request.put("/api/v1/Resources",dto)
     }
 }
 
