@@ -2,7 +2,7 @@
 {
     public class FailarmyItem : Entity<Guid>
     {
-        public Guid ActicleId { get; set; }
+        public int ActicleId { get; set; }
 
         public Guid FailarmyId { get; set; }
 
