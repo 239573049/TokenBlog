@@ -77,3 +77,21 @@ export interface UpdateResourceDto {
     userName: string | null;
     href: string | null;
 }
+
+
+export interface CreateFailarmyDto {
+    name: string;
+    description: string;
+    image: string;
+}
+
+export interface UpdateFailarmyDto extends CreateFailarmyDto {
+    id: string;
+}
+
+export interface FailarmyDto extends CreateFailarmyDto {
+    id: string;
+    count: number;
+    background: string;
+    show: boolean;
+}
