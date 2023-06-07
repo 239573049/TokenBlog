@@ -17,3 +17,4 @@ global using Blog.Service.Application.Bloggers.Queries;
 global using Blog.Service.Domain.Bloggers.Aggregates;
 global using Masa.BuildingBlocks.Ddd.Domain.Repositories;
 global using Blog.Service.Domain.Bloggers.Repositories;
+global using Blog.Service.Application.Bloggers.Commands;

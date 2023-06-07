@@ -20,6 +20,7 @@ public class UserCommandHandler
     [EventHandler(1)]
     public async Task VerifyUser(CreateUserInfoCommand command)
     {
+        // 创建用户事件先触发校验账号邮箱是否存在，如果存在异常，不存在则继续执行事件
         if (await _userInfoRepository.AnyAsync(command.dto.Account, command.dto.Email))
         {
             throw new UserFriendlyException("账号或邮箱已存在");
@@ -29,6 +30,7 @@ public class UserCommandHandler
     [EventHandler(2)]
     public async Task CreateUserInfo(CreateUserInfoCommand command)
     {
+        // 创建用户事件触发，当执行到这里时，说明账号邮箱不存在，可以创建用户
         var user = new UserInfo(Guid.NewGuid(), command.dto.Name, command.dto.Account, command.dto.Password, command.dto.Email, command.dto.Account, Constant.Role.User);
 
         await _userInfoRepository.AddAsync(user);

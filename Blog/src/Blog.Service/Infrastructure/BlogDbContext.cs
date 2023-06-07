@@ -48,7 +48,7 @@ public class BlogDbContext : MasaDbContext
 
             options.HasIndex(x => x.UserId);
 
-            options.Property(x => x.Content).HasMaxLength(50000);
+            options.Property(x => x.Content).HasMaxLength(100000);
 
             options.Property(x => x.CategoryId).HasComment("分类id");
             options.Property(x => x.Title).HasComment("标题");

@@ -17,7 +17,7 @@ public class AnomalyMiddleware : IMiddleware
         {
             await next(context);
         }
-        catch (UserFriendlyException exception)
+        catch (UserFriendlyException exception) // 拦截UserFriendlyException异常返回指定模型Message
         {
             context.Response.StatusCode = 400;
             await context.Response.WriteAsJsonAsync(new
@@ -25,11 +25,11 @@ public class AnomalyMiddleware : IMiddleware
                 message = exception.Message
             });
         }
-        catch (UnauthorizedAccessException)
+        catch (UnauthorizedAccessException) // 拦击UnauthorizedAccessException异常返回401
         {
             context.Response.StatusCode = 401;
         }
-        catch (Exception ex)
+        catch (Exception ex)// 拦截其他异常返回500
         {
             _logger.LogError(ex, "请求发生错误");
             context.Response.StatusCode = 500;
