@@ -58,7 +58,7 @@ export default class Compilations extends Component<IProps, IState> {
           <Collapse accordion>
             {data.result.map((x, i) => {
               return (
-                <Collapse.Panel header={x.name} itemKey={x.id}>
+                <Collapse.Panel header={<Tag color='green'> {x.name} </Tag>} itemKey={x.id}>
                   <div className='article'>
                     {x.values.map((x, i) => {
                       return (
