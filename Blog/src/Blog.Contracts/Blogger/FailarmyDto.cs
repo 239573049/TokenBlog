@@ -8,5 +8,10 @@
         /// 数量
         /// </summary>
         public int Count { get; set; }
+
+        /// <summary>
+        /// 博客列表
+        /// </summary>
+        public List<GetArticleListDto> Values { get; set; } = new();
     }
 }

@@ -94,4 +94,5 @@ export interface FailarmyDto extends CreateFailarmyDto {
     count: number;
     background: string;
     show: boolean;
+    values: GetArticleListDto[];
 }

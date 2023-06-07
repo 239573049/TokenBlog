@@ -16,7 +16,7 @@
 
             var count = await _failarmyRepository.GetCountAsync(query.keyword);
 
-            query.Result = new PaginatedListBase<FaliarmyDto> { Total = count, Result = list };
+            query.Result = new PaginatedListBase<FailarmyDto> { Total = count, Result = list };
         }
     }
 }

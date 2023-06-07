@@ -30,15 +30,34 @@ namespace Blog.Service.Infrastructure.Repositories
 
             var ids = result.Select(x => x.Id).ToArray();
 
-            var counts = await Context.FailarmyItems.Where(x => ids.Contains(x.FailarmyId)).GroupBy(x => x.FailarmyId).Select(x => new
+            var items = await Context.FailarmyItems.Where(x => ids.Contains(x.FailarmyId)).ToListAsync();
+
+            var counts = items.GroupBy(x => x.FailarmyId).Select(x => new
             {
                 Count = x.Count(),
-                Id = x.First().FailarmyId
-            }).ToArrayAsync();
+                Id = x.First().FailarmyId,
+                ids = x.Select(x=>x.ActicleId)
+            }).ToArray();
+
+            var blogIds = items.Select(x => x.ActicleId);
+
+            var blogs = await Context.Articles.Where(x => blogIds.Contains(x.Id)).ToListAsync();
 
             foreach (var item in result)
             {
-                item.Count = counts.FirstOrDefault(x => x.Id == item.Id)?.Count ?? 0;
+                var countDefault = counts.FirstOrDefault(x => x.Id == item.Id);
+
+                item.Count = countDefault?.Count ?? 0;
+                item.Values = blogs.Where(x => countDefault.ids.Contains(x.Id)).Select(x=>new GetArticleListDto()
+                {
+                    CategoryId = x.CategoryId,
+                    Title = x.Title,
+                    ReadCount = x.ReadCount,
+                    Id = x.Id,
+                    Like = x.Like,
+                    CreationTime = x.CreationTime,
+                    PublishTime = x.PublishTime,
+                }).ToList();
             }
 
             return result.ToList();
