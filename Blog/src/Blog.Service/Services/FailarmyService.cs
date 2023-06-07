@@ -20,7 +20,7 @@ public class FailarmyService : BaseService<FailarmyService>
         await eventBus.PublishAsync(command);
     }
 
-    public async Task<PaginatedListBase<FaliarmyDto>> GetListAsync(string? keyword, int page = 1,
+    public async Task<PaginatedListBase<FailarmyDto>> GetListAsync(string? keyword, int page = 1,
         int pageSize = 20)
     {
         var query = new GetListFaliarmyQuery(keyword, page, pageSize);

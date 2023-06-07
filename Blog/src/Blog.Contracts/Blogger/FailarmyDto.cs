@@ -1,6 +1,6 @@
 ﻿namespace Blog.Contracts.Blogger
 {
-    public class FaliarmyDto : CreateFailarmyDto
+    public class FailarmyDto : CreateFailarmyDto
     {
         public Guid Id { get; set; }
 

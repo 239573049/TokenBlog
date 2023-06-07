@@ -14,11 +14,11 @@ namespace Blog.Service.Infrastructure.Repositories
             return Context.Failarmies.CountAsync(x => string.IsNullOrEmpty(keyword) || x.Name.Contains(keyword));
         }
 
-        public async Task<List<FaliarmyDto>> GetListAsync(string? keyword, int page = 1, int pageSize = 20)
+        public async Task<List<FailarmyDto>> GetListAsync(string? keyword, int page = 1, int pageSize = 20)
         {
             var query =
                 from faliarmy in Context.Failarmies.Where(x => string.IsNullOrEmpty(keyword) || x.Name.Contains(keyword))
-                select new FaliarmyDto()
+                select new FailarmyDto()
                 {
                     Id = faliarmy.Id,
                     Description = faliarmy.Description,
