@@ -1,9 +1,8 @@
-﻿using Blog.Service.Application.Bloggers.Commands;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 
 namespace Blog.Service.Services;
 
-public class CategoryService : BaseService<CategoryService>
+public class CategoryService : BaseService<CategoryService>, ICategoryService
 {
     public async Task<List<CategoryDto>> GetListAsync()
     {

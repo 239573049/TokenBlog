@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Blog.Service.Services;
 
-public class ResourceService : BaseService<ResourceService>
+public class ResourceService : BaseService<ResourceService>, IResourceService
 {
     public async Task<PaginatedListBase<ResourceDto>> GetListAsync(string? keywords, int page, int pageSize)
     {

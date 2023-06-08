@@ -27,12 +27,16 @@ public class UserQueryHandler
     [EventHandler]
     public async Task GetUserInfo(GetUserInfoQuery query)
     {
+        // 通过密码账号获取用户信息
         var info = await _userInfoRepository.FindAsync(x => x.Account == query.account && x.Password == query.password);
+ 
+        // 如果用户不存在，抛出异常
         if (info == null)
         {
             throw new UserFriendlyException("账号或密码错误");
         }
 
+        // 生成token
         var claimsIdentity = JwtHelper.GetClaimsIdentity(info);
 
         var token = JwtHelper.GeneratorAccessToken(claimsIdentity, _jwtOptions);
@@ -43,7 +47,10 @@ public class UserQueryHandler
     [EventHandler]
     public async Task GetUser(GetUserQuery query)
     {
+        // 通过token获取用户信息
         var token = _contextAccessor.HttpContext?.Request.Headers.Authorization.ToString();
+        
+        // 如果token为空，抛出异常
         var json = await redis.GetAsync(token);
         if (json.IsNullOrEmpty())
         {

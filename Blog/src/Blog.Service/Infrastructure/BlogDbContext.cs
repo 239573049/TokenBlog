@@ -1,7 +1,6 @@
 ﻿using Blog.Contracts.Shared;
 using Blog.Service.Domain.Resources.Aggregates;
 using Blog.Service.Domain.Users.Aggregates;
-using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Service.Infrastructure;
 
@@ -91,6 +90,7 @@ public class BlogDbContext : MasaDbContext
             options.HasIndex(x => x.ActicleId);
         });
 
+        // 迁移时添加默认数据
         var admin = new UserInfo(Guid.NewGuid(), "Token", "admin", "dd666666", "239573049@qq.com", "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/Avatar.jpg", Constant.Role.Admin);
 
         builder.Entity<UserInfo>().HasData(admin);

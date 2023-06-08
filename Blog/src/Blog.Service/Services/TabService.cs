@@ -1,8 +1,6 @@
-﻿using Blog.Service.Application.Bloggers.Commands;
+﻿namespace Blog.Service.Services;
 
-namespace Blog.Service.Services;
-
-public class TabService : BaseService<TabService>
+public class TabService : BaseService<TabService>, ITabService
 {
     public async Task CreateAsync(string name)
     {

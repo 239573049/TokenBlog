@@ -1,6 +1,6 @@
 ﻿namespace Blog.Service.Services;
 
-public class FailarmyService : BaseService<FailarmyService>
+public class FailarmyService : BaseService<FailarmyService>, IFailarmyService
 {
     public async Task CreateAsync(CreateFailarmyDto dto)
     {

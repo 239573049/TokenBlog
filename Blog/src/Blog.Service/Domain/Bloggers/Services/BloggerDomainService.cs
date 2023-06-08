@@ -1,6 +1,6 @@
 using Blog.Service.Domain.Bloggers.Views;
 
-namespace Blog.Service.Domain.Bloggers.Repositories;
+namespace Blog.Service.Domain.Bloggers.Services;
 
 public class BloggerDomainService : IScopedDependency
 {

@@ -1,5 +1,4 @@
-﻿using Blog.Service.Application.Bloggers.Commands;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 
 namespace Blog.Service.Services;
 

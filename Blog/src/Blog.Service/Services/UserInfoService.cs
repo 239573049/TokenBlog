@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Blog.Service.Services;
 
-public class UserInfoService : BaseService<UserInfoService>
+public class UserInfoService : BaseService<UserInfoService>, IUserInfoService
 {
     [Authorize]
     public async Task CreateAsync(CreateUserInfoDto dto)
