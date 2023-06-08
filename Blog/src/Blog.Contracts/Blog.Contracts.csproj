@@ -6,6 +6,6 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="1.0.0-rc.1" />
+    <PackageReference Include="Masa.BuildingBlocks.Exceptions" Version="1.0.0-rc.2.1" />
   </ItemGroup>
 </Project>

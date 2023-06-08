@@ -18,7 +18,7 @@ export default class Repository extends Component {
       title: 'Gitee',
       description: '用于同步Github的项目，欢迎Star！',
       icon: <Icon svg={Gitee()} />,
-      url: 'https://dotnet9.com',
+      url: 'https://gitee.com/hejiale010426',
     }, {
       title: 'GitHub',
       icon: <IconGithubLogo />,
