@@ -1,4 +1,6 @@
-﻿namespace Blog.Service.Services;
+﻿using Blog.Service.Application.Bloggers.Commands;
+
+namespace Blog.Service.Services;
 
 public class FailarmyService : BaseService<FailarmyService>, IFailarmyService
 {
