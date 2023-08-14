@@ -1,0 +1,10 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+@* 
+Temporary workaround until MapRazorComponents supports AddAdditionalAssemblies
+Once that is implemented, the main project won't need to include this file
+See https://github.com/dotnet/aspnetcore/issues/49756
+*@
+<Blog.Shared.Pages.Counter @rendermode="@RenderMode.Auto" />
