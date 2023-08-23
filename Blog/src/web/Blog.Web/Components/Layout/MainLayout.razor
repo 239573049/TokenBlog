@@ -1,9 +1,9 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="appwrap">
-    <Background/>
+    <Blog.Shared.Background @rendermode="@RenderMode.Auto"/>
     <div class="desktop" data-menu="desk">
         @Body
     </div>
-    <Taskbar />
+    <Blog.Shared.Taskbar @rendermode="@RenderMode.Auto"/>
 </div>

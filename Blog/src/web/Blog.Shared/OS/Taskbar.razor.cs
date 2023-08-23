@@ -1,4 +1,4 @@
-﻿namespace Blog.Web;
+﻿namespace Blog.Shared;
 
 public partial class Taskbar
 {
