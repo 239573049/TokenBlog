@@ -7,5 +7,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Masa.BuildingBlocks.Exceptions" Version="1.0.0-rc.2.1" />
+    <PackageReference Include="WebApiClientCore" Version="2.0.4" />
   </ItemGroup>
 </Project>
